@@ -1,0 +1,37 @@
+.clearfix:after,
+.clearfix:before {
+  content: " ";
+  display: table
+}
+
+.clearfix:after {
+  clear: both
+}
+
+.hide {
+  display: none !important
+}
+
+
+.ir {
+  display: block;
+  text-align: left;
+  text-indent: -9999em;
+  overflow: hidden
+}
+
+.container {
+  width: 1226px;
+  margin-right: auto;
+  margin-left: auto
+}
+
+.container:after,
+.container:before {
+  content: " ";
+  display: table
+}
+
+.container:after {
+  clear: both
+}
