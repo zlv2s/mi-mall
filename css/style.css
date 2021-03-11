@@ -696,3 +696,8 @@ a:hover {
     height: 19px;
     background: url(https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/global/slogan2020.png) no-repeat center 0
 }
+
+/* home-hero */
+.home-hero .hero-swiper {
+    height: 460px;
+}

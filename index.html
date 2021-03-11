@@ -11,17 +11,57 @@
   <link rel="stylesheet" href="css/iconfont.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/swiper.css">
 </head>
 
 <body>
   <div class="header"></div>
+  <div class="home-hero-container container">
+    <div class="home-hero">
+      <div class="hero-swiper">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+          </div>
+          <!-- 分页器 -->
+          <div class="swiper-pagination"></div>
 
+          <!-- 导航按钮 -->
+          <div class="swiper-control btn-prev">&lt;</div>
+          <div class="swiper-control btn-next">&gt;</div>
+        </div>
+      </div>
+      <div class="hero-sub"></div>
+    </div>
+  </div>
   <div class="footer"></div>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script src="./js/swiper.js"></script>
   <script src="./js/header.js"></script>
   <script src="./js/footer.js"></script>
 
   <script>
+    $.ajax({
+      url: 'http://localhost:3000/api/xm/flashsale/getslideshow',
+      dataType: 'jsonp',
+      success(res) {
+        if (res.code === 200) {
+          const sliderList = res.data.list.list.slice(0, 8)
+          const slidesArr = []
+          $.each(sliderList, (i, item) => {
+            slidesArr.push($(`<div class="swiper-slide"><img src=${item.img} alt=${item.goods_name} /></div>`))
+          })
+
+          console.log(slidesArr);
+          $('.swiper-wrapper').append(slidesArr)
+          new Swiper('.swiper-container')
+        }
+      },
+      error(e) {
+        console.log(e);
+      }
+    })
+
+
   </script>
 
   <!-- <div class="hero">
