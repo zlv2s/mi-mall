@@ -7,235 +7,420 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/btn.css">
   <link rel="stylesheet" href="css/iconfont.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/swiper.css">
 </head>
 
 <body>
-  <div class="header"></div>
   <div class="home-hero-container container">
     <div class="home-hero">
       <div class="hero-swiper">
-        <div class="swiper-container">
+        <div class="swiper-container" id="swiper">
           <div class="swiper-wrapper">
           </div>
           <!-- 分页器 -->
           <div class="swiper-pagination"></div>
 
           <!-- 导航按钮 -->
-          <div class="swiper-control btn-prev">&lt;</div>
-          <div class="swiper-control btn-next">&gt;</div>
+
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </div>
-      <div class="hero-sub"></div>
+      <div class="hero-sub row">
+        <div class="span4">
+          <ul class="home-channel-list clearfix">
+            <li>
+              <a href="#"><img
+                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
+                  alt="">小米秒杀</a>
+            </li>
+            <li>
+              <a href="#"><img
+                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
+                  alt="">小米秒杀</a>
+            </li>
+            <li>
+              <a href="#"><img
+                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
+                  alt="">小米秒杀</a>
+            </li>
+            <li>
+              <a href="#"><img
+                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
+                  alt="">小米秒杀</a>
+            </li>
+            <li>
+              <a href="#"><img
+                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
+                  alt="">小米秒杀</a>
+            </li>
+            <li>
+              <a href="#"><img
+                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
+                  alt="">小米秒杀</a>
+            </li>
+          </ul>
+        </div>
+        <div class="span16">
+          <ul class="home-promo-list clearfix">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-main">
+    <div class="container">
+      <div class="home-flashsale">
+        <div class="box-hd">
+          <h2 class="title">小米秒杀</h2>
+        </div>
+        <div class="box-bd">
+          <div class="row">
+            <div class="span4 flashsale-countdown">
+              <div class="round">14:00 场</div>
+              <img src="data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAA1CAYAAAAklDnhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+              bWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+              bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+              eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+              MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+              dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+              dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+              IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+              ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+              cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5j
+              ZUlEPSJ4bXAuaWlkOjY4Q0ZFMkY5MTJFNzExRThCMkM4OEM1RTNBNjczQUVBIiB4bXBNTTpEb2N1
+              bWVudElEPSJ4bXAuZGlkOjY4Q0ZFMkZBMTJFNzExRThCMkM4OEM1RTNBNjczQUVBIj4gPHhtcE1N
+              OkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NjhDRkUyRjcxMkU3MTFFOEIy
+              Qzg4QzVFM0E2NzNBRUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NjhDRkUyRjgxMkU3MTFF
+              OEIyQzg4QzVFM0E2NzNBRUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94Onht
+              cG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5oEyacAAACoklEQVR42sSYv0tbURTHX0LqD6T4g4pE
+              cHDoUOloBxVd/QFFEcQqWtrSKlKFmmAslopohzgIbv4FwUEE0clFujiIi+BSIbRQ0ooKRReRULHf
+              S48Qgu++c3/FAx+iyU3eJzf3nnPuC/1qavQ04zVY8szjCHRGNN9cBD6DSkOJKzAGzsOaH/AW1FuY
+              jRg4EH/oiJSCTxYk1sDK7T86Iu9BraHED/Au9wlVkYdg2lAiC/rBhYnIB/DIUOQj2M9/UkWkCsQN
+              JbbA8l0vqIhMgXIDiZ/gFbgxEakBEwYSf8Eg+OM3gCsyA8oMRETy25UN4IjUgVEDiW2wGDSIIzIL
+              ijUljsFLv3WhIvKYFphOXNO6OOUMDhKZA7qFcQF85Q6WXeQpeKEpcULlvY8xthp8iwR8I93qLLb7
+              KnOsSPWNfhd6Bro99yHqTi9IhyWzEXIsIXbSG7Djt1jbQHsBZkMkyZRs13wpgIRoiJKy7dsBWh1L
+              bN5Vt3JFQrQ2XMYeGKBk5yvSI7aRQ4k0eA4uZZlVPM47lDgTZxd6lKb4AcqkLuKSZiIdVGsiVFNc
+              xDV9yT1Orekjoe+MDw4pHqwmaJewit66Ql0QaX+DOTaZe4DitAFZxQaaEynKnJ6KCDeaQAtj3A7V
+              kBtXIpwT3iFV06zqquaKPKEtKIsM6Mo/StoWiQeMvSCJjO4+54hEwTCjuTk0STgckUm6QxTY3LgU
+              Kc+/jyFrblyKCIkKbnPjSkT8HDGV5saVyBAtVHZz40Ik7HNTRtrcuBARF2tQbW5ciCR0mhvbIs2E
+              cnNjWySh29zYFGnIK25KzY1Nkdziptzc2BKJUu7Qbm5sicQom2o3NzZEKqiu/DZpbmyIjIAHNBMZ
+              7x4iTALjhcgVQSIl3v87w5vePcY/AQYAFYR6skFSqBUAAAAASUVORK5CYII=" alt="">
+              <div class="desc">距离结束还有</div>
+              <div class="countdown">
+                <span>00</span>
+                <i>:</i>
+                <span>14</span>
+                <i>:</i>
+                <span>18</span>
+              </div>
+            </div>
+            <div class="span16 flashsale-list">
+              <div class="swiper-container" id="swiper2">
+                <ul class="swiper-wrapper">
+                  <!-- <li class="swiper-slide">
+                    <a href="">
+                      <div class="content">
+                        <div class="thumb"></div>
+                        <h3 class="title"></h3>
+                        <p class="desc"></p>
+                        <p class="price">
+                          <span></span>
+                          <del></del>
+                        </p>
+                      </div>
+                    </a>
+                  </li> -->
+                </ul>
+              </div>
+              <div class="btn-control">
+                <span class="btn-prev"><i class="iconfont-arrow-left-big"></i></span>
+                <span class="btn-next"><i class="iconfont-arrow-right-big"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="home-banner-box">
+        <a href=""><img
+            src="http://cdn.cnbj1.fds.api.mi-img.com/mi-mall/431e5fd6bfd1b67d096928248be18303.jpg?thumb=1&w=1533&h=150&f=webp&q=90"
+            alt=""></a>
+      </div> -->
+      <!-- <div class="home-brick-box home-brick-row-2-box">
+        <div class="box-hd">
+          <h2 class="title">手机</h2>
+          <div class="more">
+            <a href="" class="more-link">
+              查看全部
+              <i class="iconfont iconfont-arrow-right-big"></i>
+            </a>
+          </div>
+        </div>
+        <div class="box-bd">
+          <div class="row">
+            <div class="span4">
+              <ul class="brick-promo-list">
+                <li class="brick-item">
+                  <a href="#"><img
+                      src="http://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cb1bd61ad71c45a4f67f09b075463944.jpeg?thumb=1&w=293&h=768&f=webp&q=90"
+                      alt=""></a>
+                </li>
+              </ul>
+            </div>
+            <div class="span16">
+              <ul class="brick-list">
+                <li class="brick-item">
+                  <a href="#">
+                    <div class="figure"><img src="" alt=""></div>
+                    <h3 class="title"></h3>
+                    <p class="desc"></p>
+                    <p class="price">
+                      <span class="num"></span>
+                      <span></span>
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div> -->
     </div>
   </div>
   <div class="footer"></div>
+
+
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-  <script src="./js/swiper.js"></script>
+  <script src="./js/swiper.min.js"></script>
   <script src="./js/header.js"></script>
   <script src="./js/footer.js"></script>
 
   <script>
-    $.ajax({
-      url: 'http://localhost:3000/api/xm/flashsale/getslideshow',
-      dataType: 'jsonp',
-      success(res) {
-        if (res.code === 200) {
-          const sliderList = res.data.list.list.slice(0, 8)
-          const slidesArr = []
-          $.each(sliderList, (i, item) => {
-            slidesArr.push($(`<div class="swiper-slide"><img src=${item.img} alt=${item.goods_name} /></div>`))
-          })
-
-          console.log(slidesArr);
-          $('.swiper-wrapper').append(slidesArr)
-          new Swiper('.swiper-container')
+    $(function () {
+      // 获取数据
+      $.ajax({
+        url: 'http://localhost:3030/api/mi-mall/all',
+        success(res) {
+          const { swiperList, categoryList, promoList, flashSlideList, goodsFloorData } = res.data
+          renderHeader(categoryList)
+          renderSwiper(swiperList)
+          renderPromo(promoList)
+          renderFlashSwiper(flashSlideList)
+          renderFloor(goodsFloorData)
         }
-      },
-      error(e) {
-        console.log(e);
+      })
+
+      function renderSwiper(swiperList) {
+        $('#swiper>.swiper-wrapper').append(swiperList.map(item => `<div class="swiper-slide"><img src=${item.imgUrl} /></div>`))
+
+        const swiper = new Swiper('#swiper', {
+          spaceBetween: 30,
+          effect: 'fade',
+          loop: true,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          }
+        })
+
+        swiper.el.onmouseover = function () {
+          swiper.autoplay.stop()
+        }
+
+        swiper.el.onmouseout = function () {
+          swiper.autoplay.start()
+        }
       }
+
+      function renderPromo(promoList) {
+        $('.home-promo-list').append(promoList.map(item =>
+          `<li><a href=${item.link}><img src=${item.imgUrl} alt=""></a></li>`
+        ).join(''))
+      }
+
+      function renderFlashSwiper(flashSlideList) {
+        $('#swiper2>.swiper-wrapper').append(flashSlideList.map(item => {
+          return `
+        <li class="swiper-slide swiper-no-swiping">
+                    <a href="#">
+                      <div class="content">
+                        <div class="thumb"><img src="${item.img}" alt="${item.desc}" /></div>
+                        <h3 class="title">${item.goods_name}</h3>
+                        <p class="desc">${item.desc}</p>
+                        <p class="price">
+                          <span>${item.goods_price}</span>
+                          <del>${item.seckill_Price}</del>
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+        `
+        }).join(''))
+        const swiper2 = new Swiper('#swiper2', {
+          slidesPerView: 4,
+          spaceBetween: 14,
+          slidesPerGroup: 4,
+          speed: 1000,
+          noSwiping: true,
+          navigation: {
+            nextEl: '.btn-next',
+            prevEl: '.btn-prev',
+            disabledClass: 'navigation-disabled'
+          }
+        });
+      }
+
+
+      function renderBannerBox(item) {
+        append($(`<div class="home-banner-box">
+        <a href=${item.body.items[0].action.path}><img
+            src=${item.body.items[0].img_url}
+            alt=""></a>
+      </div>`))
+      }
+
+      function renderProductList(productList) {
+        return productList.map(product => {
+          return `<li class="brick-item brick-item-m brick-item-m-2">
+                  <a href=${product.action.path}>
+                    <div class="figure figure-img"><img src=${product.img_url} alt=""></div>
+                    <h3 class="title">${product.product_name}</h3>
+                    <p class="desc">${product.product_brief}</p>
+                    <p class="price">
+                      <span class="num">${product.product_price}</span>
+                      <span>${product.product_org_price}</span>
+                    </p>
+                  </a>
+                </li>`
+        }).join('')
+      }
+
+
+      function renderProductItem(item) {
+        console.log(item);
+        const brickBox = $(`<div class="home-brick-box home-brick-row-2-box">
+        <div class="box-hd">
+          <h2 class="title">${item.body.floor_name}</h2>
+          <div class="more">
+            <a href=${item.body.action.path} class="more-link">
+              ${item.body.more_text}
+              <i class="iconfont iconfont-arrow-right-big"></i>
+            </a>
+          </div>
+        </div>
+        <div class="box-bd">
+          <div class="row">
+            <div class="span4">
+              <ul class="brick-promo-list">
+                <li class="brick-item brick-item-l">
+                  <a href=${item.body.left_ad.items[0].action.path}><img
+                      src=${item.body.left_ad.items[0].img_url}
+                      alt=""></a>
+                </li>
+              </ul>
+            </div>
+            <div class="span16">
+              <ul class="brick-list">
+              ${renderProductList(item.body.product_list)}
+            </ul>           
+            </div>
+          </div>
+        </div>
+      </div>`)
+
+        append(brickBox)
+      }
+
+      function renderProductItemTabs(item) {
+        console.log(item);
+        const brickBox = $(`<div class="home-brick-box home-brick-row-2-box">
+        <div class="box-hd">
+          <h2 class="title">${item.body.floor_name}</h2>
+          <div class="more">
+            <ul class="tab-list">
+              ${item.body.tab_content.map(tab => `<li>${tab.tab_name}</li>`).join('')}
+              </ul>         
+          </div>
+        </div>
+        <div class="box-bd">
+          <div class="row">
+            <div class="span4">
+              <ul class="brick-promo-list">
+                ${item.body.left_ad.items.map(l => `<li class="brick-item brick-item-m">
+                  <a href=${l.action.path}><img
+                      src=${l.img_url}
+                      alt=""></a>
+                </li>`).join('')}
+              </ul>
+            </div>
+            <div class="span16">
+             ${renderUl(item.body.tab_content)}
+            </div>
+          </div>
+        </div>
+      </div>`)
+
+        function renderLi(productList) {
+          return productList.slice(0, -1).map(product => {
+            return `<li class="brick-item brick-item-m brick-item-m-2">
+                  <a href=${product.action.path}>
+                    <div class="figure figure-img"><img src=${product.img_url} alt=""></div>
+                    <h3 class="title">${product.product_name}</h3>
+                    <p class="desc">${product.product_brief}</p>
+                    <p class="price">
+                      <span class="num">${product.product_price}</span>
+                      <span>${product.product_org_price}</span>
+                    </p>
+                  </a>
+                </li>`
+          }).join('')
+
+        }
+
+
+        function renderUl(tabContent) {
+          return tabContent.map((tab, i) => {
+            return `<ul class="brick-list ${i !== 0 ? 'hide' : ''}">
+               ${renderLi(tab.product_list)}
+            </ul>`
+          }).join('')
+
+        }
+
+        append(brickBox)
+      }
+
+      function append($ele) {
+        $('.page-main .container').append($ele)
+      }
+
+      function renderFloor(goodsFloorData) {
+        goodsFloorData.forEach(item => {
+          if (item.view_type === 'cells_auto_fill') {
+            renderBannerBox(item)
+          } else if (item.view_type === 'list_eight_product') {
+            renderProductItem(item)
+          } else if (item.view_type === 'list_eight_product_tab') {
+            renderProductItemTabs(item)
+          }
+        })
+      }
+
     })
 
 
+
   </script>
-
-  <!-- <div class="hero">
-    <div class="container hero-container">
-      <div class="hero-banner">
-        <div class="banner-ui">
-        </div>
-        <div class="banner-control">
-          <div class="control-page">
-
-          </div>
-          <div class="control-rl">
-            <a href="#" class="rl-prev">上一张</a>
-            <a href="#" class="rl-next">下一张</a>
-          </div>
-        </div>
-      </div>
-      <div class="hero-sub clearfix">
-        <div class="sub-tool">
-          <ul class="clearfix">
-            <li><a href="#"><i class="iconfont">&#xe908;</i>选购手机</a></li>
-            <li><a href="#"><i class="iconfont">&#xe905;</i>企业团购</a></li>
-            <li><a href="#"><i class="iconfont">&#xe902;</i>F码通道</a></li>
-            <li><a href="#"><i class="iconfont">&#xe906;</i>米粉卡</a></li>
-            <li><a href="#"><i class="iconfont">&#xe904;</i>以旧换新</a></li>
-            <li><a href="#"><i class="iconfont">&#xe907;</i>话费充值</a></li>
-          </ul>
-        </div>
-        <div class="sub-promo">
-          <ul>
-            <li class="first"><a href="#"><img src="img/promo1.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/promo2.jpg" alt=""></a></li>
-            <li><a href="#"><img src="img/promo3.jpg" alt=""></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- <div class="main">
-    <div class="container">
-      <div class="main-hd">
-        <h2></h2>
-      </div>
-      <div class="main-bd clearfix">
-        <div class="bd-ad">
-          <ul class="clearfix">
-            <li><a href="#"><img src="" alt=""></a></li>
-          </ul>
-        </div>
-        <div class="bd-product clearfix">
-          <ul class="clearfix">
-            <li class="tpl-body-item">
-              <div>
-                <div class="face"><a href="#"><img src="" alt=""></a></div>
-                <h3 class="title"><a href="#"></a></h3>
-                <p class="desc"></p>
-                <p class="price">
-                  <span class="num"></span>元
-                  <del><span class="num"></span>元</del>
-                </p>
-                <div class="flag"></div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div> -->
-  <!-- <script src="js/jquery-3.3.1.js"></script>
-  <script src="js/api.js"></script>
-  <script src="js/header.js"></script>
-  <script src="js/carousel.js"></script>
-  <script>
-    alert('如果报错，请移步：http://eynus.fun/mi  注意不是https~')
-    $(function () {
-
-      //请求轮播图数据
-      $.apiGet('/menu?type=carousel').done(function (result) {
-        // console.log(result);
-        const carousel = $('.hero-banner');
-        const carouselContent = carousel.find('.banner-ui')
-        const carouselPagination = carousel.find('.control-page');
-        let slider, curIndex = 0, dom0;
-        const len = result.length;
-        for (const idx in result) {
-
-          slider = result[idx];
-          // <a href="#"><img src="img/banner1.jpg" alt=""></a>
-          const dom = $('<a>').attr('href', slider.url);
-          $('<img>').attr('src', slider.img).appendTo(dom);
-          carouselContent.append(dom);
-          //第一张备份
-          if (idx == 0) {
-            dom0 = dom.clone();
-          }
-          //小点点
-          // <a href="" class="active">1</a>
-          $('<a>').text(idx).appendTo(carouselPagination);
-        }
-        //为了轮播效果，再加一张在最后
-        carouselContent.append(dom0);
-        //显示第一张
-        carouselContent.children().first().addClass('show');
-        carouselPagination.children().first().addClass('active');
-
-        new Carousel($('.control-rl a'), 'rl-next', carouselPagination, curIndex, 1226, len, $('.banner-ui'), 700, 4000)
-
-
-
-
-
-      })
-
-
-      // 请求推荐商品数据
-      $.apiGet('/menu?type=index').done(function (result) {
-        // console.log(result);
-        const container = $('.main .container'),
-          headTpl = $('.main-hd').remove(),
-          bodyTpl = $('.main-bd').remove(),
-          itemTpl = bodyTpl.find('.tpl-body-item').remove();
-        let headClone, bodyClone, itemClone, bodyUl, ad;
-
-        for (const group of result) {
-          //head部分模板克隆
-          headClone = headTpl.clone();
-          headClone.find('h2').text(group.name);
-          //body部分模板克隆
-          bodyClone = bodyTpl.clone();
-          //设置左侧广告图、
-          ad = bodyClone.find('.bd-ad');
-
-          ad.find('a').attr('href', group.url);
-          ad.find('img').attr('src', group.img);
-          bodyUl = bodyClone.find('.bd-product ul');
-          //里面的小卡片组
-          if (group.list) {
-
-            for (const card of group.list) {
-              itemClone = itemTpl.clone();
-              //设置card的链接，图片，
-              itemClone.find('.face a').attr('href', $.productLink(card.pid)).find('img').attr('src', card.img);
-              //设置文字
-              itemClone.find('.title a').text(card.name);
-              itemClone.find('.desc ').text(card.desc);
-              itemClone.find('.price>.num').text(card.price);
-              if (+card.market_price > 0) {//确保市场价格>0才显示
-                itemClone.find('.price del>.num').text(card.market_price);
-              } else {
-                itemClone.find('.price del').remove();
-              }
-              itemClone.find('.flag').text(card.flag).css('background-color', '#83c44e')
-              //插入ul
-              itemClone.appendTo(bodyUl);
-            }
-            if (group.list.length < 8) {//小卡片填充满
-              for (let i = group.list.length; i < 8; i++) {
-                itemClone = itemTpl.clone();
-                itemClone.find('.face a').attr('href', 'javascript:;').find('img').attr('src', 'https://dummyimage.com/160x160/eee/ff5600&text=card');
-                itemClone.find('.price').text('');
-                itemClone.appendTo(bodyUl);
-              }
-            }
-          } else {//大图填充满
-            $('<img>').attr('src', 'https://dummyimage.com/998x614/eee/ff5600&text=%E6%B2%A1%E6%9C%89%E6%95%B0%E6%8D%AE%E9%9A%8F%E4%BE%BF%E5%A1%AB%E5%85%85%E4%B8%80%E4%B8%8B').appendTo(bodyUl);
-          }
-          //把headClone，bodyClone都插入到dom中
-          container.append(headClone).append(bodyClone);
-        }
-
-      })
-    }) -->
 
   </script>
 
