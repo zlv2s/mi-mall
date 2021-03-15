@@ -9,7 +9,9 @@
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/iconfont.css">
   <link rel="stylesheet" href="css/swiper.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="./css/footer.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -159,10 +161,9 @@
     $(function () {
       // 获取数据
       $.ajax({
-        url: 'http://localhost:3030/api/mi-mall/all',
+        url: 'http://localhost:3030/api/mi-mall/product/all',
         success(res) {
-          const { swiperList, categoryList, promoList, flashSlideList, goodsFloorData } = res.data
-          renderHeader(categoryList)
+          const { swiperList, promoList, flashSlideList, goodsFloorData } = res.data
           renderSwiper(swiperList)
           renderPromo(promoList)
           renderFlashSwiper(flashSlideList)

@@ -1,0 +1,197 @@
+input {
+  background: none;
+  border: 0 none;
+  outline: none;
+}
+
+.login-logo {
+  width: 200px;
+  height: 98px;
+  background: url(https://account.xiaomi.com/static/res/7f6f2f5/account-static/respassport/acc-2014/img/mistore_logo.png) no-repeat;
+}
+
+.login-panel {
+  width: 100%;
+  height: 588px;
+  position: absolute;
+  left: 0;
+  top: 98px;
+  background-image: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/72644d9b8031286de3cc74e151aefd90.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+
+
+.login-panel .main-content {
+  width: 410px;
+  min-height: 524px;
+  background: white;
+  margin-top: 32px;
+  float: right;
+}
+
+.login-panel .login-tabs {
+  padding: 27px 0 24px;
+  text-align: center;
+  font-size: 24px;
+  color: #e0e0e0;
+}
+
+.login-panel .login-tabs .tab-link {
+  padding: 27px 0 24px;
+  text-align: center;
+  font-size: 24px;
+  color: #666;
+}
+
+.login-panel .login-tabs .tab-link.now {
+  color: #f56600;
+}
+
+.login-panel .login-tabs .line {
+  width: 1px;
+  height: 24px;
+  margin: 0 35px 0 42px;
+  border: 1px solid #e0e0e0;
+}
+
+.login-panel .tab-con .login-box {
+  width: 348px;
+  margin: 0 auto;
+}
+
+.login-panel .login-box .input-area label {
+  margin-bottom: 14px;
+  border: 1px solid #e0e0e0;
+  outline: 0 none;
+  display: -webkit-box;
+}
+
+.login-panel .login-box .input-area input {
+  width: 306px;
+  height: 22px;
+  line-height: 22px;
+  padding: 13px 16px 13px 14px;
+  display: block;
+  outline: 0;
+  border: 0 none;
+  color: #333;
+}
+
+.login-panel .login-box .err-tip {
+  margin-bottom: 5px;
+  line-height: 20px;
+  color: #f56600;
+}
+
+.login-panel .err-tip .icon-err {
+  width: 14px;
+  height: 14px;
+  margin: -1px 5px 0 0;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  background: url(https://account.xiaomi.com/static/res/f234829/account-static/respassport/acc-2014/img/sprite_login.gif) no-repeat;
+  background-position: 0 -69px;
+}
+
+.login-panel .err-tip .err-con {
+  vertical-align: middle;
+}
+
+.login-panel .login-box .btn-login {
+  padding-top: 10px;
+}
+
+.login-panel .login-box .btn-login input {
+  background-color: #ff6700;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  display: block;
+  margin-bottom: 14px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.login-panel .bottom-box .sms-link {
+  margin-bottom: 30px;
+}
+
+.login-panel .bottom-box .sms-link a {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  color: #ff6700;
+}
+
+.login-panel .bottom-box .reverse-link {
+  text-align: center;
+  color: #999;
+}
+
+.login-panel .bottom-box .other-login {
+  padding-top: 105px;
+  text-align: center;
+  color: #999;
+}
+
+.login-panel .bottom-box .other-login .login-icon {
+  margin: 0 17px;
+  width: 30px;
+  height: 30px;
+  margin: 0 12px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.icon-img {
+  display: inline-block;
+  margin: 4px auto 0;
+  vertical-align: middle;
+  background: url(https://account.xiaomi.com/static/res/166d6dc/account-static/respassport/acc-2014/img/icons_type.png) no-repeat;
+  width: 18px;
+  height: 18px;
+}
+
+.qq {
+  background-position: -19px 0;
+}
+
+.wb {
+  background-position: -38px 0;
+}
+
+.zfb {
+  background-position: -57px 0;
+  width: 24px;
+}
+
+.wx {
+  background-position: -83px 0;
+  width: 24px;
+}
+
+.qq-icon {
+  background-color: #0288d1;
+}
+
+.wb-icon {
+  background-color: #d32f2f;
+  ;
+}
+
+.zfb-icon {
+  background-color: #0ae;
+  ;
+}
+
+.wx-icon {
+  background-color: #00d20d;
+}

@@ -61,7 +61,12 @@ const header = `
           <span>全部商品分类</span>
         </a>
         <div class="site-category">
-          <ul class="category-list home-category-list">
+          <ul class="category-list ${
+            window.location.href.includes('index.html') ||
+            window.location.pathname === '/'
+              ? 'home-category-list'
+              : ''
+          }">
             
           </ul>
         </div>
@@ -137,6 +142,7 @@ const renderCatItem = item => {
   </div>
   </li>`)
 }
+
 const renderChildren = children =>
   chunkArray(children, 6).flatMap(renderChild).join('')
 
@@ -171,3 +177,10 @@ function renderHeader(categoryList) {
   $('body').prepend($(header))
   $('.category-list').append(renderCategory(categoryList))
 }
+
+$.ajax({
+  url: 'http://localhost:3030/api/mi-mall/product/catList',
+  success(res) {
+    renderHeader(res.data)
+  }
+})

@@ -1,3 +1,31 @@
+body,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 14px/1.5 Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+  color: #333;
+  background-color: #fff;
+  min-width: 1226px
+}
+
+a {
+  color: #757575
+}
+
+a,
+a:hover {
+  text-decoration: none
+}
+
+a:hover {
+  color: #ff6700
+}
+
+
 .clearfix:after,
 .clearfix:before {
   content: " ";
@@ -254,7 +282,6 @@
   text-align: center;
   color: #b0b0b0;
   cursor: pointer;
-  -webkit-transition: all .4s;
   transition: all .4s
 }
 
