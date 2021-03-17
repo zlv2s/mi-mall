@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/common.css">
-  <link rel="stylesheet" href="./css/swiper.min.css">
   <link rel="stylesheet" href="./css/iconfont.css">
+  <link rel="stylesheet" href="./lib/swiper.min.css">
   <link rel="stylesheet" href="./css/header.css">
   <link rel="stylesheet" href="./css/footer.css">
   <link rel="stylesheet" href="./css/detail.css">
@@ -158,9 +158,10 @@
   <div class="footer"></div>
 
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-  <script src="./js/swiper.min.js"></script>
+  <script src="./lib/swiper.min.js"></script>
   <script src="./js/header.js"></script>
   <script src="./js/footer.js"></script>
+  <script src="./js/detail.js"></script>
   <script>
     $.ajax({
       url: `http://localhost:3030/api/mi-mall/product/12511`,
@@ -169,19 +170,19 @@
       }
     })
 
-    new Swiper('.swiper-container', {
-      effect: 'fade',
-      speed: 500,
-      loop: true,
-      autoplay: true,
-      pagination: {
-        el: '.swiper-pagination'
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      }
-    })
+    // new Swiper('.swiper-container', {
+    //   effect: 'fade',
+    //   speed: 500,
+    //   loop: true,
+    //   autoplay: true,
+    //   pagination: {
+    //     el: '.swiper-pagination'
+    //   },
+    //   navigation: {
+    //     nextEl: '.swiper-button-next',
+    //     prevEl: '.swiper-button-prev'
+    //   }
+    // })
   </script>
 </body>
 

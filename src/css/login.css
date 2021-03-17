@@ -1,9 +1,3 @@
-input {
-  background: none;
-  border: 0 none;
-  outline: none;
-}
-
 .login-logo {
   width: 200px;
   height: 98px;
@@ -21,11 +15,9 @@ input {
   background-position: top center;
 }
 
-
-
 .login-panel .main-content {
   width: 410px;
-  min-height: 524px;
+  height: 524px;
   background: white;
   margin-top: 32px;
   float: right;
@@ -61,14 +53,18 @@ input {
   margin: 0 auto;
 }
 
-.login-panel .login-box .input-area label {
+.login-panel .tab-con .login-box .input-area label {
   margin-bottom: 14px;
   border: 1px solid #e0e0e0;
   outline: 0 none;
   display: -webkit-box;
 }
 
-.login-panel .login-box .input-area input {
+.login-panel .tab-con .login-box .input-area label[for="password"] {
+  display: none;
+}
+
+.login-panel .tab-con .login-box .input-area input {
   width: 306px;
   height: 22px;
   line-height: 22px;
@@ -79,13 +75,13 @@ input {
   color: #333;
 }
 
-.login-panel .login-box .err-tip {
+.login-panel .tab-con .login-box .err-tip {
   margin-bottom: 5px;
   line-height: 20px;
   color: #f56600;
 }
 
-.login-panel .err-tip .icon-err {
+.login-panel .tab-con .login-box .err-tip .icon-err {
   width: 14px;
   height: 14px;
   margin: -1px 5px 0 0;
@@ -96,15 +92,15 @@ input {
   background-position: 0 -69px;
 }
 
-.login-panel .err-tip .err-con {
+.login-panel .tab-con .login-box .err-tip .err-con {
   vertical-align: middle;
 }
 
-.login-panel .login-box .btn-login {
+.login-panel .tab-con .login-box .btn-login {
   padding-top: 10px;
 }
 
-.login-panel .login-box .btn-login input {
+.login-panel .tab-con .login-box .btn-login input {
   background-color: #ff6700;
   width: 100%;
   height: 50px;
@@ -116,7 +112,6 @@ input {
   color: #fff;
   cursor: pointer;
 }
-
 
 .login-panel .bottom-box .sms-link {
   margin-bottom: 30px;
@@ -151,7 +146,23 @@ input {
   border-radius: 50%;
 }
 
-.icon-img {
+.login-panel .bottom-box .other-login .login-icon.qq-icon {
+  background-color: #0288d1;
+}
+
+.login-panel .bottom-box .other-login .login-icon.wb-icon {
+  background-color: #d32f2f;
+}
+
+.login-panel .bottom-box .other-login .login-icon.zfb-icon {
+  background-color: #0ae;
+}
+
+.login-panel .bottom-box .other-login .login-icon.wx-icon {
+  background-color: #00d20d;
+}
+
+.login-panel .bottom-box .other-login .login-icon i {
   display: inline-block;
   margin: 4px auto 0;
   vertical-align: middle;
@@ -160,38 +171,20 @@ input {
   height: 18px;
 }
 
-.qq {
+.login-panel .bottom-box .other-login .login-icon i.qq {
   background-position: -19px 0;
 }
 
-.wb {
+.login-panel .bottom-box .other-login .login-icon i.wb {
   background-position: -38px 0;
 }
 
-.zfb {
+.login-panel .bottom-box .other-login .login-icon i.zfb {
   background-position: -57px 0;
   width: 24px;
 }
 
-.wx {
+.login-panel .bottom-box .other-login .login-icon i.wx {
   background-position: -83px 0;
   width: 24px;
-}
-
-.qq-icon {
-  background-color: #0288d1;
-}
-
-.wb-icon {
-  background-color: #d32f2f;
-  ;
-}
-
-.zfb-icon {
-  background-color: #0ae;
-  ;
-}
-
-.wx-icon {
-  background-color: #00d20d;
 }

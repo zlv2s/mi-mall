@@ -1,0 +1,27 @@
+{
+  "name": "mi-mall",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zlv2s/mi-mall.git",
+  "author": "zlv2s <zouli1911@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "autoprefixer": "^10.2.5",
+    "cssnano": "^4.1.10",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-connect": "^5.7.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "postcss": "^8.2.8"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}

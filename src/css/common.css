@@ -25,6 +25,12 @@ a:hover {
   color: #ff6700
 }
 
+input {
+  background: none;
+  border: 0 none;
+  outline: none;
+}
+
 
 .clearfix:after,
 .clearfix:before {

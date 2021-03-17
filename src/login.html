@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/iconfont.css">
@@ -19,18 +19,18 @@
     <div class="container">
       <div class="main-content">
         <div class="login-tabs">
-          <a href="#" class="tab-link now">账号登陆</a>
+          <a href="#" class="tab-link now" id="login-tab">账号登陆</a>
           <span class="line"></span>
-          <a href="#" class="tab-link">账号注册</a>
+          <a href="#" class="tab-link" id="register-tab">账号注册</a>
         </div>
         <div class="tab-con">
           <div class="login-box">
             <div class="input-area">
               <label for="username">
-                <input type="text" id="uesername" placeholder="邮箱/手机号码/小米ID">
+                <input type="text" id="username" placeholder="邮箱/手机号码/小米ID">
               </label>
               <label for="password">
-                <input type="text" id="passsword" placeholder="密码">
+                <input type="text" id="password" placeholder="密码">
               </label>
               <label for="re-password">
                 <input type="text" id="re-password" placeholder="再次输入密码">
@@ -40,13 +40,12 @@
               <div>
                 <i class="icon-err"></i>
                 <span class="err-con">
-                  gsgs
                 </span>
               </div>
             </div>
             <div class="btn-login">
-              <input type="button" value="登录">
-              <input type="button" value="注册">
+              <input type="button" value="登录" id="submit">
+              <input type="button" value="注册" id="register">
             </div>
           </div>
         </div>
@@ -77,6 +76,58 @@
       </div>
     </div>
   </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script>
+    $(function () {
+      let status = 0
+      $('#re-password')
+      let username = $('#username'), password = $('#password')
+
+      function checkStatus(status) {
+        if (status === 0) {
+          $('#err-tip').hide()
+          $('#register').hide()
+          $('#login').show()
+        } else {
+          $('#err-tip').hide()
+          $('#register').show()
+          $('#re-password').show()
+          $('#login').hide()
+        }
+
+      }
+
+      $('#login-tab').click(function () {
+        checkStatus(0)
+
+      })
+      $('#register-tab').click(function () {
+        checkStatus(1)
+      })
+
+      $('#submit').click(function () {
+        $.ajax({
+          url: 'http://localhost:3030/api/mi-mall/user/signIn',
+          method: 'post',
+          data: {
+            username: username.val(),
+            password: password.val()
+          },
+          dataType: "json",
+          success(res) {
+            if (res.status !== 0) {
+              $('.err-tip').toggle()
+              $('.err-con').text(res.message)
+            }
+          },
+          error(err) {
+            console.log(err);
+          }
+        })
+      })
+    })
+  </script>
 </body>
 
 </html>

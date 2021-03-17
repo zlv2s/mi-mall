@@ -21,8 +21,7 @@
   background: #fff;
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
-  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.07);
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.07);
 }
 
 .detail .nav-bar h2 {
@@ -61,9 +60,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   padding-top: 32px;
   padding-bottom: 12px;
 }
@@ -87,9 +84,7 @@
 }
 
 .detail .mi-detail .product-box .product-con {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   margin-left: 20px;
 }
 
@@ -170,7 +165,6 @@
   border: 1px solid #e0e0e0;
   list-style: none;
   cursor: pointer;
-  -webkit-transition: all .2s ease;
   transition: all .2s ease;
   float: left;
   width: 292px;
@@ -221,7 +215,6 @@
   border: 1px solid #b0b0b0;
   text-align: center;
   cursor: pointer;
-  -webkit-transition: all .4s;
   transition: all .4s;
   font-size: 16px;
   position: relative;
@@ -287,4 +280,3 @@
   background: #a3a3a3;
   opacity: 1;
 }
-/*# sourceMappingURL=detail.css.map */

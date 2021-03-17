@@ -41,7 +41,7 @@ const header = `
     </a>
   </div>
   <div class="topbar-info">
-    <a href="#" class="link">登录</a>
+    <a href="/login.html" class="link">登录</a>
     <span class="sep">|</span>
     <a href="#" class="link">注册</a>
     <span class="sep">|</span>
@@ -160,18 +160,10 @@ const renderChild = child => {
 
 const renderCategory = categoryList => categoryList.map(renderCatItem)
 
-const chunkArray = (myArray, chunk_size) => {
-  let index = 0
-  const arrayLength = myArray.length
-  const tempArray = []
-
-  for (index = 0; index < arrayLength; index += chunk_size) {
-    myChunk = myArray.slice(index, index + chunk_size)
-    tempArray.push(myChunk)
-  }
-
-  return tempArray
-}
+const chunkArray = (arr, size) =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+    arr.slice(i * size, i + size)
+  )
 
 function renderHeader(categoryList) {
   $('body').prepend($(header))
