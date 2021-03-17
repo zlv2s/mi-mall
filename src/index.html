@@ -23,51 +23,17 @@
           </div>
           <!-- 分页器 -->
           <div class="swiper-pagination"></div>
-
           <!-- 导航按钮 -->
-
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
       </div>
       <div class="hero-sub row">
         <div class="span4">
-          <ul class="home-channel-list clearfix">
-            <li>
-              <a href="#"><img
-                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
-                  alt="">小米秒杀</a>
-            </li>
-            <li>
-              <a href="#"><img
-                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
-                  alt="">小米秒杀</a>
-            </li>
-            <li>
-              <a href="#"><img
-                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
-                  alt="">小米秒杀</a>
-            </li>
-            <li>
-              <a href="#"><img
-                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
-                  alt="">小米秒杀</a>
-            </li>
-            <li>
-              <a href="#"><img
-                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
-                  alt="">小米秒杀</a>
-            </li>
-            <li>
-              <a href="#"><img
-                  src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48"
-                  alt="">小米秒杀</a>
-            </li>
-          </ul>
+          <ul class="home-channel-list clearfix"></ul>
         </div>
         <div class="span16">
-          <ul class="home-promo-list clearfix">
-          </ul>
+          <ul class="home-promo-list clearfix"></ul>
         </div>
       </div>
     </div>
@@ -149,6 +115,177 @@
     </div>
   </div>
   <div class="footer"></div>
+
+  <script id="swiperItem" type="text/html">
+    {{each swiperList swiperItem}}
+     <div class="swiper-slide"><img src={{swiperItem.imgUrl}} /></div>
+    {{/each}}
+  </script>
+
+  <script id="swiper2Item" type="text/html">
+    {{each flashSlideList}}
+      <li class="swiper-slide swiper-no-swiping">
+        <a href="#">
+          <div class="content">
+            <div class="thumb"><img src={{$value.img}} alt={{$value.desc}} /></div>
+            <h3 class="title">{{$value.goods_name}}</h3>
+            <p class="desc">{{$value.desc}}</p>
+            <p class="price">
+              <span>{{$value.seckill_Price}}</span>
+              <del>{{$value.goods_price}}</del>
+            </p>
+          </div>
+        </a>
+      </li>
+    {{/each}}
+  </script>
+
+  <script id="promoItem" type="text/html">
+    {{each promoList}}
+      <li>
+        <a href={{$value.link}}><img src={{$value.imgUrl}} alt=""></a>
+      </li>
+    {{/each}}
+  </script>
+
+  <script id="channelItem" type="text/html">
+    {{each channelList}}
+      <li>
+        <a href={{$value.link}}>
+          <img
+            src={{$value.imgUrl}}
+            alt={{$value.value}}>
+            {{$value.value}}
+          </a>
+      </li>
+    {{/each}}
+  </script>
+
+  <script id="productItem" type="text/html">
+    {{each productList product}}
+      <li class="brick-item brick-item-m brick-item-m-2">
+        <a href={{product.action.path}}>
+          <div class="figure figure-img"><img src={{product.img_url}} alt=""></div>
+          <h3 class="title">{{product.product_name}}</h3>
+          <p class="desc">{{product.product_brief}}</p>
+          <p class="price">
+            <span class="num">{{product.product_price}}</span>
+            <span>{{product.product_org_price}}</span>
+          </p>
+        </a>
+      </li>
+    {{/each}}
+  </script>
+
+
+
+  <script id="floorItem" type="text/html">
+    {{each goodsFloorData item}}
+
+      {{if item.view_type === 'cells_auto_fill'}}
+
+        <div class="home-banner-box">
+          <a href={{item.body.items[0].action.path}}><img
+              src={{item.body.items[0].img_url}}
+              alt=""></a>
+        </div>
+
+      {{else if item.view_type === 'list_eight_product'}}
+
+        <div class="home-brick-box home-brick-row-2-box">
+          <div class="box-hd">
+            <h2 class="title">{{item.body.floor_name}}</h2>
+            <div class="more">
+              <a href={{item.body.action.path}} class="more-link">
+                {{item.body.more_text}}
+                <i class="iconfont iconfont-arrow-right-big"></i>
+              </a>
+            </div>
+          </div>
+          <div class="box-bd">
+            <div class="row">
+              <div class="span4">
+                <ul class="brick-promo-list">
+                  <li class="brick-item brick-item-l">
+                    <a href={{item.body.left_ad.items[0].action.path}}><img
+                        src={{item.body.left_ad.items[0].img_url}}
+                        alt=""></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="span16">
+                <ul class="brick-list">
+                  <% include('productItem',{productList:item.body.product_list}) %>
+              </ul>           
+              </div>
+            </div>
+          </div>
+        </div>
+
+      {{else if item.view_type === 'list_eight_product_tab'}}
+
+        <div class="home-brick-box home-brick-row-2-box">
+          <div class="box-hd">
+            <h2 class="title">{{item.body.floor_name}}</h2>
+            <div class="more">
+              <ul class="tab-list">
+
+                {{each item.body.tab_content tab}}
+
+                  <li>{{tab.tab_name}}</li>
+                  
+                {{/each}}
+
+                </ul>         
+            </div>
+          </div>
+          <div class="box-bd">
+            <div class="row">
+              <div class="span4">
+                <ul class="brick-promo-list">
+                
+                  {{each item.body.left_ad.items l}}
+
+                    <li class="brick-item brick-item-m">
+                      <a href={{l.action.path}}><img
+                          src={{l.img_url}}
+                          alt=""></a>
+                    </li>
+
+                  {{/each}}
+
+                </ul>
+              </div>
+              <div class="span16">
+            
+                {{each item.body.tab_content tab i}}
+                  <ul class='{{ "brick-list " + (i !== 0 ? "hide" : '')}}'>                   
+                    {{each tab.product_list.slice(0,-1) product}}
+
+                      <li class="brick-item brick-item-m brick-item-m-2">
+                        <a href="{{product.action.path}}">
+                          <div class="figure figure-img"><img src="{{product.img_url}}" alt=""></div>
+                          <h3 class="title">{{product.product_name}}</h3>
+                          <p class="desc">{{product.product_brief}}</p>
+                          <p class="price">
+                            <span class="num">{{product.product_price}}</span>
+                            <span>{{product.product_org_price}}</span>
+                          </p>
+                        </a>
+                      </li>
+
+                    {{/each}}
+                </ul>
+                {{/each}}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+
+    {{/each}}
+</script>
 
   <script data-main="js/main" src="./lib/require.js"></script>
 
