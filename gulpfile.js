@@ -83,6 +83,11 @@ function copyImgFile() {
   return src('./src/images/**/*').pipe(dest('./dist/images'))
 }
 
+// 复制 image 文件
+function copyUtilsFile() {
+  return src('./src/utils/**/*').pipe(dest('./dist/utils'))
+}
+
 // 本地服务器
 function devServer() {
   return connect.server({
@@ -94,9 +99,12 @@ function devServer() {
 }
 
 function serverReload() {
-  return src(['./src/*.html', './src/js/*.js', './src/scss/*.scss']).pipe(
-    connect.reload()
-  )
+  return src([
+    './src/*.html',
+    './src/js/*.js',
+    './utils/*.js',
+    './src/scss/*.scss'
+  ]).pipe(connect.reload())
 }
 
 function watchFiles() {
@@ -105,6 +113,7 @@ function watchFiles() {
   watch('./src/js/*.js', series(compileJS, uglifyJs, serverReload))
   watch('./src/images/**/*', series(copyImgFile, serverReload))
   watch('./src/*.html', series(copyHtmlFile, serverReload))
+  watch('./src/utils/*.js', series(copyUtilsFile, serverReload))
 }
 
 function defaultTask() {
@@ -115,6 +124,7 @@ function defaultTask() {
       copyHtmlFile,
       copyImgFile,
       copyLibFile,
+      copyUtilsFile,
       series(compileJS, uglifyJs),
       series(compileScss, css),
       devServer

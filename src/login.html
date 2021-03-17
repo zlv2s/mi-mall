@@ -44,7 +44,7 @@
               </div>
             </div>
             <div class="btn-login">
-              <input type="button" value="登录" id="submit">
+              <input type="button" value="登录" id="login">
               <input type="button" value="注册" id="register">
             </div>
           </div>
@@ -58,76 +58,27 @@
             <span>|</span>
             <a href="#">忘记密码</a>
           </div>
-          <div class="other-login">
-            <a href="#" class="login-icon qq-icon">
-              <i class="icon-img qq"></i>
-            </a>
-            <a href="#" class="login-icon wb-icon">
-              <i class="icon-img wb"></i>
-            </a>
-            <a href="#" class="login-icon zfb-icon">
-              <i class="icon-img zfb"></i>
-            </a>
-            <a href="#" class="login-icon wx-icon">
-              <i class="icon-img wx"></i>
-            </a>
-          </div>
+
+        </div>
+        <div class="other-login">
+          <a href="#" class="login-icon qq-icon">
+            <i class="icon-img qq"></i>
+          </a>
+          <a href="#" class="login-icon wb-icon">
+            <i class="icon-img wb"></i>
+          </a>
+          <a href="#" class="login-icon zfb-icon">
+            <i class="icon-img zfb"></i>
+          </a>
+          <a href="#" class="login-icon wx-icon">
+            <i class="icon-img wx"></i>
+          </a>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-  <script>
-    $(function () {
-      let status = 0
-      $('#re-password')
-      let username = $('#username'), password = $('#password')
-
-      function checkStatus(status) {
-        if (status === 0) {
-          $('#err-tip').hide()
-          $('#register').hide()
-          $('#login').show()
-        } else {
-          $('#err-tip').hide()
-          $('#register').show()
-          $('#re-password').show()
-          $('#login').hide()
-        }
-
-      }
-
-      $('#login-tab').click(function () {
-        checkStatus(0)
-
-      })
-      $('#register-tab').click(function () {
-        checkStatus(1)
-      })
-
-      $('#submit').click(function () {
-        $.ajax({
-          url: 'http://localhost:3030/api/mi-mall/user/signIn',
-          method: 'post',
-          data: {
-            username: username.val(),
-            password: password.val()
-          },
-          dataType: "json",
-          success(res) {
-            if (res.status !== 0) {
-              $('.err-tip').toggle()
-              $('.err-con').text(res.message)
-            }
-          },
-          error(err) {
-            console.log(err);
-          }
-        })
-      })
-    })
-  </script>
+  <script data-main="js/login" src="lib/require.js"></script>
 </body>
 
 </html>

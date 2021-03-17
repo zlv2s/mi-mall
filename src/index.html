@@ -150,33 +150,7 @@
   </div>
   <div class="footer"></div>
 
-
-  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-  <script src="./lib/swiper.min.js"></script>
-  <script src="./js/header.js"></script>
-  <script src="./js/footer.js"></script>
-  <script src="./js/index.js"></script>
-
-  <script>
-    $(function () {
-      // 获取数据
-      $.ajax({
-        url: 'http://localhost:3030/api/mi-mall/product/all',
-        success(res) {
-          const { swiperList, promoList, flashSlideList, goodsFloorData } = res.data
-          renderSwiper(swiperList)
-          renderPromo(promoList)
-          renderFlashSwiper(flashSlideList)
-          renderFloor(goodsFloorData)
-        }
-      })
-    })
-
-
-
-  </script>
-
-  </script>
+  <script data-main="js/main" src="./lib/require.js"></script>
 
 </body>
 

@@ -15,6 +15,7 @@
   background-position: top center;
 
   .main-content {
+    position: relative;
     width: 410px;
     height: 524px;
     background: white;
@@ -44,6 +45,7 @@
       height: 24px;
       margin: 0 35px 0 42px;
       border: 1px solid #e0e0e0;
+      background: #e0e0e0;
     }
   }
 
@@ -58,11 +60,11 @@
           margin-bottom: 14px;
           border: 1px solid #e0e0e0;
           outline: 0 none;
-          display: -webkit-box;
+          display: block;
 
-          &[for="password"] {
-            display: none;
-          }
+          // &[for="re-password"] {
+          //   display: none;
+          // }
         }
 
         input {
@@ -81,6 +83,7 @@
         margin-bottom: 5px;
         line-height: 20px;
         color: #f56600;
+        display: none;
 
         .icon-err {
           width: 14px;
@@ -112,6 +115,10 @@
           font-size: 14px;
           color: #fff;
           cursor: pointer;
+
+          &#register {
+            display: none;
+          }
         }
       }
     }
@@ -139,67 +146,72 @@
       color: #999;
     }
 
-    .other-login {
-      padding-top: 105px;
-      text-align: center;
-      color: #999;
 
-      .login-icon {
-        margin: 0 17px;
-        width: 30px;
-        height: 30px;
-        margin: 0 12px;
+
+  }
+
+  .other-login {
+    // padding-top: 105px;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #999;
+
+    .login-icon {
+      margin: 0 17px;
+      width: 30px;
+      height: 30px;
+      margin: 0 12px;
+      display: inline-block;
+      border-radius: 50%;
+
+
+
+      &.qq-icon {
+        background-color: #0288d1;
+      }
+
+      &.wb-icon {
+        background-color: #d32f2f;
+        ;
+      }
+
+      &.zfb-icon {
+        background-color: #0ae;
+        ;
+      }
+
+      &.wx-icon {
+        background-color: #00d20d;
+      }
+
+      i {
         display: inline-block;
-        border-radius: 50%;
+        margin: 4px auto 0;
+        vertical-align: middle;
+        background: url(https://account.xiaomi.com/static/res/166d6dc/account-static/respassport/acc-2014/img/icons_type.png) no-repeat;
+        width: 18px;
+        height: 18px;
 
-
-
-        &.qq-icon {
-          background-color: #0288d1;
+        &.qq {
+          background-position: -19px 0;
         }
 
-        &.wb-icon {
-          background-color: #d32f2f;
-          ;
+        &.wb {
+          background-position: -38px 0;
         }
 
-        &.zfb-icon {
-          background-color: #0ae;
-          ;
+        &.zfb {
+          background-position: -57px 0;
+          width: 24px;
         }
 
-        &.wx-icon {
-          background-color: #00d20d;
-        }
-
-        i {
-          display: inline-block;
-          margin: 4px auto 0;
-          vertical-align: middle;
-          background: url(https://account.xiaomi.com/static/res/166d6dc/account-static/respassport/acc-2014/img/icons_type.png) no-repeat;
-          width: 18px;
-          height: 18px;
-
-          &.qq {
-            background-position: -19px 0;
-          }
-
-          &.wb {
-            background-position: -38px 0;
-          }
-
-          &.zfb {
-            background-position: -57px 0;
-            width: 24px;
-          }
-
-          &.wx {
-            background-position: -83px 0;
-            width: 24px;
-          }
+        &.wx {
+          background-position: -83px 0;
+          width: 24px;
         }
       }
     }
-
   }
 }
