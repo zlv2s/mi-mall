@@ -62,6 +62,10 @@
   display: block;
 }
 
+.login-panel .tab-con .login-box .input-area label[for="re-password"] {
+  display: none;
+}
+
 .login-panel .tab-con .login-box .input-area input {
   width: 306px;
   height: 22px;

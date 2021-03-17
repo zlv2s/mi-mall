@@ -46,6 +46,11 @@ input {
   display: none !important
 }
 
+.show {
+  display: block !important
+}
+
+
 
 .ir {
   display: block;

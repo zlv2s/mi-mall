@@ -1,9 +1,12 @@
 require(['config'], function () {
-  require(['jquery', 'swiper', 'template', 'header', 'footer'], function (
-    $,
-    Swiper,
-    template
-  ) {
+  require([
+    'jquery',
+    'swiper',
+    'template',
+    'api',
+    'header',
+    'footer'
+  ], function ($, Swiper, template, api) {
     function renderSwiper(swiperList) {
       $('#swiper>.swiper-wrapper').html(template('swiperItem', { swiperList }))
 
@@ -67,9 +70,8 @@ require(['config'], function () {
     }
 
     $(function () {
-      $.ajax({
-        url: 'http://localhost:3030/api/mi-mall/product/all',
-        success(res) {
+      api.product.getAll().then(res => {
+        if (res.status === 0) {
           const {
             swiperList,
             promoList,

@@ -62,9 +62,9 @@
           outline: 0 none;
           display: block;
 
-          // &[for="re-password"] {
-          //   display: none;
-          // }
+          &[for="re-password"] {
+            display: none;
+          }
         }
 
         input {

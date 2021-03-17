@@ -1,7 +1,7 @@
 require(['config'], function () {
-  require(['jquery'], function ($) {
+  require(['jquery', 'utils', 'api'], function ($, utils, api) {
     $(function () {
-      const tabStatus = {
+      const tab = {
         _status: 0,
         get status() {
           return this._status
@@ -10,71 +10,78 @@ require(['config'], function () {
         set status(val) {
           this._status = val
           checkStatus(val)
+        },
+
+        _errTips: '',
+        get errTips() {
+          return this.errTips
+        },
+        set errTips(v) {
+          this._errTips = v
+          $('.err-tip').show(200)
+          setErrTips(v)
         }
       }
-      let username = $('#username')
-      let password = $('#password')
-      tabStatus.status = 0
+
+      tab.status = 0
 
       function checkStatus(status) {
         if (status === 0) {
           $('#register').hide()
-          $('label[for="re-password"]').hide(200)
           $('#login').show()
+          $('label[for="re-password"]').removeClass('show')
         } else {
           $('#register').show()
-          $('label[for="re-password"]').show(200)
           $('#login').hide()
+          $('label[for="re-password"]').addClass('show')
         }
       }
 
-      $('#login-tab').click(function () {
-        tabStatus.status = 0
-      })
-      $('#register-tab').click(function () {
-        tabStatus.status = 1
+      function setErrTips(tips) {
+        $('.err-con').text(tips)
+      }
+
+      $('.login-tabs').on('click', 'a', function (e) {
+        tab.status = +e.target.dataset.index
+        $(this).addClass('now').siblings().removeClass('now')
       })
 
       $('#login').click(function () {
-        $.ajax({
-          url: 'http://localhost:3030/api/mi-mall/user/signIn',
-          method: 'post',
-          data: {
-            username: username.val(),
-            password: password.val()
-          },
-          dataType: 'json',
-          success(res) {
-            if (res.status !== 0) {
-              $('.err-tip').toggle()
-              $('.err-con').text(res.message)
+        api.user
+          .signIn({
+            username: $('#username').val(),
+            password: $('#password').val()
+          })
+          .then(res => {
+            console.log(res)
+            if (res.status === 0) {
+              console.log('登录成功')
+              utils.storage.set('user', {
+                token: res.data.token,
+                userInfo: res.data.userInfo
+              })
+              location.href = '/'
+            } else {
+              tab.errTips = res.message
             }
-          },
-          error(err) {
-            console.log(err)
-          }
-        })
+          })
       })
 
       $('#register').click(function () {
-        $.ajax({
-          url: 'http://localhost:3030/api/mi-mall/user/signUp',
-          method: 'post',
-          data: {
-            username: username.val(),
-            password: password.val()
-          },
-          dataType: 'json',
-          success(res) {
-            if (res.status !== 0) {
-              $('.err-tip').toggle()
-              $('.err-con').text(res.message)
+        api.user
+          .signUp({
+            username: $('#username').val(),
+            password: $('#password').val()
+          })
+          .then(res => {
+            console.log(res)
+            if (res.status === 0) {
+              console.log('注册成功')
+              target.status = 0
+            } else {
+              tab.errTips = res.message
             }
-          },
-          error(err) {
-            console.log(err)
-          }
-        })
+          })
       })
     })
   })
