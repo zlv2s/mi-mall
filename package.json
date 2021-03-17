@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/zlv2s/mi-mall.git",
-  "author": "zlv2s <zouli1911@gmail.com>",
+  "author": "zlv2s",
   "license": "MIT",
+  "scripts": {
+    "start": "gulp"
+  },
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.13.10",
