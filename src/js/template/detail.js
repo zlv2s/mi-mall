@@ -177,22 +177,40 @@
     /*v:1*/
 template('detail',function($data,$filename
 ) {
-'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,product=$data.product,item=$data.item,$index=$data.$index,$escape=$utils.$escape,$string=$utils.$string,option=$data.option,i=$data.i,$out='';$out+='<div class="mi-detail">\n  <div class="page-box">\n    <div class="product-box container">\n      <div class="img-left">\n        <div class="product-img-list">\n          <div class="swiper-container">\n            <div class="swiper-wrapper">\n              ';
-$each(product.goods_list[0].goods_info.imgs,function(item,$index){
+'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,product=$data.product,$each=$utils.$each,l=$data.l,$index=$data.$index,r=$data.r,item=$data.item,$string=$utils.$string,option=$data.option,i=$data.i,$out='';$out+='<div class="nav-bar">\n  <div class="container">\n    <h2>';
+$out+=$escape(product.detailItem.product_info.name);
+$out+='</h2>\n    <div class="con clearfix">\n      <div class="left">\n        ';
+$each(product.left,function(l,$index){
+$out+='\n        <span class="separator">|</span>\n        <a href="';
+$out+=$escape(l.url);
+$out+='">';
+$out+=$escape(l.title);
+$out+='</a>\n        ';
+});
+$out+='\n\n      </div>\n      <div class="right">\n        ';
+$each(product.right,function(r,$index){
+$out+='\n        <a href="';
+$out+=$escape(r.url);
+$out+='">';
+$out+=$escape(r.title);
+$out+='</a>\n        <span class="separator">|</span>\n        ';
+});
+$out+='\n        <a href="#">用户评价</a>\n\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class="mi-detail">\n  <div class="page-box">\n    <div class="product-box container">\n      <div class="img-left">\n        <div class="product-img-list">\n          <div class="swiper-container">\n            <div class="swiper-wrapper">\n              ';
+$each(product.detailItem.goods_list[0].goods_info.imgs,function(item,$index){
 $out+='\n              <div class="swiper-slide">\n                <img src="';
 $out+=$escape(item);
 $out+='" alt="">\n              </div>\n              ';
 });
 $out+='\n            </div>\n            <div class="swiper-pagination"></div>\n            <div class="swiper-button-next"></div>\n            <div class="swiper-button-prev"></div>\n          </div>\n        </div>\n      </div>\n      <div class="product-con">\n        <h2>';
-$out+=$escape(product.product_info.name);
+$out+=$escape(product.detailItem.product_info.name);
 $out+='</h2>\n        <p class="sale-desc">\n          ';
-$out+=$string(product.product_info.product_desc);
+$out+=$string(product.detailItem.product_info.product_desc);
 $out+='\n        </p>\n        <p class="company-info">';
-$out+=$escape(product.goods_list[0].after_sale_info.company_info.name);
+$out+=$escape(product.detailItem.goods_list[0].after_sale_info.company_info.name);
 $out+='</p>\n        <div class="price-info">\n          ';
-$out+=$escape(product.goods_list[0].goods_info.price);
+$out+=$escape(product.detailItem.goods_list[0].goods_info.price);
 $out+=' 元\n        </div>\n        <div class="line"></div>\n        <div class="buy-option">\n\n          ';
-$each(product.buy_option,function(option,$index){
+$each(product.detailItem.buy_option,function(option,$index){
 $out+='\n\n          <div class="buy-box-child">\n            <div class="option-box">\n              <div class="title">选择';
 $out+=$escape(option.name);
 $out+='</div>\n              <ul class="clearfix">\n                ';

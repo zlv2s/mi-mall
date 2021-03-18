@@ -12,13 +12,14 @@ require(['config'], function () {
     if (!product_id) {
       return
     }
+
     api.product.getDetail(product_id).then(res => {
       console.log(res)
 
       $(function () {
         $('.detail').append(
           template('detail', {
-            product: res.data.data
+            product: res.data
           })
         )
         new Swiper('.swiper-container', {

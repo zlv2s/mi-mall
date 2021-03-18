@@ -1,3 +1,26 @@
+<div class="nav-bar">
+  <div class="container">
+    <h2>{{product.detailItem.product_info.name}}</h2>
+    <div class="con clearfix">
+      <div class="left">
+        {{each product.left as l}}
+        <span class="separator">|</span>
+        <a href="{{l.url}}">{{l.title}}</a>
+        {{/each}}
+
+      </div>
+      <div class="right">
+        {{each product.right as r}}
+        <a href="{{r.url}}">{{r.title}}</a>
+        <span class="separator">|</span>
+        {{/each}}
+        <a href="#">用户评价</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="mi-detail">
   <div class="page-box">
     <div class="product-box container">
@@ -5,7 +28,7 @@
         <div class="product-img-list">
           <div class="swiper-container">
             <div class="swiper-wrapper">
-              {{each product.goods_list[0].goods_info.imgs as item}}
+              {{each product.detailItem.goods_list[0].goods_info.imgs as item}}
               <div class="swiper-slide">
                 <img src="{{item}}" alt="">
               </div>
@@ -18,18 +41,18 @@
         </div>
       </div>
       <div class="product-con">
-        <h2>{{product.product_info.name}}</h2>
+        <h2>{{product.detailItem.product_info.name}}</h2>
         <p class="sale-desc">
-          {{#product.product_info.product_desc}}
+          {{#product.detailItem.product_info.product_desc}}
         </p>
-        <p class="company-info">{{product.goods_list[0].after_sale_info.company_info.name}}</p>
+        <p class="company-info">{{product.detailItem.goods_list[0].after_sale_info.company_info.name}}</p>
         <div class="price-info">
-          {{product.goods_list[0].goods_info.price}} 元
+          {{product.detailItem.goods_list[0].goods_info.price}} 元
         </div>
         <div class="line"></div>
         <div class="buy-option">
 
-          {{each product.buy_option as option}}
+          {{each product.detailItem.buy_option as option}}
 
           <div class="buy-box-child">
             <div class="option-box">
