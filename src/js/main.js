@@ -2,7 +2,7 @@ require(['config'], function () {
   require([
     'jquery',
     'swiper',
-    'template',
+    'js/template/template',
     'api',
     'utils',
     'header',

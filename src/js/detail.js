@@ -2,7 +2,7 @@ require(['config'], function () {
   require([
     'jquery',
     'swiper',
-    './js/template/detail',
+    './js/template/template',
     'api',
     'utils',
     'header',
@@ -34,6 +34,13 @@ require(['config'], function () {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
           }
+        })
+
+        $('.option-box li').click(function (e) {
+          e.preventDefault()
+          $(this).addClass('active').siblings().removeClass('active')
+          console.log($(this))
+          const propList = []
         })
       })
     })

@@ -1,0 +1,100 @@
+{{each goodsFloorData as item}}
+
+{{if item.view_type === 'cells_auto_fill'}}
+
+<div class="home-banner-box">
+  <a href={{item.body.items[0].action.path}}><img src={{item.body.items[0].img_url}} alt=""></a>
+</div>
+
+{{else if item.view_type === 'list_eight_product'}}
+
+<div class="home-brick-box home-brick-row-2-box">
+  <div class="box-hd">
+    <h2 class="title">{{item.body.floor_name}}</h2>
+    <div class="more">
+      <a href={{item.body.action.path}} class="more-link">
+        {{item.body.more_text}}
+        <i class="iconfont iconfont-arrow-right-big"></i>
+      </a>
+    </div>
+  </div>
+  <div class="box-bd">
+    <div class="row">
+      <div class="span4">
+        <ul class="brick-promo-list">
+          <li class="brick-item brick-item-l">
+            <a href={{item.body.left_ad.items[0].action.path}}><img src={{item.body.left_ad.items[0].img_url}}
+                alt=""></a>
+          </li>
+        </ul>
+      </div>
+      <div class="span16">
+        <ul class="brick-list">
+          {{ include './productItem' {productList:item.body.product_list} }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{else if item.view_type === 'list_eight_product_tab'}}
+
+<div class="home-brick-box home-brick-row-2-box">
+  <div class="box-hd">
+    <h2 class="title">{{item.body.floor_name}}</h2>
+    <div class="more">
+      <ul class="tab-list">
+
+        {{each item.body.tab_content as tab}}
+
+        <li>{{tab.tab_name}}</li>
+
+        {{/each}}
+
+      </ul>
+    </div>
+  </div>
+  <div class="box-bd">
+    <div class="row">
+      <div class="span4">
+        <ul class="brick-promo-list">
+
+          {{each item.body.left_ad.items as l}}
+
+          <li class="brick-item brick-item-m">
+            <a href={{l.action.path}}><img src={{l.img_url}} alt=""></a>
+          </li>
+
+          {{/each}}
+
+        </ul>
+      </div>
+      <div class="span16">
+
+        {{each item.body.tab_content as tab i}}
+        <ul class='{{ "brick-list " + (i !== 0 ? "hide" : '')}}'>
+          {{each tab.product_list.slice(0,-1) as product}}
+
+          <li class="brick-item brick-item-m brick-item-m-2">
+            <a href="{{'/detail.html?product_id='+product.product_id}}">
+              <div class="figure figure-img"><img src="{{product.img_url}}" alt=""></div>
+              <h3 class="title">{{product.product_name}}</h3>
+              <p class="desc">{{product.product_brief}}</p>
+              <p class="price">
+                <span class="num">{{product.product_price}}</span>
+                <span>{{product.product_org_price}}</span>
+              </p>
+            </a>
+          </li>
+
+          {{/each}}
+        </ul>
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+{{/each}}

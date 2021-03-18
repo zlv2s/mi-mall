@@ -77,45 +77,46 @@ function copyUtilsFile() {
 }
 
 function compileTemplate() {
-  // return (
-  //   src('src/template/**/*.html') // 找到所有的html模板
-  //     .pipe(
-  //       tmodjs({
-  //         templateBase: 'src/template'
-  //       })
-  //     )
-  //     // 自动生成的模板文件，进行babel转换，会报错，此转换插件已经停更，所以间接改这个bug
-  //     // 参考bug：https://github.com/aui/tmodjs/issues/112 主要是this  →  window
-  //     .pipe(replace('var String = this.String;', 'var String = window.String;'))
-  //     .pipe(dest('src/js/template'))
-  // )
+  return (
+    src('src/template/**/*.html') // 找到所有的html模板
+      .pipe(
+        tmodjs({
+          templateBase: 'src/template'
+        })
+      )
+      // 自动生成的模板文件，进行babel转换，会报错，此转换插件已经停更，所以间接改这个bug
+      // 参考bug：https://github.com/aui/tmodjs/issues/112 主要是this  →  window
+      .pipe(replace('var String = this.String;', 'var String = window.String;'))
+      .pipe(dest('src/js/template'))
+  )
 
   /* -------------------------------------------------------------------------- */
 
-  const basePath = path.join(__dirname, 'src/template')
-  const files = fs.readdirSync(basePath)
+  // 生成单独的 template
+  // const basePath = path.join(__dirname, 'src/template')
+  // const files = fs.readdirSync(basePath)
 
-  const tasks = files.map(val => {
-    return (
-      src('src/template/' + val)
-        .pipe(
-          tmodjs({
-            templateBase: 'src/template' + val,
-            runtime: val.replace('.html', '') + '.js',
-            compress: false
-          })
-        )
-        // 自动生成的模板文件，进行babel转换，会报错，此转换插件已经停更，所以间接改这个bug
-        // 参考bug：https://github.com/aui/tmodjs/issues/112 主要是this  →  window
-        .pipe(
-          replace('var String = this.String;', 'var String = window.String;')
-        )
-        .pipe(replace('D:/qf/javascript/exe/mi-mall/src/template/', ''))
-        .pipe(dest('src/js/template'))
-    )
-  })
+  // const tasks = files.map(val => {
+  //   return (
+  //     src('src/template/' + val)
+  //       .pipe(
+  //         tmodjs({
+  //           templateBase: 'src/template' + val,
+  //           runtime: val.replace('.html', '') + '.js',
+  //           compress: false
+  //         })
+  //       )
+  //       // 自动生成的模板文件，进行babel转换，会报错，此转换插件已经停更，所以间接改这个bug
+  //       // 参考bug：https://github.com/aui/tmodjs/issues/112 主要是this  →  window
+  //       .pipe(
+  //         replace('var String = this.String;', 'var String = window.String;')
+  //       )
+  //       .pipe(replace('D:/qf/javascript/exe/mi-mall/src/template/', ''))
+  //       .pipe(dest('src/js/template'))
+  //   )
+  // })
 
-  return merge(tasks)
+  // return merge(tasks)
 }
 
 // 本地服务器

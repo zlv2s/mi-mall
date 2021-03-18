@@ -1,0 +1,15 @@
+{{each flashSlideList}}
+<li class="swiper-slide swiper-no-swiping">
+  <a href="{{$value.link}}">
+    <div class="content">
+      <div class="thumb"><img src={{$value.img}} alt={{$value.desc}} /></div>
+      <h3 class="title">{{$value.goods_name}}</h3>
+      <p class="desc">{{$value.desc}}</p>
+      <p class="price">
+        <span>{{$value.seckill_Price}}</span>
+        <del>{{$value.goods_price}}</del>
+      </p>
+    </div>
+  </a>
+</li>
+{{/each}}

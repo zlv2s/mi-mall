@@ -1,0 +1,13 @@
+{{each productList as product}}
+<li class="brick-item brick-item-m brick-item-m-2">
+  <a href={{'/detail.html?product_id='+product.product_id}}>
+    <div class="figure figure-img"><img src={{product.img_url}} alt=""></div>
+    <h3 class="title">{{product.product_name}}</h3>
+    <p class="desc">{{product.product_brief}}</p>
+    <p class="price">
+      <span class="num">{{product.product_price}}</span>
+      <span>{{product.product_org_price}}</span>
+    </p>
+  </a>
+</li>
+{{/each}}
