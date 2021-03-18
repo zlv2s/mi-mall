@@ -1,4 +1,6 @@
 const { series, src, dest, watch, parallel } = require('gulp')
+const path = require('path')
+const fs = require('fs')
 const sass = require('gulp-sass')
 const cssnano = require('cssnano')
 const postcss = require('gulp-postcss')
@@ -8,6 +10,7 @@ const babel = require('gulp-babel')
 const uglify = require('gulp-uglify')
 const connect = require('gulp-connect')
 const del = require('del')
+const tmodjs = require('gulp-tmod')
 
 // 删除文件和文件夹
 function delFn() {
@@ -32,7 +35,7 @@ function css() {
 
 // 编译ES6
 function compileJS() {
-  return src('./src/js/*.js')
+  return src('./src/js/**/*.js')
     .pipe(
       babel({
         presets: ['@babel/env']
@@ -44,7 +47,7 @@ function compileJS() {
 // 压缩JS代码
 function uglifyJs() {
   return (
-    src('./dist/js/*.js', { allowEmpty: true })
+    src('./dist/js/**/*.js', { allowEmpty: true })
       .pipe(uglify())
       // .pipe(rename({ suffix: '.min' }))
       .pipe(dest('./dist/js'))
@@ -88,6 +91,35 @@ function copyUtilsFile() {
   return src('./src/utils/**/*').pipe(dest('./dist/utils'))
 }
 
+function compileTemplate() {
+  // 拿到所有的路径
+  let basePath = path.join(__dirname, 'src/template')
+  let files = fs.readdirSync(basePath)
+  files.forEach((val, index) => {
+    let dirPath = path.join(basePath, val)
+    let stat = fs.statSync(dirPath)
+    if (!stat.isDirectory()) {
+      // 判断是否是文件夹
+      return
+    }
+    var fileter = 'src/template/' + val + '/**/*.html'
+    console.log(fileter)
+
+    src('src/template/' + val + '/**/*.html')
+      .pipe(
+        tmodjs({
+          templateBase: 'src/template/' + val,
+          runtime: val + '.js',
+          compress: false
+        })
+      )
+      // 自动生成的模板文件，进行babel转换，会报错，此转换插件已经停更，所以间接改这个bug
+      // 参考bug：https://github.com/aui/tmodjs/issues/112 主要是this  →  window
+      .pipe(replace('var String = this.String;', 'var String = window.String;'))
+      .pipe(dest('src/js/template/'))
+  })
+}
+
 // 本地服务器
 function devServer() {
   return connect.server({
@@ -114,6 +146,8 @@ function watchFiles() {
   watch('./src/images/**/*', series(copyImgFile, serverReload))
   watch('./src/*.html', series(copyHtmlFile, serverReload))
   watch('./src/utils/*.js', series(copyUtilsFile, serverReload))
+  watch('./src/lib/**.*', series(copyLibFile, serverReload))
+  watch('./src/template/**.*', series(compileTemplate, serverReload))
 }
 
 function defaultTask() {
@@ -125,6 +159,7 @@ function defaultTask() {
       copyImgFile,
       copyLibFile,
       copyUtilsFile,
+      compileTemplate,
       series(compileJS, uglifyJs),
       series(compileScss, css),
       devServer

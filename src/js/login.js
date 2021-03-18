@@ -7,9 +7,10 @@ require(['config'], function () {
           return this._status
         },
 
-        set status(val) {
-          this._status = val
-          checkStatus(val)
+        set status(v) {
+          this._status = v
+          toggleTab(v)
+          toggleActive(v)
         },
 
         _errTips: '',
@@ -18,14 +19,13 @@ require(['config'], function () {
         },
         set errTips(v) {
           this._errTips = v
-          $('.err-tip').show(200)
           setErrTips(v)
         }
       }
 
       tab.status = 0
 
-      function checkStatus(status) {
+      function toggleTab(status) {
         if (status === 0) {
           $('#register').hide()
           $('#login').show()
@@ -38,12 +38,20 @@ require(['config'], function () {
       }
 
       function setErrTips(tips) {
+        $('.err-tip').show(200)
         $('.err-con').text(tips)
+      }
+
+      function toggleActive(status) {
+        $('.login-tabs a')
+          .eq(status)
+          .addClass('now')
+          .siblings()
+          .removeClass('now')
       }
 
       $('.login-tabs').on('click', 'a', function (e) {
         tab.status = +e.target.dataset.index
-        $(this).addClass('now').siblings().removeClass('now')
       })
 
       $('#login').click(function () {
@@ -82,6 +90,18 @@ require(['config'], function () {
               tab.errTips = res.message
             }
           })
+      })
+
+      $('.login-logo').click(function () {
+        location.href = '/'
+      })
+
+      $(window).on('hashchange', function (e) {
+        if (location.hash === '#register') {
+          tab.status = 1
+        } else {
+          tab.status = 0
+        }
       })
     })
   })

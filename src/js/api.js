@@ -54,7 +54,7 @@ define(['axios', 'utils'], function (axios, utils) {
       },
 
       signOut() {
-        utils.clear()
+        return Promise.resolve(utils.storage.clear())
       }
     }
   }

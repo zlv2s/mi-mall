@@ -1,4 +1,4 @@
-define(['jquery', 'api', 'utils'], function ($, api, utils) {
+define(['jquery', 'api', 'utils', 'pubsub'], function ($, api, utils) {
   const header = `
 <div class="site-topbar">
 <div class="container">
@@ -35,25 +35,42 @@ define(['jquery', 'api', 'utils'], function ($, api, utils) {
     <a href="#">Select Location</a>
   </div>
   <div class="topbar-cart ">
-    <a href="#" class="cart-mini">
+    <a href="/cart.html" class="cart-mini">
       <i class="iconfont-cart"></i>
       购物车
       <span class="cart-mini-num">（0）</span>
     </a>
   </div>
   <div class="topbar-info">
+    <span class="user">
+      <a class="user-name" href="">
+        <span class="name"></span>
+        <i class="iconfont-arrow-down-mini"></i>
+      </a>
+      <div class="user-menu-wrapper">
+        <ul class="user-menu">
+          <li><a href="#">个人中心</a></li>
+          <li><a href="#">评价晒单</a></li>
+          <li><a href="#">我的喜欢</a></li>
+          <li><a href="#">小米账户</a></li>
+          <li><a id="signOut" href="#">退出登录</a></li>
+        </ul>
+      </div>
+    </span>
     <a href="/login.html" class="link">登录</a>
     <span class="sep">|</span>
     <a href="#" class="link">注册</a>
     <span class="sep">|</span>
     <a href="#" class="message">消息通知</a>
+    <span class="sep">|</span>
+    <a href="#" class="link">我的订单</a>
   </div>
 </div>
 </div>
 <div class="site-header">
 <div class="container">
   <div class="header-logo">
-    <a href="#" class="logo ir">小米官网</a>
+    <a href="/" class="logo ir">小米官网</a>
   </div>
   <div class="header-nav">
     <ul class="nav-list">
@@ -168,5 +185,59 @@ define(['jquery', 'api', 'utils'], function ($, api, utils) {
 
   api.product.getCatList().then(res => {
     renderHeader(res.data)
+    checkLogin()
+
+    $('.user').hover(
+      function () {
+        $(this).addClass('user-active')
+      },
+      function () {
+        $(this).removeClass('user-active')
+      }
+    )
+
+    $('#signOut').click(function () {
+      api.user.signOut().then(() => {
+        location.href = '/'
+      })
+    })
   })
+
+  function checkLogin() {
+    const user = utils.storage.get('user')
+    if (user) {
+      $.publish('login', user)
+    } else {
+      $('.user').hide()
+      $('.topbar-info .link:last').hide()
+    }
+
+    // if (user) {
+    //   $('span.user')
+    //     .find('.name')
+    //     .text(user.userInfo.username)
+    //     .parents('.user')
+    //     .show()
+    //   $('.topbar-info .link:not(:last)').hide()
+    //   $('.topbar-info .sep:first').hide()
+    // } else {
+    //   $('.user').hide()
+    //   $('.topbar-info .link:last').hide()
+    // }
+  }
+
+  function handleLogin() {
+    return function (_, user) {
+      console.log(user)
+      $('span.user')
+        .find('.name')
+        .text(user.userInfo.username)
+        .parents('.user')
+        .show()
+      $('.topbar-info .link:not(:last)').hide()
+      $('.topbar-info .sep:first').hide()
+    }
+  }
+
+  $.subscribe('login', handleLogin())
 })

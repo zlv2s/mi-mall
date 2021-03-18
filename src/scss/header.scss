@@ -1,4 +1,5 @@
 /* topbar */
+
 .site-topbar {
   position: relative;
   z-index: 30;
@@ -29,6 +30,7 @@
   color: #fff;
 }
 
+
 .topbar-nav .topbar-download {
   position: relative;
 }
@@ -52,7 +54,7 @@
 
 .site-topbar .topbar-download img {
   display: block;
-  margin: 18px auto 12px;
+  margin: 18px auto 12px
 }
 
 .site-topbar .topbar-download.active:before {
@@ -65,25 +67,26 @@
   margin-left: -8px;
   border-width: 0 8px 8px;
   border-style: solid;
-  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #fff;
+  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #fff
 }
 
 .site-topbar .topbar-download.active .appcode {
-  height: 148px;
+  height: 148px
 }
+
 
 .site-topbar .topbar-info .link,
 .site-topbar .topbar-info .message,
 .site-topbar .topbar-info .sep,
 .site-topbar .topbar-info .user {
-  float: left;
+  float: left
 }
 
 .site-topbar .topbar-info {
   position: relative;
   float: right;
   height: 40px;
-  line-height: 40px;
+  line-height: 40px
 }
 
 .site-topbar .topbar-info .user {
@@ -93,6 +96,7 @@
   padding: 0;
   white-space: nowrap;
 }
+
 
 .site-topbar .user-name {
   position: relative;
@@ -130,8 +134,10 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
-.site-topbar .topbar-info .user:hover .user-menu-wrapper {
-  height: 164px;
+.site-topbar .topbar-info .user:hover {
+  .user-menu-wrapper {
+    height: 164px;
+  }
 }
 
 .site-topbar .user-menu {
@@ -144,49 +150,50 @@
 .site-topbar .user-menu a {
   display: block;
   padding: 3px 30px;
-  line-height: 2;
+  line-height: 2
 }
 
 .site-topbar .user-active a {
-  color: #424242;
+  color: #424242
 }
 
 .site-topbar .user-active a:hover {
-  color: #ff6700;
+  color: #ff6700
 }
 
 .site-topbar .user-active .user-name {
-  background: #fff;
+  background: #fff
 }
 
 .site-topbar .user-active .user-menu {
-  display: block;
+  display: block
 }
 
 .site-topbar .user-active .user-menu a {
-  transition: all .2s;
+  transition: all .2s
 }
 
 .site-topbar .user-active .user-menu a:hover {
-  background-color: #f5f5f5;
+  background-color: #f5f5f5
 }
 
 .site-topbar .topbar-info .link {
   padding: 0 5px;
   text-align: center;
-}
 
-.site-topbar .topbar-info .link:last-of-type {
-  width: 70px;
+  &:last-of-type {
+    width: 70px;
+  }
 }
 
 .site-topbar .topbar-info .sep {
-  margin: 0;
+  margin: 0
 }
 
 .site-topbar .message {
-  padding: 0 10px;
+  padding: 0 10px
 }
+
 
 .site-topbar .topbar-cart {
   position: relative;
@@ -195,7 +202,7 @@
   height: 40px;
   margin-left: 15px;
   transition: all .2s;
-  font-size: 12px;
+  font-size: 12px
 }
 
 .site-topbar .cart-mini {
@@ -206,7 +213,7 @@
   line-height: 40px;
   text-align: center;
   color: #b0b0b0;
-  background: #424242;
+  background: #424242
 }
 
 .site-topbar .cart-mini i {
@@ -218,26 +225,28 @@
 
 .site-topbar .topbar-cart-filled .cart-mini {
   color: #fff;
-  background: #ff6700;
+  background: #ff6700
 }
 
 .site-topbar .topbar-cart-active .cart-mini {
   color: #ff6700;
-  background: #fff;
+  background: #fff
 }
+
 
 /* header */
 .site-header {
   z-index: 20;
-  height: 100px;
+  height: 100px
 }
 
 .site-header,
 .site-header .container {
-  position: relative;
+  position: relative
 }
 
 /* logo */
+
 .header-logo {
   float: left;
   width: 62px;
@@ -250,7 +259,7 @@
   width: 55px;
   height: 55px;
   overflow: hidden;
-  background-color: #ff6700;
+  background-color: #ff6700
 }
 
 .site-header .logo:after,
@@ -263,47 +272,49 @@
   height: 55px;
   content: "";
   transform-origin: 50% 50%;
-  transition: all .2s;
+  transition: all .2s
 }
 
 .site-header .logo:before {
   background: url(http://s02.mifile.cn/assets/static/image/mi-logo.png) no-repeat 50% 50%;
-  opacity: 1;
+  opacity: 1
 }
 
 .site-header .logo:after,
 .site-header .logo:before {
-  transform: translateZ(0);
+  transform: translateZ(0)
 }
 
 .site-header .logo:after {
   background: url(http://s02.mifile.cn/assets/static/image/mi-home.png) no-repeat 50% 50%;
   opacity: 0;
-  margin-left: -55px;
+  margin-left: -55px
 }
 
 .site-header .logo:focus {
-  outline: 0;
+  outline: 0
 }
 
 .site-header .logo:hover:before {
-  opacity: 0;
+  opacity: 0
 }
 
 .site-header .logo:hover:after,
 .site-header .logo:hover:before {
-  transform: translate3d(55px, 0, 0);
+  transform: translate3d(55px, 0, 0)
 }
 
 .site-header .logo:hover:after {
-  opacity: 1;
+  opacity: 1
 }
 
 .site-header .logo:active:after {
-  transform: translate3d(55px, 0, 0) scale(0.9);
+  transform: translate3d(55px, 0, 0) scale(.9)
 }
 
+
 /* header-nav */
+
 .header-nav {
   float: left;
   width: 850px;
@@ -318,7 +329,7 @@
   margin: 0;
   padding: 12px 0 0 30px;
   list-style-type: none;
-  font-size: 16px;
+  font-size: 16px
 }
 
 .header-nav .nav-list .nav-item {
@@ -329,28 +340,31 @@
   position: relative;
   float: left;
   width: 127px;
-  padding-right: 15px;
+  padding-right: 15px
 }
 
 .site-header .nav-category .link-category {
   display: block;
   padding: 26px 0 38px;
   text-align: right;
-  color: #333;
+  color: #333
 }
 
 .site-header .nav-item .link {
   display: block;
   padding: 26px 10px 38px;
   color: #333;
-  transition: color .2s;
+  transition: color .2s
 }
+
 
 .header-nav .nav-list .nav-item a:hover {
   color: #ff6700;
 }
 
+
 /* header-search */
+
 .header-search {
   float: right;
   width: 296px;
@@ -361,7 +375,7 @@
   position: relative;
   width: 296px;
   height: 50px;
-  z-index: 20;
+  z-index: 20
 }
 
 .site-header .search-text {
@@ -379,13 +393,15 @@
   z-index: 1;
 }
 
+
 .header-search .search-form .search-text:focus {
   border: 1px solid #ff6700;
 }
 
-.header-search .search-form .search-text:focus ~ .search-btn {
+.header-search .search-form .search-text:focus~.search-btn {
   border: 1px solid #ff6700;
 }
+
 
 .site-header .search-btn {
   position: absolute;
@@ -408,11 +424,12 @@
   color: #fff;
 }
 
+
 .nav-category {
   position: relative;
   float: left;
   width: 127px;
-  padding-right: 15px;
+  padding-right: 15px
 }
 
 .nav-category:hover .site-category {
@@ -435,7 +452,7 @@
   z-index: 21;
   width: 234px;
   height: 460px;
-  font-size: 14px;
+  font-size: 14px
 }
 
 .category-list {
@@ -445,7 +462,7 @@
   list-style-type: none;
   border: 1px solid #ff6700;
   color: #424242;
-  background: #fff;
+  background: #fff
 }
 
 .category-list .title {
@@ -454,7 +471,7 @@
   padding-left: 30px;
   height: 42px;
   line-height: 42px;
-  color: #424242;
+  color: #424242
 }
 
 .category-list .title i[class*=iconfont] {
@@ -463,32 +480,33 @@
   right: 20px;
   font-size: 16px;
   line-height: 16px;
-  color: #e0e0e0;
+  color: #e0e0e0
 }
 
 .category-item:hover .title {
   background: #ff6700;
-  color: #fff;
+  color: #fff
 }
 
 .category-item:hover .title i[class*=iconfont] {
   color: #fff;
-  color: rgba(255, 255, 255, 0.5);
+  color: hsla(0, 0%, 100%, .5)
 }
+
 
 .home-category-list {
   height: 420px;
   border: 0;
   color: #fff;
-  background: rgba(105, 101, 101, 0.6);
+  background: rgba(105, 101, 101, .6)
 }
 
 .home-category-list .title {
-  color: #fff;
+  color: #fff
 }
 
 .home-category-list .title i {
-  color: rgba(255, 255, 255, 0.5);
+  color: hsla(0, 0%, 100%, .5)
 }
 
 .category-item:hover .children {
@@ -506,8 +524,9 @@
   border: 1px solid #e0e0e0;
   border-left: 0;
   background: #fff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .18)
 }
+
 
 .category-item .children .children-list {
   float: left;
@@ -515,14 +534,14 @@
   height: 458px;
   margin: 0;
   padding: 2px 0;
-  list-style-type: none;
+  list-style-type: none
 }
 
 .children-list li {
   position: relative;
   float: left;
   width: 248px;
-  height: 76px;
+  height: 76px
 }
 
 .children-list .link {
@@ -530,11 +549,11 @@
   padding: 18px 20px;
   line-height: 40px;
   color: #333;
-  transition: color .2s;
+  transition: color .2s
 }
 
 .children-list .link:hover {
-  color: #ff6700;
+  color: #ff6700
 }
 
 .children-list .thumb {
@@ -542,7 +561,7 @@
   width: 40px;
   height: 40px;
   margin-right: 12px;
-  vertical-align: middle;
+  vertical-align: middle
 }
 
 .children-list .text {
@@ -551,5 +570,5 @@
   line-height: 40px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden;
+  overflow: hidden
 }
