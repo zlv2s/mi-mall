@@ -192,7 +192,7 @@ return new String($out);
 });/*v:1*/
 template('detail',function($data,$filename
 ) {
-'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,product=$data.product,$each=$utils.$each,l=$data.l,$index=$data.$index,r=$data.r,item=$data.item,$string=$utils.$string,option=$data.option,i=$data.i,$out='';$out+='<div class="nav-bar"> <div class="container"> <h2>';
+'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,product=$data.product,$each=$utils.$each,l=$data.l,$index=$data.$index,r=$data.r,include=function(filename,data){data=data||$data;var text=$utils.$include(filename,data,$filename);$out+=text;return $out;},imgList=$data.imgList,$string=$utils.$string,option=$data.option,item=$data.item,i=$data.i,$out='';$out+='<div class="nav-bar"> <div class="container"> <h2>';
 $out+=$escape(product.detailItem.product_info.name);
 $out+='</h2> <div class="con clearfix"> <div class="left"> ';
 $each(product.left,function(l,$index){
@@ -211,11 +211,7 @@ $out+=$escape(r.title);
 $out+='</a> <span class="separator">|</span> ';
 });
 $out+=' <a href="#">用户评价</a> </div> </div> </div> </div> <div class="mi-detail"> <div class="page-box"> <div class="product-box container"> <div class="img-left"> <div class="product-img-list"> <div class="swiper-container"> <div class="swiper-wrapper"> ';
-$each(product.detailItem.goods_list[0].goods_info.imgs,function(item,$index){
-$out+=' <div class="swiper-slide"> <img src="';
-$out+=$escape(item);
-$out+='" alt=""> </div> ';
-});
+include('./detailSwiper',{imgList:product.detailItem.goods_list[0].goods_info.imgs},);
 $out+=' </div> <div class="swiper-pagination"></div> <div class="swiper-button-next"></div> <div class="swiper-button-prev"></div> </div> </div> </div> <div class="product-con"> <h2>';
 $out+=$escape(product.detailItem.product_info.name);
 $out+='</h2> <p class="sale-desc"> ';
@@ -226,12 +222,16 @@ $out+='</p> <div class="price-info"> ';
 $out+=$escape(product.detailItem.goods_list[0].goods_info.price);
 $out+=' 元 </div> <div class="line"></div> <div class="buy-option"> ';
 $each(product.detailItem.buy_option,function(option,$index){
-$out+=' <div class="buy-box-child"> <div class="option-box"> <div class="title">选择';
+$out+=' <div class="buy-box-child"> <div class="option-box" data-oid="';
+$out+=$escape(option.prop_cfg_id);
+$out+='"> <div class="title">选择';
 $out+=$escape(option.name);
 $out+='</div> <ul class="clearfix"> ';
 $each(option.list,function(item,i){
 $out+=' <li class="';
 $out+=$escape(i===0 ? 'active' : '');
+$out+='" data-pid="';
+$out+=$escape(item.prop_value_id);
 $out+='"> <a href="#">';
 $out+=$escape(item.name);
 $out+='</a> </li> ';
@@ -239,6 +239,15 @@ $out+='</a> </li> ';
 $out+=' </ul> </div> </div> ';
 });
 $out+='  </div> <div class="selected-list"> <ul> <li>Redmi Note 9 5G 8GB+128GB 青山外 <span>1499元</span> </li> </ul> <div class="total-price">总计：1499元</div> </div> <div class="btn-box"> <div class="sale-btn"> <a href="#" class="btn btn-primary">加入购物车</a> </div> <div class="favorite-btn"> <a class="btn-gray btn-like"> <i class="iconfont default"></i> <i class="iconfont iconfont-heart-outline red"> <i class="iconfont redsd"></i> </i>喜欢 </a> </div> </div> </div> </div> </div> </div>';
+return new String($out);
+});/*v:1*/
+template('detailSwiper',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,imgList=$data.imgList,item=$data.item,$index=$data.$index,$escape=$utils.$escape,$out='';$each(imgList,function(item,$index){
+$out+=' <div class="swiper-slide"> <img src="';
+$out+=$escape(item);
+$out+='" alt=""> </div> ';
+});
 return new String($out);
 });/*v:1*/
 template('floorItem',function($data,$filename

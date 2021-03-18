@@ -28,11 +28,7 @@
         <div class="product-img-list">
           <div class="swiper-container">
             <div class="swiper-wrapper">
-              {{each product.detailItem.goods_list[0].goods_info.imgs as item}}
-              <div class="swiper-slide">
-                <img src="{{item}}" alt="">
-              </div>
-              {{/each}}
+              {{ include './detailSwiper' {imgList:product.detailItem.goods_list[0].goods_info.imgs} }}
             </div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
@@ -55,11 +51,11 @@
           {{each product.detailItem.buy_option as option}}
 
           <div class="buy-box-child">
-            <div class="option-box">
+            <div class="option-box" data-oid="{{option.prop_cfg_id}}">
               <div class="title">选择{{option.name}}</div>
               <ul class="clearfix">
                 {{each option.list as item i}}
-                <li class="{{i===0 ? 'active' : ''}}">
+                <li class="{{i===0 ? 'active' : ''}}" data-pid="{{item.prop_value_id}}">
                   <a href="#">{{item.name}}</a>
                 </li>
                 {{/each}}
