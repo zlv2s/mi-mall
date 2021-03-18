@@ -17,7 +17,7 @@ define({
    * @param {String} url 当前URL地址
    * @returns {Object} 所有参数
    */
-  getUrlkey: function (url) {
+  getUrlKey: function (url) {
     const params = {}
     const urls = url.split('?')
     if (urls.length > 1) {

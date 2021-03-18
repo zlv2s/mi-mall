@@ -1,15 +1,26 @@
 require(['config'], function () {
   require([
-    'swiper',
     'jquery',
-    'template',
+    'swiper',
+    './js/template/detail',
     'api',
+    'utils',
     'header',
     'footer'
-  ], function (Swiper, $, template, api) {
-    api.product.getDetail(12511).then(res => {
+  ], function ($, Swiper, template, api, utils) {
+    const { product_id } = utils.getUrlKey(location.href)
+    if (!product_id) {
+      return
+    }
+    api.product.getDetail(product_id).then(res => {
       console.log(res)
+
       $(function () {
+        $('.detail').append(
+          template('detail', {
+            product: res.data.data
+          })
+        )
         new Swiper('.swiper-container', {
           effect: 'fade',
           speed: 500,

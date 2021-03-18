@@ -1,1 +1,123 @@
-<h1>hello</h1>
+<div class="mi-detail">
+  <div class="page-box">
+    <div class="product-box container">
+      <div class="img-left">
+        <div class="product-img-list">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              {{each product.goods_list[0].goods_info.imgs as item}}
+              <div class="swiper-slide">
+                <img src="{{item}}" alt="">
+              </div>
+              {{/each}}
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-con">
+        <h2>{{product.product_info.name}}</h2>
+        <p class="sale-desc">
+          {{#product.product_info.product_desc}}
+        </p>
+        <p class="company-info">{{product.goods_list[0].after_sale_info.company_info.name}}</p>
+        <div class="price-info">
+          {{product.goods_list[0].goods_info.price}} 元
+        </div>
+        <div class="line"></div>
+        <div class="buy-option">
+
+          {{each product.buy_option as option}}
+
+          <div class="buy-box-child">
+            <div class="option-box">
+              <div class="title">选择{{option.name}}</div>
+              <ul class="clearfix">
+                {{each option.list as item i}}
+                <li class="{{i===0 ? 'active' : ''}}">
+                  <a href="#">{{item.name}}</a>
+                </li>
+                {{/each}}
+
+              </ul>
+            </div>
+          </div>
+
+          {{/each}}
+
+          <!-- <div class="buy-box-child">
+            <div class="option-box">
+              <div class="title">选择产品</div>
+              <ul class="clearfix">
+                <li>
+                  <a href="#">Redmi Note 9 4G</a>
+                </li>
+                <li class="active">
+                  <a href="#">Redmi Note 9 4G</a>
+                </li>
+                <li>
+                  <a href="#">Redmi Note 9 4G</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="buy-box-child">
+            <div class="option-box">
+              <div class="title">选择版本</div>
+              <ul class="clearfix">
+                <li>
+                  <a href="#">6GB+128GB</a>
+                </li>
+                <li class="active">
+                  <a href="#">6GB+128GB</a>
+                </li>
+                <li>
+                  <a href="#">6GB+128GB</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="buy-box-child">
+            <div class="option-box">
+              <div class="title">选择颜色</div>
+              <ul class="clearfix">
+                <li>
+                  <a href="#">云墨灰</a>
+                </li>
+                <li class="active">
+                  <a href="#">云墨灰</a>
+                </li>
+                <li>
+                  <a href="#">云墨灰</a>
+                </li>
+              </ul>
+            </div>
+          </div> -->
+        </div>
+        <div class="selected-list">
+          <ul>
+            <li>Redmi Note 9 5G 8GB+128GB 青山外
+              <span>1499元</span>
+            </li>
+          </ul>
+          <div class="total-price">总计：1499元</div>
+        </div>
+        <div class="btn-box">
+          <div class="sale-btn">
+            <a href="#" class="btn btn-primary">加入购物车</a>
+          </div>
+          <div class="favorite-btn">
+            <a class="btn-gray btn-like">
+              <i class="iconfont default"></i>
+              <i class="iconfont iconfont-heart-outline red">
+                <i class="iconfont redsd"></i>
+              </i>喜欢
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

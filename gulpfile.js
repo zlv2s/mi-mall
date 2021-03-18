@@ -11,6 +11,8 @@ const uglify = require('gulp-uglify')
 const connect = require('gulp-connect')
 const del = require('del')
 const tmodjs = require('gulp-tmod')
+const replace = require('gulp-replace')
+const merge = require('merge-stream')
 
 // 删除文件和文件夹
 function delFn() {
@@ -47,29 +49,12 @@ function compileJS() {
 // 压缩JS代码
 function uglifyJs() {
   return (
-    src('./dist/js/**/*.js', { allowEmpty: true })
+    src('./dist/js/*.js', { allowEmpty: true })
       .pipe(uglify())
       // .pipe(rename({ suffix: '.min' }))
       .pipe(dest('./dist/js'))
   )
 }
-
-// 添加浏览器前缀
-// function autoprefixerFn() {
-//   return src('./dist/css/*.css').pipe(autoprefixer()).pipe(dest('./dist/css'))
-// }
-
-// 压缩css文件
-// function cleanCssFn() {
-//   return src('./dist/css/*.css')
-//     .pipe(
-//       cleanCss({
-//         compatibility: 'ie8'
-//       })
-//     )
-//     .pipe(rename({ suffix: '.min' }))
-//     .pipe(dest('./dist/css'))
-// }
 
 // 复制 lib 文件
 function copyLibFile() {
@@ -92,32 +77,45 @@ function copyUtilsFile() {
 }
 
 function compileTemplate() {
-  // 拿到所有的路径
-  let basePath = path.join(__dirname, 'src/template')
-  let files = fs.readdirSync(basePath)
-  files.forEach((val, index) => {
-    let dirPath = path.join(basePath, val)
-    let stat = fs.statSync(dirPath)
-    if (!stat.isDirectory()) {
-      // 判断是否是文件夹
-      return
-    }
-    var fileter = 'src/template/' + val + '/**/*.html'
-    console.log(fileter)
+  // return (
+  //   src('src/template/**/*.html') // 找到所有的html模板
+  //     .pipe(
+  //       tmodjs({
+  //         templateBase: 'src/template'
+  //       })
+  //     )
+  //     // 自动生成的模板文件，进行babel转换，会报错，此转换插件已经停更，所以间接改这个bug
+  //     // 参考bug：https://github.com/aui/tmodjs/issues/112 主要是this  →  window
+  //     .pipe(replace('var String = this.String;', 'var String = window.String;'))
+  //     .pipe(dest('src/js/template'))
+  // )
 
-    src('src/template/' + val + '/**/*.html')
-      .pipe(
-        tmodjs({
-          templateBase: 'src/template/' + val,
-          runtime: val + '.js',
-          compress: false
-        })
-      )
-      // 自动生成的模板文件，进行babel转换，会报错，此转换插件已经停更，所以间接改这个bug
-      // 参考bug：https://github.com/aui/tmodjs/issues/112 主要是this  →  window
-      .pipe(replace('var String = this.String;', 'var String = window.String;'))
-      .pipe(dest('src/js/template/'))
+  /* -------------------------------------------------------------------------- */
+
+  const basePath = path.join(__dirname, 'src/template')
+  const files = fs.readdirSync(basePath)
+
+  const tasks = files.map(val => {
+    return (
+      src('src/template/' + val)
+        .pipe(
+          tmodjs({
+            templateBase: 'src/template' + val,
+            runtime: val.replace('.html', '') + '.js',
+            compress: false
+          })
+        )
+        // 自动生成的模板文件，进行babel转换，会报错，此转换插件已经停更，所以间接改这个bug
+        // 参考bug：https://github.com/aui/tmodjs/issues/112 主要是this  →  window
+        .pipe(
+          replace('var String = this.String;', 'var String = window.String;')
+        )
+        .pipe(replace('D:/qf/javascript/exe/mi-mall/src/template/', ''))
+        .pipe(dest('src/js/template'))
+    )
   })
+
+  return merge(tasks)
 }
 
 // 本地服务器
@@ -147,7 +145,8 @@ function watchFiles() {
   watch('./src/*.html', series(copyHtmlFile, serverReload))
   watch('./src/utils/*.js', series(copyUtilsFile, serverReload))
   watch('./src/lib/**.*', series(copyLibFile, serverReload))
-  watch('./src/template/**.*', series(compileTemplate, serverReload))
+  watch('./src/template/*.html', series(compileTemplate, serverReload))
+  watch('./src/js/template/*.js', series(compileJS, serverReload))
 }
 
 function defaultTask() {
@@ -159,8 +158,7 @@ function defaultTask() {
       copyImgFile,
       copyLibFile,
       copyUtilsFile,
-      compileTemplate,
-      series(compileJS, uglifyJs),
+      series(compileTemplate, compileJS, uglifyJs),
       series(compileScss, css),
       devServer
     )

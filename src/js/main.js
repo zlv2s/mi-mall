@@ -4,9 +4,10 @@ require(['config'], function () {
     'swiper',
     'template',
     'api',
+    'utils',
     'header',
     'footer'
-  ], function ($, Swiper, template, api) {
+  ], function ($, Swiper, template, api, utils) {
     function renderSwiper(swiperList) {
       $('#swiper>.swiper-wrapper').html(template('swiperItem', { swiperList }))
 
@@ -80,9 +81,21 @@ require(['config'], function () {
             channelList
           } = res.data
           renderSwiper(swiperList)
-          renderPromo(promoList)
+          renderPromo(
+            promoList.map(item => ({
+              link: `/detail.html?product_id=${
+                utils.getUrlKey(item.link)['product_id']
+              }`,
+              imgUrl: item.imgUrl
+            }))
+          )
           renderChannelList(channelList)
-          renderFlashSwiper(flashSlideList)
+          renderFlashSwiper(
+            flashSlideList.map(item => ({
+              ...item,
+              link: `/detail.html?product_id=${item.product_id}`
+            }))
+          )
           renderFloor(goodsFloorData)
         }
       })
