@@ -1,4 +1,9 @@
-define(['jquery', 'api', 'utils', 'pubsub'], function ($, api, utils) {
+define(['jquery', 'api', 'utils', 'common'], function (
+  $,
+  api,
+  utils,
+  { checkLogin, handleLogin }
+) {
   const header = `
 <div class="site-topbar">
 <div class="container">
@@ -203,41 +208,41 @@ define(['jquery', 'api', 'utils', 'pubsub'], function ($, api, utils) {
     })
   })
 
-  function checkLogin() {
-    const user = utils.storage.get('user')
-    if (user) {
-      $.publish('login', user)
-    } else {
-      $('.user').hide()
-      $('.topbar-info .link:last').hide()
-    }
+  // function checkLogin() {
+  //   const user = utils.storage.get('user')
+  //   if (user) {
+  //     $.publish('login', user)
+  //   } else {
+  //     $('.user').hide()
+  //     $('.topbar-info .link:last').hide()
+  //   }
 
-    // if (user) {
-    //   $('span.user')
-    //     .find('.name')
-    //     .text(user.userInfo.username)
-    //     .parents('.user')
-    //     .show()
-    //   $('.topbar-info .link:not(:last)').hide()
-    //   $('.topbar-info .sep:first').hide()
-    // } else {
-    //   $('.user').hide()
-    //   $('.topbar-info .link:last').hide()
-    // }
-  }
+  // if (user) {
+  //   $('span.user')
+  //     .find('.name')
+  //     .text(user.userInfo.username)
+  //     .parents('.user')
+  //     .show()
+  //   $('.topbar-info .link:not(:last)').hide()
+  //   $('.topbar-info .sep:first').hide()
+  // } else {
+  //   $('.user').hide()
+  //   $('.topbar-info .link:last').hide()
+  // }
+  // }
 
-  function handleLogin() {
-    return function (_, user) {
-      console.log(user)
-      $('span.user')
-        .find('.name')
-        .text(user.userInfo.username)
-        .parents('.user')
-        .show()
-      $('.topbar-info .link:not(:last)').hide()
-      $('.topbar-info .sep:first').hide()
-    }
-  }
+  // function handleLogin() {
+  //   return function (_, user) {
+  //     console.log(user)
+  //     $('span.user')
+  //       .find('.name')
+  //       .text(user.userInfo.username)
+  //       .parents('.user')
+  //       .show()
+  //     $('.topbar-info .link:not(:last)').hide()
+  //     $('.topbar-info .sep:first').hide()
+  //   }
+  // }
 
   $.subscribe('login', handleLogin())
 })

@@ -7,6 +7,7 @@ require.config({
     swiper: 'lib/swiper.min',
     template: 'lib/template-web',
     utils: 'utils/index',
+    common: 'js/common',
     login: 'js/login',
     header: 'js/header',
     footer: 'js/footer',

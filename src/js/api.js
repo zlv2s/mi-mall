@@ -6,7 +6,7 @@ define(['axios', 'utils'], function (axios, utils) {
   request.interceptors.request.use(
     config => {
       // 请求前先判断本地是否有token，并加在请求头上
-      const token = utils.storage.get('user').token
+      const token = utils.storage.get('user')?.token
       token && (config.headers.Authorization = token)
 
       return config
@@ -49,6 +49,11 @@ define(['axios', 'utils'], function (axios, utils) {
           url: '/cart/add',
           method: 'post',
           data
+        })
+      },
+      getCartList() {
+        return request({
+          url: '/cart/getList'
         })
       }
     },

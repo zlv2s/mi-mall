@@ -11,7 +11,8 @@ require(['config'], function () {
     const { product_id } = utils.getUrlKey(location.href)
     const goodsItem = {
       propList: [],
-      isChangeColor: false
+      isChangeColor: false,
+      currentItem: null
     }
 
     if (!product_id) {
@@ -32,29 +33,24 @@ require(['config'], function () {
           e.preventDefault()
           $(this).addClass('active').siblings().removeClass('active')
 
-          // if (
-          //   $(this).parents('.option-box').children('.title').text() !==
-          //   '选择颜色'
-          // ) {
-          //   flag = true
-          // } else {
-          //   flag = false
-          // }
-
           goodsItem.isChangeColor =
             $(this).parents('.option-box').children('.title').text() ===
             '选择颜色'
           getIdByActive()
           updateGoodsInfo()
           if (goodsItem.isChangeColor) initSwiper()
-          console.log($(this))
         })
 
         $('.sale-btn a').click(function (e) {
           e.preventDefault()
-          api.cart.addToCart({ a: 1 }).then(res => {
-            console.log(res)
-          })
+          api.cart
+            .addToCart({
+              goodsId: goodsItem.currentItem.goods_info.goods_id,
+              num: 1
+            })
+            .then(res => {
+              console.log(res)
+            })
         })
 
         function initSwiper() {
@@ -94,7 +90,7 @@ require(['config'], function () {
         }
 
         function updateGoodsInfo() {
-          const goods = getGoodsByProps()
+          const goods = (goodsItem.currentItem = getGoodsByProps())
           console.log(goods)
           $('.price-info').text(goods.goods_info.price + ' 元')
           $('.selected-list li')

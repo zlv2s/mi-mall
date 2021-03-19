@@ -17,22 +17,41 @@
   <div class="cart-header">
     <div class="container">
       <div class="header-logo">
-        <a href="#" class="logo ir">小米官网</a>
+        <a href="/" class="logo ir">小米官网</a>
       </div>
       <div class="header-title">
         <h2>我的购物车</h2>
         <p>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</p>
       </div>
       <div class="header-info">
-        <a class="link" href="#">登录</a>
-        <span class="sep">|</span>
-        <a class="link" href="#">注册</a>
+        <span class="c-user">
+          <span class="user">
+            <a class="user-name" href="">
+              <span class="name"></span>
+              <i class="iconfont-arrow-down-mini"></i>
+            </a>
+            <div class="user-menu-wrapper">
+              <ul class="user-menu">
+                <li><a href="#">个人中心</a></li>
+                <li><a href="#">评价晒单</a></li>
+                <li><a href="#">我的喜欢</a></li>
+                <li><a href="#">小米账户</a></li>
+                <li><a id="signOut" href="#">退出登录</a></li>
+              </ul>
+            </div>
+          </span>
+          <span class="sep">|</span>
+          <a href="#" class="link link-order">我的订单</a>
+        </span>
+        <span class="c-login"><a class="link" href="/login.html">登录</a>
+          <span class="sep">|</span>
+          <a class="link" href="/login.html#register">注册</a></span>
       </div>
     </div>
   </div>
   <div class="cart-main ">
     <div class="container">
-      <div class="empty-cart-wrapper hide">
+      <div class="empty-cart-wrapper">
         <h2>您的购物车还是空的！</h2>
         <p>登录后将显示您之前加入的商品</p>
         <a class="btn btn-primary" href="">立即登录</a>
@@ -41,7 +60,7 @@
       <div class="cart-wrapper">
         <div class="cart-main-list">
           <div class="list-head clearfix">
-            <div class="col col-check"><i class="iconfont icon-checkbox">&#x221a;</i> 全选</div>
+            <div class="col col-check"><i class="iconfont icon-checkbox iconfont-check"></i> 全选</div>
             <div class="col col-img">&nbsp;</div>
             <div class="col col-name">商品名称</div>
             <div class="col col-price">单价</div>
@@ -50,7 +69,7 @@
             <div class="col col-action">操作</div>
           </div>
           <div class="list-body">
-            <div class="item-box clearfix">
+            <!-- <div class="item-box clearfix">
               <div class="col col-check"><i class="iconfont icon-checkbox">&#x221a;</i></div>
               <div class="col col-img"><a href="#"><img
                     src="http://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1557977821.03156568.jpg?thumb=1&w=100&h=100"
@@ -67,7 +86,7 @@
               <div class="col col-total"><span class="price">199999</span>元</div>
               <div class="col col-action"><a href="javascript:void(0)"><i class="iconfont">&#xe602;</i></a>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </div>
@@ -83,6 +102,9 @@
             <a href="javascript:;" id="checkout" class="bar-btn btn-primary">去结算</a>
           </form>
         </div>
+
+      </div>
+      <script data-main="./js/cart.js" src="./lib/require.js"></script>
 </body>
 
 </html>

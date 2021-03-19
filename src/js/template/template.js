@@ -175,6 +175,25 @@
     if (typeof define === 'function') {define(function() {return template;});} else if (typeof exports !== 'undefined') {module.exports = template;} else {this.template = template;}
     
     /*v:1*/
+template('cartItem',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,cartItems=$data.cartItems,item=$data.item,$index=$data.$index,$escape=$utils.$escape,$out='';$each(cartItems,function(item,$index){
+$out+=' <div class="item-box clearfix"> <div class="col col-check"><i class="iconfont icon-checkbox iconfont-check ';
+$out+=$escape(item.isChecked ? 'select' : '');
+$out+='"></i> </div> <div class="col col-img"><a href="#"><img src="';
+$out+=$escape(item.img_url);
+$out+='" alt=""></a></div> <div class="col col-name">';
+$out+=$escape(item.name);
+$out+='</div> <div class="col col-price"><span class="price">';
+$out+=$escape(item.price);
+$out+='</span>元</div> <div class="col col-num"> <div class="change-num clearfix"> <a data-change="-1" href="javascript:void(0)"><i class="iconfont">&#xe60b;</i></a> <input type="text" value="';
+$out+=$escape(item.num);
+$out+='"> <a data-change="1" href="javascript:void(0)"><i class="iconfont">&#xe609;</i></a> </div> </div> <div class="col col-total"><span class="price">';
+$out+=$escape(item.totalPrice);
+$out+='</span>元</div> <div class="col col-action"><a href="javascript:void(0)"><i class="iconfont">&#xe602;</i></a> </div> </div> ';
+});
+return new String($out);
+});/*v:1*/
 template('channelItem',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,channelList=$data.channelList,$value=$data.$value,$index=$data.$index,$escape=$utils.$escape,$out='';$each(channelList,function($value,$index){
@@ -325,6 +344,7 @@ $out+=' ';
 });
 return new String($out);
 });/*v:1*/
+template('header','');/*v:1*/
 template('productItem',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,productList=$data.productList,product=$data.product,$index=$data.$index,$escape=$utils.$escape,$out='';$each(productList,function(product,$index){

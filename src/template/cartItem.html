@@ -1,0 +1,19 @@
+{{each cartItems as item}}
+<div class="item-box clearfix">
+  <div class="col col-check"><i class="iconfont icon-checkbox iconfont-check {{item.isChecked ? 'select' : ''}}"></i>
+  </div>
+  <div class="col col-img"><a href="#"><img src="{{item.img_url}}" alt=""></a></div>
+  <div class="col col-name">{{item.name}}</div>
+  <div class="col col-price"><span class="price">{{item.price}}</span>元</div>
+  <div class="col col-num">
+    <div class="change-num clearfix">
+      <a data-change="-1" href="javascript:void(0)"><i class="iconfont">&#xe60b;</i></a>
+      <input type="text" value="{{item.num}}">
+      <a data-change="1" href="javascript:void(0)"><i class="iconfont">&#xe609;</i></a>
+    </div>
+  </div>
+  <div class="col col-total"><span class="price">{{item.totalPrice}}</span>元</div>
+  <div class="col col-action"><a href="javascript:void(0)"><i class="iconfont">&#xe602;</i></a>
+  </div>
+</div>
+{{/each}}
