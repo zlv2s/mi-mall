@@ -9,7 +9,10 @@ require(['config'], function () {
     'footer'
   ], function ($, Swiper, template, api, utils) {
     const { product_id } = utils.getUrlKey(location.href)
-    const propList = []
+    const goodsItem = {
+      propList: [],
+      isChangeColor: false
+    }
 
     if (!product_id) {
       location.href = '/'
@@ -28,13 +31,31 @@ require(['config'], function () {
         $('.option-box li').click(function (e) {
           e.preventDefault()
           $(this).addClass('active').siblings().removeClass('active')
+
+          // if (
+          //   $(this).parents('.option-box').children('.title').text() !==
+          //   '选择颜色'
+          // ) {
+          //   flag = true
+          // } else {
+          //   flag = false
+          // }
+
+          goodsItem.isChangeColor =
+            $(this).parents('.option-box').children('.title').text() ===
+            '选择颜色'
           getIdByActive()
           updateGoodsInfo()
-          initSwiper()
+          if (goodsItem.isChangeColor) initSwiper()
           console.log($(this))
         })
 
-        getIdByActive()
+        $('.sale-btn a').click(function (e) {
+          e.preventDefault()
+          api.cart.addToCart({ a: 1 }).then(res => {
+            console.log(res)
+          })
+        })
 
         function initSwiper() {
           new Swiper('.swiper-container', {
@@ -53,10 +74,10 @@ require(['config'], function () {
         }
 
         function getIdByActive() {
-          propList.length = 0
+          goodsItem.propList.length = 0
           $('.option-box li').each(function (i, ele) {
             if ($(this).hasClass('active')) {
-              propList.push({
+              goodsItem.propList.push({
                 prop_cfg_id: $(this).parents('.option-box').data().oid,
                 prop_value_id: $(this).data().pid
               })
@@ -68,7 +89,7 @@ require(['config'], function () {
           return res.data.detailItem.goods_list.find(
             goods =>
               JSON.stringify(goods.goods_info.prop_list) ===
-              JSON.stringify(propList)
+              JSON.stringify(goodsItem.propList)
           )
         }
 
@@ -87,11 +108,14 @@ require(['config'], function () {
             .find('span')
             .text(goods.goods_info.price + '元')
           $('.total-price').text(`总计：${goods.goods_info.price}元`)
-          $('.swiper-wrapper').html(
-            template('detailSwiper', { imgList: goods.goods_info.imgs })
-          )
+          if (goodsItem.isChangeColor) {
+            $('.swiper-wrapper').html(
+              template('detailSwiper', { imgList: goods.goods_info.imgs })
+            )
+          }
         }
 
+        getIdByActive()
         updateGoodsInfo()
         initSwiper()
       })

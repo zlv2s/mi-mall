@@ -210,7 +210,7 @@ $out+='">';
 $out+=$escape(r.title);
 $out+='</a> <span class="separator">|</span> ';
 });
-$out+=' <a href="#">用户评价</a> </div> </div> </div> </div> <div class="mi-detail"> <div class="page-box"> <div class="product-box container"> <div class="img-left"> <div class="product-img-list"> <div class="swiper-container"> <div class="swiper-wrapper"> ';
+$out+=' <a href="https://www.mi.com/comment/12511.html">用户评价</a> </div> </div> </div> </div> <div class="mi-detail"> <div class="page-box"> <div class="product-box container"> <div class="img-left"> <div class="product-img-list"> <div class="swiper-container"> <div class="swiper-wrapper"> ';
 include('./detailSwiper',{imgList:product.detailItem.goods_list[0].goods_info.imgs},);
 $out+=' </div> <div class="swiper-pagination"></div> <div class="swiper-button-next"></div> <div class="swiper-button-prev"></div> </div> </div> </div> <div class="product-con"> <h2>';
 $out+=$escape(product.detailItem.product_info.name);
@@ -238,7 +238,13 @@ $out+='</a> </li> ';
 });
 $out+=' </ul> </div> </div> ';
 });
-$out+='  </div> <div class="selected-list"> <ul> <li>Redmi Note 9 5G 8GB+128GB 青山外 <span>1499元</span> </li> </ul> <div class="total-price">总计：1499元</div> </div> <div class="btn-box"> <div class="sale-btn"> <a href="#" class="btn btn-primary">加入购物车</a> </div> <div class="favorite-btn"> <a class="btn-gray btn-like"> <i class="iconfont default"></i> <i class="iconfont iconfont-heart-outline red"> <i class="iconfont redsd"></i> </i>喜欢 </a> </div> </div> </div> </div> </div> </div>';
+$out+='  </div> <div class="selected-list"> <ul> <li>';
+$out+=$escape(product.detailItem.goods_list[0].goods_info.name);
+$out+=' <span>';
+$out+=$escape(product.detailItem.goods_list[0].goods_info.price);
+$out+='元</span> </li> </ul> <div class="total-price">总计：';
+$out+=$escape(product.detailItem.goods_list[0].goods_info.price);
+$out+='元</div> </div> <div class="btn-box"> <div class="sale-btn"> <a href="#" class="btn btn-primary">加入购物车</a> </div> <div class="favorite-btn"> <a class="btn-gray btn-like"> <i class="iconfont iconfont-heart-outline default"></i> <i class="iconfont iconfont-heart-outline red"> <i class="iconfont redsd"></i> </i>喜欢 </a> </div> </div> </div> </div> </div> </div>';
 return new String($out);
 });/*v:1*/
 template('detailSwiper',function($data,$filename

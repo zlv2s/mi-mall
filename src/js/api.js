@@ -3,6 +3,19 @@ define(['axios', 'utils'], function (axios, utils) {
     baseURL: 'http://localhost:3030/api/mi-mall',
     timeout: 8000
   })
+  request.interceptors.request.use(
+    config => {
+      // 请求前先判断本地是否有token，并加在请求头上
+      const token = utils.storage.get('user').token
+      token && (config.headers.Authorization = token)
+
+      return config
+    },
+    error => {
+      console.log('request error', error)
+      return Promise.reject(error)
+    }
+  )
   request.interceptors.response.use(
     response => {
       return Promise.resolve(response.data)
@@ -27,6 +40,15 @@ define(['axios', 'utils'], function (axios, utils) {
       getDetail(id) {
         return request({
           url: `/product/${id}`
+        })
+      }
+    },
+    cart: {
+      addToCart(data) {
+        return request({
+          url: '/cart/add',
+          method: 'post',
+          data
         })
       }
     },
