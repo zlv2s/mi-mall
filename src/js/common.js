@@ -1,17 +1,19 @@
 define(['jquery', 'utils', 'pubsub'], function ($, utils) {
   function checkLogin() {
     const user = utils.storage.get('user')
+    console.log('登录状态', user)
     if (user) {
       $.publish('login', user)
     } else {
       $('.user').hide()
       $('.topbar-info .link:last').hide()
     }
+    return user
   }
 
   function handleLogin() {
     return function (_, user) {
-      console.log(user)
+      console.log(222, user)
       $('span.user')
         .find('.name')
         .text(user.userInfo.username)

@@ -1,7 +1,7 @@
 define(['axios', 'utils'], function (axios, utils) {
   const request = axios.create({
     baseURL: 'http://localhost:3030/api/mi-mall',
-    timeout: 8000
+    timeout: 20000
   })
   request.interceptors.request.use(
     config => {
@@ -54,6 +54,19 @@ define(['axios', 'utils'], function (axios, utils) {
       getCartList() {
         return request({
           url: '/cart/getList'
+        })
+      },
+      updateGoods({ goodsId = 'all', update }) {
+        return request({
+          url: `/cart/update/${goodsId}`,
+          method: 'post',
+          data: update
+        })
+      },
+      deleteGoods(gid) {
+        return request({
+          url: `/cart/delete/${gid}`,
+          method: 'delete'
         })
       }
     },

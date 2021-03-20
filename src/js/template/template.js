@@ -178,11 +178,13 @@
 template('cartItem',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,cartItems=$data.cartItems,item=$data.item,$index=$data.$index,$escape=$utils.$escape,$out='';$each(cartItems,function(item,$index){
-$out+=' <div class="item-box clearfix"> <div class="col col-check"><i class="iconfont icon-checkbox iconfont-check ';
+$out+=' <div class="item-box clearfix" data-gid="';
+$out+=$escape(item.goods_id);
+$out+='"> <div class="col col-check"><i class="iconfont icon-checkbox iconfont-check ';
 $out+=$escape(item.isChecked ? 'select' : '');
 $out+='"></i> </div> <div class="col col-img"><a href="#"><img src="';
 $out+=$escape(item.img_url);
-$out+='" alt=""></a></div> <div class="col col-name">';
+$out+='" alt=""></a></div> <div class="col col-name ellipsis">';
 $out+=$escape(item.name);
 $out+='</div> <div class="col col-price"><span class="price">';
 $out+=$escape(item.price);

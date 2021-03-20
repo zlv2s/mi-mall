@@ -665,3 +665,9 @@ input.btn-biglarge {
   background-color: #f9cb7e;
   border-color: #f9cb7e
 }
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

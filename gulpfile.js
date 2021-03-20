@@ -141,7 +141,8 @@ function serverReload() {
 function watchFiles() {
   watch('./src/scss/*.scss', series(compileScss, css, serverReload))
   watch('./src/css/*.css', series(css, serverReload))
-  watch('./src/js/*.js', series(compileJS, uglifyJs, serverReload))
+  // watch('./src/js/*.js', series(compileJS, uglifyJs, serverReload))
+  watch('./src/js/*.js', series(compileJS, serverReload))
   watch('./src/images/**/*', series(copyImgFile, serverReload))
   watch('./src/*.html', series(copyHtmlFile, serverReload))
   watch('./src/utils/*.js', series(copyUtilsFile, serverReload))
@@ -159,7 +160,8 @@ function defaultTask() {
       copyImgFile,
       copyLibFile,
       copyUtilsFile,
-      series(compileTemplate, compileJS, uglifyJs),
+      // series(compileTemplate, compileJS, uglifyJs),
+      series(compileTemplate, compileJS),
       series(compileScss, css),
       devServer
     )

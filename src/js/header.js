@@ -151,6 +151,39 @@ define(['jquery', 'api', 'utils', 'common'], function (
 </div>
 `
 
+  $.subscribe('login', handleLogin())
+
+  api.product.getCatList().then(res => {
+    renderHeader(res.data)
+    if (checkLogin()) {
+      renderCartCount()
+    }
+
+    $('.user').hover(
+      function () {
+        $(this).addClass('user-active')
+      },
+      function () {
+        $(this).removeClass('user-active')
+      }
+    )
+
+    $('#signOut').click(function () {
+      api.user.signOut().then(() => {
+        location.href = '/'
+      })
+    })
+  })
+
+  function renderCartCount() {
+    api.cart.getCartList().then(res => {
+      console.log(res)
+      $('.cart-mini-num').text(
+        `(${res.data.map(x => x.num).reduce((acc, cur) => acc + cur, 0)})`
+      )
+    })
+  }
+
   const renderCatItem = item => {
     return $(`
   <li class="category-item">
@@ -171,14 +204,14 @@ define(['jquery', 'api', 'utils', 'common'], function (
 
   const renderChild = child => {
     return `
-  <ul class="children-list"> 
-   ${child
-     .map(
-       x =>
-         `<li><a class="link clearfix" href=${x.link}><img class="thumb" src=${x.imgUrl} alt=""><span class="text">${x.goodsName}</span></a></li>`
-     )
-     .join('')}
-  </ul>`
+<ul class="children-list"> 
+ ${child
+   .map(
+     x =>
+       `<li><a class="link clearfix" href=${x.link}><img class="thumb" src=${x.imgUrl} alt=""><span class="text">${x.goodsName}</span></a></li>`
+   )
+   .join('')}
+</ul>`
   }
 
   const renderCategory = categoryList => categoryList.map(renderCatItem)
@@ -187,26 +220,6 @@ define(['jquery', 'api', 'utils', 'common'], function (
     $('body').prepend($(header))
     $('.category-list').append(renderCategory(categoryList))
   }
-
-  api.product.getCatList().then(res => {
-    renderHeader(res.data)
-    checkLogin()
-
-    $('.user').hover(
-      function () {
-        $(this).addClass('user-active')
-      },
-      function () {
-        $(this).removeClass('user-active')
-      }
-    )
-
-    $('#signOut').click(function () {
-      api.user.signOut().then(() => {
-        location.href = '/'
-      })
-    })
-  })
 
   // function checkLogin() {
   //   const user = utils.storage.get('user')
@@ -243,6 +256,4 @@ define(['jquery', 'api', 'utils', 'common'], function (
   //     $('.topbar-info .sep:first').hide()
   //   }
   // }
-
-  $.subscribe('login', handleLogin())
 })
