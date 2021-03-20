@@ -153,12 +153,14 @@ define(['jquery', 'api', 'utils', 'common'], function (
 
   $.subscribe('login', handleLogin())
 
+  // 获取全部分类数据
   api.product.getCatList().then(res => {
     renderHeader(res.data)
     if (checkLogin()) {
       renderCartCount()
     }
 
+    // 用户名悬停下拉显示
     $('.user').hover(
       function () {
         $(this).addClass('user-active')
@@ -168,22 +170,25 @@ define(['jquery', 'api', 'utils', 'common'], function (
       }
     )
 
+    // 点击退出
     $('#signOut').click(function () {
       api.user.signOut().then(() => {
-        location.href = '/'
+        location.reload()
       })
     })
   })
 
+  // 更新购物车数量显示
   function renderCartCount() {
     api.cart.getCartList().then(res => {
-      console.log(res)
+      console.log('头部组件获取购物车信息', res)
       $('.cart-mini-num').text(
         `(${res.data.map(x => x.num).reduce((acc, cur) => acc + cur, 0)})`
       )
     })
   }
 
+  // 渲染分类列表
   const renderCatItem = item => {
     return $(`
   <li class="category-item">

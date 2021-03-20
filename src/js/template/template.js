@@ -182,9 +182,11 @@ $out+=' <div class="item-box clearfix" data-gid="';
 $out+=$escape(item.goods_id);
 $out+='"> <div class="col col-check"><i class="iconfont icon-checkbox iconfont-check ';
 $out+=$escape(item.isChecked ? 'select' : '');
-$out+='"></i> </div> <div class="col col-img"><a href="#"><img src="';
+$out+='"></i> </div> <div class="col col-img"><a href="/detail.html?product_id=';
+$out+=$escape(item.product_id);
+$out+='"><img src="';
 $out+=$escape(item.img_url);
-$out+='" alt=""></a></div> <div class="col col-name ellipsis">';
+$out+='" alt=""></a> </div> <div class="col col-name ellipsis">';
 $out+=$escape(item.name);
 $out+='</div> <div class="col col-price"><span class="price">';
 $out+=$escape(item.price);
@@ -347,6 +349,15 @@ $out+=' ';
 return new String($out);
 });/*v:1*/
 template('header','');/*v:1*/
+template('mi-popup',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,title=$data.title,$string=$utils.$string,body=$data.body,$out='';$out+='<div class="mi-popup__mask"> </div> <div class="mi-popup__box"> <div class="mi-popup__header"> <span class="title">';
+$out+=$escape(title);
+$out+='</span> </div> <div class="header-btn"> <i class="mi-close iconfont iconfont-close"></i> </div> <div class="mi-popup__body">';
+$out+=$string(body);
+$out+='</div> <div class="mi-popup__footer"> <button class="btn btn-primary">确定</button> <button class="btn btn-gray">取消</button> </div> </div>';
+return new String($out);
+});/*v:1*/
 template('productItem',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,productList=$data.productList,product=$data.product,$index=$data.$index,$escape=$utils.$escape,$out='';$each(productList,function(product,$index){

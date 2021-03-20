@@ -671,3 +671,9 @@ input.btn-biglarge {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.alert-message {
+  margin: 50px 10px;
+  font-size: 26px;
+  text-align: center;
+}

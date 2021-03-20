@@ -1,4 +1,8 @@
-define(['jquery', 'utils', 'pubsub'], function ($, utils) {
+define(['jquery', 'utils', './js/template/template', 'pubsub'], function (
+  $,
+  utils,
+  template
+) {
   function checkLogin() {
     const user = utils.storage.get('user')
     console.log('登录状态', user)
@@ -11,9 +15,41 @@ define(['jquery', 'utils', 'pubsub'], function ($, utils) {
     return user
   }
 
+  function modal({
+    title = '提示',
+    body = '默认信息',
+    showCancel = true,
+    onConfirm,
+    onCancel
+  }) {
+    const m = $('.mi-popup')
+
+    m.html(template('mi-popup', { title, body }))
+
+    if (!showCancel) {
+      $('.mi-popup__footer .btn-gray').hide()
+    }
+
+    // 点击右上角关闭 modal
+    $('.mi-close').click(function () {
+      m.fadeOut()
+    })
+
+    // 确认
+    $('.mi-popup__footer .btn-primary').click(function () {
+      onConfirm ? onConfirm() : m.fadeOut()
+    })
+    // 取消
+    $('.mi-popup__footer .btn-gray').click(function () {
+      onCancel ? onCancel() : m.fadeOut()
+    })
+
+    return m
+  }
+
   function handleLogin() {
     return function (_, user) {
-      console.log(222, user)
+      console.log('handle login', user)
       $('span.user')
         .find('.name')
         .text(user.userInfo.username)
@@ -30,6 +66,7 @@ define(['jquery', 'utils', 'pubsub'], function ($, utils) {
   }
   return {
     checkLogin,
-    handleLogin
+    handleLogin,
+    modal
   }
 })

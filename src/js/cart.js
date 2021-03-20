@@ -5,8 +5,9 @@ require(['./config'], function () {
     './js/template/template',
     'utils',
     'common'
-  ], function ($, api, template, utils, { checkLogin, handleLogin }) {
+  ], function ($, api, template, utils, { checkLogin, handleLogin, modal }) {
     $.subscribe('login', handleLogin())
+
     if (checkLogin()) {
       selectAll()
       init()
@@ -26,6 +27,7 @@ require(['./config'], function () {
         .find('.col-check i')
         .click(function () {
           console.log('全选/反选')
+          $('#checkout').toggleClass('btn-disabled')
           api.cart
             .updateGoods({
               update: {
@@ -94,6 +96,16 @@ require(['./config'], function () {
             })
         })
 
+      // 校验输入框数据
+      $('.col-num input').blur(function (e) {
+        if (e.target.value > 5 || e.target.value < 1) {
+          modal({
+            title: '提示',
+            body: '<div class="alert-message">商品数量错误</div>'
+          }).fadeIn()
+        }
+      })
+
       // 删除商品
       $('.col-action i').click(function () {
         console.log('删除')
@@ -103,6 +115,13 @@ require(['./config'], function () {
             console.log(res)
             init()
           })
+      })
+
+      // 点击退出
+      $('#signOut').click(function () {
+        api.user.signOut().then(() => {
+          location.reload()
+        })
       })
     }
 
@@ -123,6 +142,9 @@ require(['./config'], function () {
       cart.checkedAll
         ? $('.list-head .icon-checkbox').addClass('select')
         : $('.list-head .icon-checkbox').removeClass('select')
+      cart.selectedCount
+        ? $('#checkout').removeClass('btn-disabled')
+        : $('#checkout').addClass('btn-disabled')
     }
 
     function getTotalCount(list) {
