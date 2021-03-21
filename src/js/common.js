@@ -47,6 +47,10 @@ define(['jquery', 'utils', './js/template/template', 'pubsub'], function (
     return m
   }
 
+  function go(route) {
+    location.href = route
+  }
+
   function handleLogin() {
     return function (_, user) {
       console.log('handle login', user)
@@ -67,6 +71,7 @@ define(['jquery', 'utils', './js/template/template', 'pubsub'], function (
   return {
     checkLogin,
     handleLogin,
-    modal
+    modal,
+    go
   }
 })

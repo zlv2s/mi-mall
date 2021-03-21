@@ -198,6 +198,23 @@ $out+='</span>元</div> <div class="col col-action"><a href="javascript:void(0)"
 });
 return new String($out);
 });/*v:1*/
+template('cartRecItem',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,recomList=$data.recomList,recom=$data.recom,$index=$data.$index,$escape=$utils.$escape,$out='';$each(recomList,function(recom,$index){
+$out+=' <li class="recommend-item" data-gid="';
+$out+=$escape(recom.goods_list[0]);
+$out+='"> <a href="#"> <img src="';
+$out+=$escape(recom.image);
+$out+='" alt=""> <p class="recommend-name">';
+$out+=$escape(recom.name);
+$out+='</p> <p class="recommend-price">';
+$out+=$escape(recom.price);
+$out+='</p> <p class="recommend-tips">';
+$out+=$escape(recom.comments);
+$out+='人好评</p> </a> <div class="recommend-action"> <a href="javascript:void(0);" class="btn btn-small btn-line-primary">加入购物车</a> </div> <div class="recommend-notice"><a class="btn btn-block btn-green btn-notice">成功加入购物车</a></div> </li> ';
+});
+return new String($out);
+});/*v:1*/
 template('channelItem',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,channelList=$data.channelList,$value=$data.$value,$index=$data.$index,$escape=$utils.$escape,$out='';$each(channelList,function($value,$index){

@@ -1,0 +1,14 @@
+{{each recomList as recom}}
+<li class="recommend-item" data-gid="{{recom.goods_list[0]}}">
+  <a href="#">
+    <img src="{{recom.image}}" alt="">
+    <p class="recommend-name">{{recom.name}}</p>
+    <p class="recommend-price">{{recom.price}}</p>
+    <p class="recommend-tips">{{recom.comments}}人好评</p>
+  </a>
+  <div class="recommend-action">
+    <a href="javascript:void(0);" class="btn btn-small btn-line-primary">加入购物车</a>
+  </div>
+  <div class="recommend-notice"><a class="btn btn-block btn-green btn-notice">成功加入购物车</a></div>
+</li>
+{{/each}}

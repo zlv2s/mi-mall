@@ -68,6 +68,11 @@ define(['axios', 'utils'], function (axios, utils) {
           url: `/cart/delete/${gid}`,
           method: 'delete'
         })
+      },
+      getCartRec(cid) {
+        return request({
+          url: `/cart/recom/${cid}`
+        })
       }
     },
     user: {

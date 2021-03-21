@@ -8,7 +8,7 @@ require(['config'], function () {
     'common',
     'header',
     'footer'
-  ], function ($, Swiper, template, api, utils, { modal }) {
+  ], function ($, Swiper, template, api, utils, { modal, go }) {
     // 根据 url 获取产品 id
     const { product_id } = utils.getUrlKey(location.href)
     const goodsItem = {
@@ -18,7 +18,7 @@ require(['config'], function () {
     }
 
     if (!product_id) {
-      location.href = '/'
+      go('/')
     }
 
     // 获取商品详情
@@ -63,7 +63,7 @@ require(['config'], function () {
               num: 1
             })
             .then(res => {
-              console.log(res)
+              go('/successTip.html')
             })
         })
 
