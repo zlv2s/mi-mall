@@ -87,6 +87,12 @@ define(['axios', 'utils'], function (axios, utils) {
         return request({
           url: `/cart/getItem/${gid}`
         })
+      },
+
+      checkout() {
+        return request({
+          url: '/cart/checkout'
+        })
       }
     },
     user: {

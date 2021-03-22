@@ -5,8 +5,16 @@ require(['./config'], function () {
     './js/template/template',
     'utils',
     'common'
-  ], function ($, api, template, utils, { checkLogin, handleLogin, modal }) {
+  ], function (
+    $,
+    api,
+    template,
+    utils,
+    { checkLogin, handleLogin, modal, go }
+  ) {
     $.subscribe('login', handleLogin())
+
+    $('body').prepend(template('subHeader', { title: '我的购物车' }))
 
     if (checkLogin()) {
       selectAll()
@@ -124,6 +132,10 @@ require(['./config'], function () {
         })
       })
     }
+
+    $('#checkout').click(function () {
+      go('/checkout.html')
+    })
 
     function render(cartList) {
       $('.list-body').html(template('cartItem', { cartItems: cartList }))

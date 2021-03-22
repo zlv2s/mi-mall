@@ -12,6 +12,11 @@ body {
   min-width: 1226px
 }
 
+ul,
+li {
+  list-style: none;
+}
+
 a {
   color: #757575
 }

@@ -205,7 +205,9 @@ $out+=' <li class="recommend-item" data-gid="';
 $out+=$escape(recom.goods_list[0]);
 $out+='" data-pid="';
 $out+=$escape(recom.product_id);
-$out+='"> <a href="#"> <img src="';
+$out+='"> <a href="/detail.html?product_id=';
+$out+=$escape(recom.product_id);
+$out+='"> <img src="';
 $out+=$escape(recom.image);
 $out+='" alt=""> <p class="recommend-name">';
 $out+=$escape(recom.name);
@@ -355,9 +357,9 @@ $out+='</h3> <p class="desc">';
 $out+=$escape(product.product_brief);
 $out+='</p> <p class="price"> <span class="num">';
 $out+=$escape(product.product_price);
-$out+='</span> <span>';
+$out+='</span> <del>';
 $out+=$escape(product.product_org_price);
-$out+='</span> </p> </a> </li> ';
+$out+='</del> </p> </a> </li> ';
 });
 $out+=' </ul> ';
 });
@@ -389,9 +391,9 @@ $out+='</h3> <p class="desc">';
 $out+=$escape(product.product_brief);
 $out+='</p> <p class="price"> <span class="num">';
 $out+=$escape(product.product_price);
-$out+='</span> <span>';
+$out+='</span> <del>';
 $out+=$escape(product.product_org_price);
-$out+='</span> </p> </a> </li> ';
+$out+='</del> </p> </a> </li> ';
 });
 return new String($out);
 });/*v:1*/
@@ -404,6 +406,13 @@ $out+='><img src=';
 $out+=$escape($value.imgUrl);
 $out+=' alt=""></a> </li> ';
 });
+return new String($out);
+});/*v:1*/
+template('subHeader',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,title=$data.title,$out='';$out+='<div class="sub-header"> <div class="container"> <div class="header-logo"> <a href="/" class="logo ir">小米官网</a> </div> <div class="header-title"> <h2>';
+$out+=$escape(title);
+$out+='</h2> <p>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</p> </div> <div class="header-info"> <span class="c-user"> <span class="user"> <a class="user-name" href=""> <span class="name"></span> <i class="iconfont-arrow-down-mini"></i> </a> <div class="user-menu-wrapper"> <ul class="user-menu"> <li><a href="#">个人中心</a></li> <li><a href="#">评价晒单</a></li> <li><a href="#">我的喜欢</a></li> <li><a href="#">小米账户</a></li> <li><a id="signOut" href="#">退出登录</a></li> </ul> </div> </span> <span class="sep">|</span> <a href="#" class="link link-order">我的订单</a> </span> <span class="c-login"><a class="link" href="/login.html">登录</a> <span class="sep">|</span> <a class="link" href="/login.html#register">注册</a></span> </div> </div> </div>';
 return new String($out);
 });/*v:1*/
 template('swiper2Item',function($data,$filename
