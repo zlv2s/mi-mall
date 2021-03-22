@@ -3,6 +3,7 @@ define(['axios', 'utils'], function (axios, utils) {
     baseURL: 'http://localhost:3030/api/mi-mall',
     timeout: 20000
   })
+
   request.interceptors.request.use(
     config => {
       // 请求前先判断本地是否有token，并加在请求头上
@@ -16,6 +17,7 @@ define(['axios', 'utils'], function (axios, utils) {
       return Promise.reject(error)
     }
   )
+
   request.interceptors.response.use(
     response => {
       return Promise.resolve(response.data)
@@ -32,11 +34,13 @@ define(['axios', 'utils'], function (axios, utils) {
           url: '/product/all'
         })
       },
+
       getCatList() {
         return request({
           url: '/product/catList'
         })
       },
+
       getDetail(id) {
         return request({
           url: `/product/${id}`
@@ -44,18 +48,20 @@ define(['axios', 'utils'], function (axios, utils) {
       }
     },
     cart: {
-      addToCart(data) {
+      addToCart({ goodsId, productId }) {
         return request({
           url: '/cart/add',
           method: 'post',
-          data
+          data: { goodsId, productId }
         })
       },
+
       getCartList() {
         return request({
           url: '/cart/getList'
         })
       },
+
       updateGoods({ goodsId = 'all', update }) {
         return request({
           url: `/cart/update/${goodsId}`,
@@ -63,15 +69,23 @@ define(['axios', 'utils'], function (axios, utils) {
           data: update
         })
       },
+
       deleteGoods(gid) {
         return request({
           url: `/cart/delete/${gid}`,
           method: 'delete'
         })
       },
+
       getCartRec(cid) {
         return request({
           url: `/cart/recom/${cid}`
+        })
+      },
+
+      getItem(gid) {
+        return request({
+          url: `/cart/getItem/${gid}`
         })
       }
     },

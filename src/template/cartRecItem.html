@@ -1,9 +1,9 @@
 {{each recomList as recom}}
-<li class="recommend-item" data-gid="{{recom.goods_list[0]}}">
+<li class="recommend-item" data-gid="{{recom.goods_list[0]}}" data-pid="{{recom.product_id}}">
   <a href="#">
     <img src="{{recom.image}}" alt="">
     <p class="recommend-name">{{recom.name}}</p>
-    <p class="recommend-price">{{recom.price}}</p>
+    <p class="recommend-price">{{recom.price}}元</p>
     <p class="recommend-tips">{{recom.comments}}人好评</p>
   </a>
   <div class="recommend-action">

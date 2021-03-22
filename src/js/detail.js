@@ -63,7 +63,9 @@ require(['config'], function () {
               num: 1
             })
             .then(res => {
-              go('/successTip.html')
+              go(
+                `/successTip.html?gid=${goodsItem.currentItem.goods_info.goods_id}`
+              )
             })
         })
 
