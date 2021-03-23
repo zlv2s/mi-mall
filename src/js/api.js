@@ -23,6 +23,10 @@ define(['axios', 'utils'], function (axios, utils) {
       return Promise.resolve(response.data)
     },
     err => {
+      console.log(err)
+      if (err.response.status === 401) {
+        utils.storage.clear()
+      }
       return Promise.reject(err)
     }
   )
@@ -162,6 +166,32 @@ define(['axios', 'utils'], function (axios, utils) {
         return request({
           url: `/user/address/${addressId}`,
           method: 'delete'
+        })
+      }
+    },
+
+    order: {
+      checkout() {
+        return request({
+          url: '/order/checkout',
+          method: 'post',
+          data: { action: 'checkout' }
+        })
+      },
+
+      setAddress(addressId) {
+        return request({
+          url: '/order/setAddress',
+          method: 'post',
+          data: { addressId }
+        })
+      },
+
+      confirmOrder() {
+        return request({
+          url: '/order/confirm',
+          method: 'post',
+          data: { action: 'confirm' }
         })
       }
     }

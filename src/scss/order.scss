@@ -1,0 +1,193 @@
+.page-main {
+  background: #f5f5f5;
+  padding: 38px 0;
+
+  .money {
+    color: #ff6700;
+    font-size: 14px;
+
+    em {
+      font-style: normal;
+      font-size: 24px;
+    }
+  }
+
+  .section {
+    padding: 30px 48px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    color: #424242;
+  }
+
+  .confirm-order {
+    .section-order {
+      padding-left: 183px;
+      position: relative;
+
+      .icon-right {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        position: absolute;
+        top: 40px;
+        left: 50px;
+        font-size: 80px;
+        color: #83c44e;
+        text-align: center;
+        border: 2px solid #83c44e;
+        border-radius: 42px;
+        overflow: hidden
+      }
+
+      .order-info {
+        padding: 20px 0;
+
+        .fl {
+          float: left
+        }
+
+        .fr {
+          float: right;
+          text-align: right
+        }
+
+        .title {
+          margin-bottom: 10px;
+          font-size: 24px;
+          font-weight: 400;
+          line-height: 36px
+        }
+
+        .order-time {
+          color: #616161;
+          margin-bottom: 5px;
+          line-height: 2
+        }
+
+        .order-time span.pay-time-tip {
+          margin: 0 5px;
+          color: #ff6700
+        }
+
+        .post-info {
+          color: #616161;
+          transition: height .3s ease
+        }
+
+        .post-info-hide {
+          visibility: hidden
+        }
+
+        .total {
+          margin-bottom: 10px;
+          color: #757575
+        }
+
+        .show-detail .iconfont {
+          font-size: 24px;
+          vertical-align: middle;
+          position: relative;
+          top: -2px
+        }
+
+
+      }
+
+      .order-detail {
+        height: 0;
+        overflow: hidden;
+        transition: height .3s;
+
+
+        ul {
+          padding: 20px 0 0 0;
+          margin-top: 10px;
+          border-top: 1px solid #e0e0e0
+        }
+
+        li {
+          line-height: 24px;
+          margin-bottom: 8px;
+          color: #333
+        }
+
+        .label {
+          float: left;
+          width: 85px
+        }
+
+        .content {
+          float: left
+        }
+
+        .content span {
+          display: block
+        }
+
+        .order-num {
+          color: #ff6700
+        }
+      }
+    }
+
+  }
+
+  .confirm-pay {
+    .cash-title {
+      height: 50px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 18px;
+    }
+
+    .payment-box {
+      margin-bottom: 30px;
+    }
+
+    .payment-header {
+      margin-bottom: 15px;
+
+      .title {
+        float: left;
+        font-size: 16px;
+        color: #616161;
+        margin: 0;
+        padding: 0;
+      }
+
+      .desc {
+        float: left;
+        margin-left: 10px;
+        margin-top: 6px;
+        font-size: 12px;
+        color: #b0b0b0;
+      }
+    }
+
+    .payment-list {
+      margin: 0 0 0 -14px;
+      padding: 0;
+      overflow: hidden;
+
+      li {
+        float: left;
+        width: 174px;
+        height: 60px;
+        line-height: 60px;
+        margin-left: 14px;
+        margin-bottom: 14px;
+        border: 1px solid #e0e0e0;
+        text-align: center;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all .4s;
+
+        &:hover {
+          border-color: #ff6700;
+        }
+      }
+    }
+
+  }
+
+}

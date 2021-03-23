@@ -4,7 +4,8 @@ require(['./config'], function () {
     'api',
     './js/template/template',
     'utils',
-    'common'
+    'common',
+    'footer'
   ], function ($, api, template, utils, { checkLogin, onLogin, go, modal }) {
     const checkout = {
       checkoutData: {},
@@ -163,6 +164,10 @@ require(['./config'], function () {
           const item = this
           $(this).addClass('active').siblings().removeClass('active')
 
+          ck.setAddress($(this).data().aid).then(res => {
+            console.log('setAddress', res)
+          })
+
           // 删除按钮
           if (e.target.id === 'del') {
             modal({
@@ -236,6 +241,10 @@ require(['./config'], function () {
             body: '<div class="alert-message">有钱吗？你就敢结账？？</div>',
             onConfirm() {
               console.log('继续结账')
+              ck.confirmOrder().then(res => {
+                console.log('confirmOrder', res)
+                go('/order.html')
+              })
             }
           })
         })
@@ -254,6 +263,14 @@ require(['./config'], function () {
       // 更新地址信息
       updateAddress({ addressId, update }) {
         return api.user.updateAddress({ addressId, update })
+      },
+
+      setAddress(addressId) {
+        return api.order.setAddress(addressId)
+      },
+
+      confirmOrder() {
+        return api.order.confirmOrder()
       },
 
       getFormData() {

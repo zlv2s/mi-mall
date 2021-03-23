@@ -119,8 +119,12 @@ require(['./config'], function () {
       })
     }
 
+    // 结算
     $('#checkout').click(function () {
-      go('/checkout.html')
+      api.order.checkout().then(res => {
+        console.log(res)
+        go('/checkout.html')
+      })
     })
 
     function render(cartList) {
