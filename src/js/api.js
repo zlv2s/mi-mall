@@ -134,6 +134,35 @@ define(['axios', 'utils'], function (axios, utils) {
 
       signOut() {
         return Promise.resolve(utils.storage.clear())
+      },
+
+      addAddress(data) {
+        return request({
+          url: '/user/addAddress',
+          method: 'post',
+          data
+        })
+      },
+
+      getAddressList() {
+        return request({
+          url: '/user/addressList'
+        })
+      },
+
+      updateAddress({ addressId, update }) {
+        return request({
+          url: `/user/address/${addressId}`,
+          method: 'post',
+          data: update
+        })
+      },
+
+      delAddress(addressId) {
+        return request({
+          url: `/user/address/${addressId}`,
+          method: 'delete'
+        })
       }
     }
   }

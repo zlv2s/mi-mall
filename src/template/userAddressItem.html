@@ -1,0 +1,26 @@
+{{each userAddressList as addressItem}}
+<div class="address-item" data-aid="{{addressItem.addressId}}">
+  <div class="address-info">
+    <div class="name">{{addressItem.consignee}}<span style="color: rgb(176, 176, 176);">{{addressItem.tag_name}}</span>
+    </div>
+    <div class="tel">{{addressItem.telephone}}</div>
+    <div class="address-con">
+      <span>{{addressItem.province_name}}</span>
+      <span>{{addressItem.city_name}}</span>
+      <span>{{addressItem.district_name}}</span>
+      <span>{{addressItem.area_name}}</span>
+      <span class="info">{{addressItem.address}}</span>
+    </div>
+    <div class="address-action">
+      <span id="edit">修改</span>
+      <span id="del">删除</span>
+    </div>
+  </div>
+  <div class="address-info-solt" style="display: none;"></div>
+</div>
+{{/each}}
+
+<div class="address-item address-new">
+  <i class="iconfont">&#xe609;</i>
+  添加新地址
+</div>

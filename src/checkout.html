@@ -16,55 +16,45 @@
 </head>
 
 <body>
-  <div class="checkout">
+  <div class="page-main">
     <div class="container">
-      <div class="checkout-box">
-        <div class="checkout-address clearfix">
-          <p class="address-header">收货地址</p>
-          <div class="address-body">
-            <!-- 有select时候才会修改字样 -->
-            <div class="address-item ">
-              <dl>
-                <dt class="recipient"></dt>
-                <dd class="phone"></dd>
-                <dd class="area"></dd>
-                <dd class="address"></dd>
-              </dl>
-              <div class="actions"><a href="javascript:;">修改</a></div>
-            </div>
+      <div class="checkout-wrap">
+        <div class="checkout-main">
+          <div class="checkout-address clearfix">
+            <p class="address-header">
+              <span class="c-title">收货地址</span>
+            </p>
+            <div class="address-body">
 
 
-            <div class="address-item address-new">
-              <i class="iconfont">&#xe609;</i>
-              添加新地址
             </div>
           </div>
-        </div>
-        <div class="checkout-goods">
-          <p class="goods-header">商品</p>
-          <div class="goods-body">
-            <ul class="goods-list clearfix">
+          <div class="checkout-goods">
+            <p class="goods-header c-title">商品</p>
+            <div class="goods-body">
+              <ul class="goods-list clearfix">
 
-            </ul>
-          </div>
-        </div>
-        <div class="section-options section-shipment">
-          <div class="options-desc options-header">
-            <div class="title">配送方式</div>
-          </div>
-          <div class="options-desc options-body">
-            <div class="options-list">
-              <div class="options-item selected">快递配送（运费 10 元）</div>
+              </ul>
             </div>
           </div>
-        </div>
-        <div class="checkout-count clearfix">
+          <div class="section-options section-shipment">
+            <div class="options-desc options-header">
+              <div class="title c-title">配送方式</div>
+            </div>
+            <div class="options-desc options-body">
+              <div class="options-list">
+                <div class="options-item selected">快递配送（运费 10 元）</div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout-count clearfix">
 
-        </div>
-        <div class="checkout-bar clearfix">
-          <div class="handle-action">
-            <a href="javascript:;" class="btn btn-primary btn-r" id="checkout">去结算</a>
-            <a href="javascript:void(0);" class="btn btn-return btn-r" id="return">返回购物车</a>
+          </div>
+          <div class="checkout-bar clearfix">
+            <div class="handle-action">
+              <a href="javascript:;" class="btn btn-primary btn-r" id="checkout">去结算</a>
+              <a href="javascript:void(0);" class="btn btn-return btn-r" id="return">返回购物车</a>
+            </div>
           </div>
         </div>
       </div>
@@ -72,62 +62,7 @@
   </div>
 
 
-  <div class="edit-bg" style="display:none;"></div>
-  <div class="edit-address" style="display:none;">
-    <div class="edit-header">
-      <span class="title">添加收获地址</span>
-      <a href="javascript:void(0);" class="close"><i class="iconfont">&#xe602;</i></a>
-    </div>
-    <div class="edit-body">
-      <form class="body-form clearfix">
-        <input type="hidden" name="address_id">
-        <!--隐藏的address_id,当编辑地址并向后台发送数据时，需要用到-->
-        <div class="form-section form-name">
-          <!-- <label for="user_name">姓名</label> -->
-          <input type="text" name="recipient" class="input-text name-input" value=" " placeholder="收货人姓名">
-        </div>
-        <div class="form-section form-phone">
-          <!-- <label for="user_phone">手机号</label> -->
-          <input type="text" name="phone" class="input-text phone-input" value=" " placeholder="手机号">
-        </div>
-        <div class="form-section form-area">
-          <input type="text" name="area" class="input-text area-input" value="" placeholder="选择省 / 市 / 区 / 街道">
-        </div>
-        <div class="form-section form-detail">
-          <!-- <label for="user_detail">详细地址</label> -->
-          <textarea type="textarea" name="address" class="input-text detail-input"
-            placeholder="详细地址，路名或街道名称，门牌号"> </textarea>
-        </div>
 
-
-      </form>
-
-      <div class="form-select" style="display:none">
-        <span class="select-close">x</span>
-        <div class="select-box clearfix">
-          <div class="select-item" data-init-txt="选择省份/自治区">选择省份/自治区</div>
-          <div class="select-item hidden" data-init-txt="选择城市/地区">选择城市/地区</div>
-          <div class="select-item hidden" data-init-txt="选择区县">选择区县</div>
-          <!-- <div class="select-item hidden" data-init-txt="选择配送区域">选择配送区域</div> -->
-        </div>
-        <div class="option-box">
-          <ul class="option-list clearfix province">
-            <li class="addr-tpl" data-value="" data-txt=""></li>
-          </ul>
-          <ul class="option-list clearfix hidden city">
-
-          </ul>
-          <ul class="option-list clearfix hidden district">
-
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="edit-footer">
-      <a href="javascript:void(0);" class="btn btn-primary confirm">保存</a>
-      <a href="javascript:void(0);" class="btn btn-gray close ">取消</a>
-    </div>
-  </div>
 
 
   <div class="mi-popup"></div>

@@ -424,7 +424,21 @@ $out+=' ';
 });
 return new String($out);
 });/*v:1*/
-template('formBody','<div class="form-body"> <div class="item"> <div class="col mr mi-input"> <label class="input-label" for="name">姓名</label> <input name="name" type="text" class="input-text"> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> <div class="col mi-input"> <label for="telephone" class="input-label">手机号</label> <input name="telephone" type="text" class="input-text"> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> </div> <div class="item address-info-box"> <div class="col mi-input"> <label class="input-label" for="address"></label> <input type="text" name="address" placeholder="选择省 / 市 / 区 / 街道" readonly="readonly" maxlength="" autocomplete="off" class="input-text show-placeholder"> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> <i class="iconfont iconfont-arrow-down-small"></i> <div class="address-select-box"> <div class="con"> <i class="iconfont iconfont-close-small"></i> <div class="search-address"> <i class="iconfont iconfont-search"></i> <div class="col search-input mi-input "> <label for="search" class="input-label"></label> <input type="text" name="search" placeholder="输入街道、乡镇、小区或商圈名称" maxlength="" autocomplete="off" class="input-text show-placeholder" style="height: 44px; padding-left: 45px;"> <i class="iconfont iconfont-circle-close clear"></i> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> <div class="search-example">例如：北京 华润五彩城</div> <div class="result-box"> <div class="result-list">  </div> </div> </div>  </div> </div> </div> <div class="item"> <div class="col mi-input"> <label class="input-label" for="addressInfo">详细地址</label> <textarea name="addressInfo" placeholder="详细地址，路名或街道名称，门牌号" maxlength="" autocomplete="off" class="input-text"></textarea> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> </div> <div class="item"> <div class="col mi-input"> <label class="input-label" for="addresstag">地址标签</label> <input type="text" name="addresstag" placeholder="如&quot;家&quot;、&quot;公司&quot;。限5个字内" maxlength="" autocomplete="off" class="input-text "> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> </div> </div>');/*v:1*/
+template('formBody',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,address=$data.address,$out='';$out+='<div class="form-body"> <div class="item"> <div class="col mr mi-input"> <label class="input-label" for="name">姓名</label> <input name="name" type="text" class="input-text" value="';
+$out+=$escape(address ? address.consignee : '');
+$out+='"> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> <div class="col mi-input"> <label for="telephone" class="input-label">手机号</label> <input name="telephone" type="text" class="input-text" value="';
+$out+=$escape(address ? address.telephone : '');
+$out+='"> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> </div> <div class="item address-info-box"> <div class="col mi-input"> <label class="input-label" for="address"></label> <input type="text" name="address" placeholder="选择省 / 市 / 区 / 街道" readonly="readonly" maxlength="" autocomplete="off" class="input-text show-placeholder" value="';
+$out+=$escape(address ? address.province_name + ' ' + address.city_name + ' ' + address.district_name + ' ' + address.area_name : '');
+$out+='"> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> <i class="iconfont iconfont-arrow-down-small"></i> <div class="address-select-box"> <div class="con"> <i class="iconfont iconfont-close-small"></i> <div class="search-address"> <i class="iconfont iconfont-search"></i> <div class="col search-input mi-input "> <label for="search" class="input-label"></label> <input type="text" name="search" placeholder="输入街道、乡镇、小区或商圈名称" maxlength="" autocomplete="off" class="input-text show-placeholder" style="height: 44px; padding-left: 45px;"> <i class="iconfont iconfont-circle-close clear"></i> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> <div class="search-example">例如：北京 华润五彩城</div> <div class="result-box"> <div class="result-list"> </div> </div> </div> </div> </div> </div> <div class="item"> <div class="col mi-input"> <label class="input-label" for="addressInfo">详细地址</label> <textarea name="addressInfo" placeholder="详细地址，路名或街道名称，门牌号" maxlength="" autocomplete="off" class="input-text">';
+$out+=$escape(address ? address.address : '');
+$out+='</textarea> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> </div> <div class="item"> <div class="col mi-input"> <label class="input-label" for="addresstag">地址标签</label> <input type="text" name="addresstag" placeholder="如&quot;家&quot;、&quot;公司&quot;。限5个字内" maxlength="" autocomplete="off" class="input-text" value="';
+$out+=$escape(address ? address.tag_name : '');
+$out+='"> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> </div> </div>';
+return new String($out);
+});/*v:1*/
 template('mi-popup',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,title=$data.title,$string=$utils.$string,body=$data.body,$out='';$out+='<div class="mi-popup__mask"> </div> <div class="mi-popup__box"> <div class="mi-popup__header"> <span class="title">';
@@ -499,6 +513,32 @@ $out+=' <div class="swiper-slide"><img src=';
 $out+=$escape(swiperItem.imgUrl);
 $out+=' /></div> ';
 });
+return new String($out);
+});/*v:1*/
+template('userAddressItem',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,userAddressList=$data.userAddressList,addressItem=$data.addressItem,$index=$data.$index,$escape=$utils.$escape,$out='';$each(userAddressList,function(addressItem,$index){
+$out+=' <div class="address-item" data-aid="';
+$out+=$escape(addressItem.addressId);
+$out+='"> <div class="address-info"> <div class="name">';
+$out+=$escape(addressItem.consignee);
+$out+='<span style="color: rgb(176, 176, 176);">';
+$out+=$escape(addressItem.tag_name);
+$out+='</span> </div> <div class="tel">';
+$out+=$escape(addressItem.telephone);
+$out+='</div> <div class="address-con"> <span>';
+$out+=$escape(addressItem.province_name);
+$out+='</span> <span>';
+$out+=$escape(addressItem.city_name);
+$out+='</span> <span>';
+$out+=$escape(addressItem.district_name);
+$out+='</span> <span>';
+$out+=$escape(addressItem.area_name);
+$out+='</span> <span class="info">';
+$out+=$escape(addressItem.address);
+$out+='</span> </div> <div class="address-action"> <span id="edit">修改</span> <span id="del">删除</span> </div> </div> <div class="address-info-solt" style="display: none;"></div> </div> ';
+});
+$out+=' <div class="address-item address-new"> <i class="iconfont">&#xe609;</i> 添加新地址 </div>';
 return new String($out);
 });
 
