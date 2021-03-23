@@ -179,13 +179,10 @@ require(['./config'], function () {
 
           // 编辑按钮
           if (e.target.id === 'edit') {
-            console.log('edit...')
             const address = ck.userAddressList.find(
               x => x.addressId === $(this).data().aid
             )
-            console.log(address)
-
-            // 将选中地址信息存入localStorage
+            // 将选中地址信息，先转换数据形式再存入 localStorage，以便于 getFormData 使用
             utils.storage.set('address', ck.transformObj(address))
 
             modal({
@@ -206,14 +203,6 @@ require(['./config'], function () {
             $('.input-text').each(function (idx, ele) {
               $(ele).trigger('blur')
             })
-
-            // const update = {}
-            // ck.updateAddress({
-            //   addressId: $(this).data().aid,
-            //   update
-            // }).then(res => {
-            //   console.log(res)
-            // })
           }
         })
       },
@@ -295,23 +284,6 @@ require(['./config'], function () {
       },
       // 提交表单数据
       sendFormData(formData) {
-        // console.log(utils.storage.get('address'))
-        // const { province, city, district, area } = utils.storage.get('address')
-        // const data = {
-        //   consignee: this.getInputVal('name'),
-        //   telephone: this.getInputVal('telephone'),
-        //   tag_name: this.getInputVal('addresstag'),
-        //   address: this.getInputVal('addressInfo'),
-        //   province_name: province.name,
-        //   city_name: city.name,
-        //   district_name: district.name,
-        //   area_name: area.name,
-        //   province_id: province.id,
-        //   city_id: city.id,
-        //   district_id: district.id,
-        //   area_id: area.id
-        // }
-
         api.user.addAddress(formData).then(res => {
           console.log(res)
           this.getUserAddressList()
