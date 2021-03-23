@@ -44,48 +44,28 @@
           <p class="goods-header">商品</p>
           <div class="goods-body">
             <ul class="goods-list clearfix">
-              <li class="clearfix">
-                <div class="goods-img"><img src="" alt=""></div>
-                <div class="goods-name"><a href="#"></a></div>
-                <div class="goods-price"></div>
-                <div class="goods-total"></div>
-              </li>
 
             </ul>
           </div>
         </div>
-        <div class="checkout-count clearfix">
-          <div class="count-box">
-            <ul>
-              <li>
-                <label>商品件数：</label>
-                <span><span class="total-quantity"></span>件</span>
-              </li>
-              <li>
-                <label>商品总价：</label>
-                <span class="total-price"><span class="price"></span>元</span>
-              </li>
-              <li>
-                <label>活动优惠：</label>
-                <span>-0元</span>
-              </li>
-              <li>
-                <label>优惠券抵扣：</label>
-                <span>-0元</span>
-              </li>
-              <li>
-                <label>运费：</label>
-                <span>0元</span>
-              </li>
-              <li class="total-price">
-                <label>应付总额：</label>
-                <span><em class="price">4898</em>元</span>
-              </li>
-            </ul>
+        <div class="section-options section-shipment">
+          <div class="options-desc options-header">
+            <div class="title">配送方式</div>
+          </div>
+          <div class="options-desc options-body">
+            <div class="options-list">
+              <div class="options-item selected">快递配送（运费 10 元）</div>
+            </div>
           </div>
         </div>
+        <div class="checkout-count clearfix">
+
+        </div>
         <div class="checkout-bar clearfix">
-          <div class="bar-btn"><a href="javascript:;" id="checkout">去结算</a></div>
+          <div class="handle-action">
+            <a href="javascript:;" class="btn btn-primary btn-r" id="checkout">去结算</a>
+            <a href="javascript:void(0);" class="btn btn-return btn-r" id="return">返回购物车</a>
+          </div>
         </div>
       </div>
     </div>
@@ -149,6 +129,8 @@
     </div>
   </div>
 
+
+  <div class="mi-popup"></div>
 
   <script data-main="./js/checkout.js" src="./lib/require.js"></script>
 

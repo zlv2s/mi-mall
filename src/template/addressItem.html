@@ -1,0 +1,11 @@
+<ul>
+  {{each addressList as item}}
+  <li data-adcode="{{item.adcode}}" data-location="{{item.location}}">
+    <div class="item-info">
+      <div class="address-name">{{item.name}}</div>
+      <div class="address-desc">{{item.pname}} {{item.cityname}} {{item.adname}}</div>
+    </div>
+    <a class="btn btn-primary btn-small">选择</a>
+  </li>
+  {{/each}}
+</ul>

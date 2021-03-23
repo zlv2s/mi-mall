@@ -1,0 +1,8 @@
+{{each checkoutList as checkoutItem}}
+<li class="clearfix">
+  <div class="goods-img"><img src="{{checkoutItem.img_url}}" alt=""></div>
+  <div class="goods-name"><a href="#">{{checkoutItem.name}}</a></div>
+  <div class="goods-price">{{checkoutItem.price}}元 x {{checkoutItem.num}}</div>
+  <div class="goods-total">{{checkoutItem.totalPrice}}元</div>
+</li>
+{{/each}}

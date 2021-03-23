@@ -93,6 +93,20 @@ define(['axios', 'utils'], function (axios, utils) {
         return request({
           url: '/cart/checkout'
         })
+      },
+
+      searchAddress(keywords) {
+        return request({
+          url: '/cart/searchAddress',
+          params: { keywords }
+        })
+      },
+
+      getAreaInfo({ adcode, location }) {
+        return request({
+          url: '/cart/getAreaInfo',
+          params: { adcode, location }
+        })
       }
     },
     user: {

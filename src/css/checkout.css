@@ -5,6 +5,16 @@
   background: #f5f5f5;
 }
 
+.btn-r {
+  float: right;
+  margin-left: 30px;
+  vertical-align: top;
+}
+
+.handle-action {
+  float: right;
+}
+
 .checkout-box {
   padding: 48px;
   background-color: #fff;
@@ -200,26 +210,48 @@ input {
   padding: 20px 0;
 }
 
-.checkout-bar .bar-btn {
-  float: right;
+.section-options {
+  padding: 25px 0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.checkout-bar .bar-btn a {
+.options-desc {
   display: inline-block;
-  width: 158px;
-  height: 38px;
-  /* margin-left: 30px; */
-  vertical-align: top;
-  background: #ff6700;
-  color: #fff;
-  font-size: 14px;
-  line-height: 38px;
-  text-align: center;
-  border: 1px solid #ff6700;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.checkout-bar .bar-btn a:hover {
-  background: #e53935;
+.options-header {
+  width: 150px;
+}
+
+.options-header .title {
+  color: #333;
+  font-size: 18px;
+  line-height: 38px;
+}
+
+.options-list {
+  width: 960px;
+}
+
+.options-list a {
+  cursor: pointer;
+}
+
+.options-list .options-item {
+  display: inline-block;
+  height: 38px;
+  line-height: 38px;
+  margin-right: 14px;
+  border: 1px solid #fff;
+  color: #333;
+}
+
+.options-list .selected {
+  border-color: #fff;
+  color: #ff6700;
 }
 
 /* 编辑地址 */
@@ -457,4 +489,245 @@ input {
 .edit-body .form-select .option-box li:hover {
   color: #ff6700;
   text-decoration: underline;
+}
+
+.form-body .item {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.form-body .mi-input {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: left;
+}
+
+.form-body .mi-input .input-label {
+  position: absolute;
+  left: 12px;
+  top: 11px;
+  z-index: 2;
+  padding: 0 3px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #b0b0b0;
+  background: rgba(0, 0, 0, 0);
+  cursor: text;
+  transition: all .2s linear;
+}
+
+.form-body .mi-input textarea.input-text {
+  height: 5em;
+  resize: vertical;
+}
+
+.form-body .mi-input .input-text {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  border: 1px solid #e0e0e0;
+  font-size: 14px;
+  line-height: 18px;
+  background: #fff;
+  transition: border-color .2s linear;
+}
+
+.form-body .mi-input .input-text::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.form-body .mi-input .input-text:hover {
+  border-color: #b0b0b0;
+}
+
+.form-body .mi-input .input-text:focus {
+  outline: 0;
+}
+
+.form-body .mi-input.mi-input-focus .input-text::-webkit-input-placeholder {
+  color: #b0b0b0;
+  transition: color .2s linear .2s;
+}
+
+.form-body .mi-input.mi-input-focus .input-text {
+  border-color: #ff6700;
+  color: #333;
+}
+
+.form-body .mi-input.mi-input-focus .input-label {
+  color: #ff6700;
+}
+
+.form-body .mi-input.mi-input-focus .msg-error {
+  display: block\9;
+  visibility: visible;
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+.form-body .mi-input.mi-input-active .input-label {
+  top: -7px;
+  font-size: 12px;
+  background: #fff;
+}
+
+.form-body .mi-input.mi-input-active .icon-error {
+  color: #e53935;
+}
+
+.form-body .address-info-box {
+  position: relative;
+  display: block;
+}
+
+.form-body .address-info-box .show-placeholder::placeholder {
+  color: #757575;
+}
+
+.form-body .address-info-box .address-select-box {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  padding-top: 15px;
+  border: 1px solid #ff6700;
+  z-index: 3;
+}
+
+.form-body .address-info-box .address-select-box .con {
+  margin: 0 20px;
+}
+
+.form-body .address-info-box .address-select-box .con .iconfont-close-small {
+  position: absolute;
+  top: 10px;
+  right: 6px;
+  width: 24px;
+  color: #b0b0b0;
+  cursor: pointer;
+  line-height: 1;
+  text-align: center;
+  font-size: 20px;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address {
+  position: relative;
+  padding-top: 30px;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .iconfont-search {
+  position: absolute;
+  font-size: 26px;
+  line-height: 1;
+  text-align: center;
+  transform: translate3d(10px, 10px, 0);
+  color: #b2b2b2;
+  z-index: 2;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .search-input {
+  height: 44px;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .search-input input {
+  height: 44px;
+  padding-left: 45px;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .search-input .clear {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  font-size: 14px;
+  transform: translate3d(0, -50%, 0);
+  line-height: 1;
+  color: #b0b0b0;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .search-input .clear.show {
+  display: block;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .search-example {
+  padding: 10px 0;
+  color: #b0b0b0;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .result-list {
+  background-color: #fff;
+  height: 260px;
+  overflow: auto;
+  display: none;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .result-list ul {
+  margin: 0 0 -1px 0;
+  padding: 0;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .result-list ul li {
+  padding: 10px 0;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all .3s;
+  overflow: hidden;
+  display: flex;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .result-list ul li:hover .btn {
+  right: 20px;
+  opacity: 1;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .result-list ul li .address-name {
+  color: #333;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .result-list ul li .address-desc {
+  font-size: 12px;
+  color: #b0b0b0;
+  flex: 1;
+}
+
+.form-body .address-info-box .address-select-box .con .search-address .result-list ul li .btn {
+  position: absolute;
+  top: 50%;
+  right: -110px;
+  width: 100px;
+  height: 32px;
+  line-height: 32px;
+  margin-top: -17px;
+  opacity: 0;
+  transition: all .3s;
+}
+
+.form-body .address-info-box .address-select-box .con .oper-box {
+  padding: 20px 0;
+  border-top: 1px solid #e0e0e0;
+  color: #b0b0b0;
+}
+
+.form-body .address-info-box .iconfont-arrow-down-small {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  height: 24px;
+  line-height: 24px;
+  margin-top: -12px;
+  font-size: 24px;
+  color: #b0b0b0;
+}
+
+.form-body .col {
+  flex: 1;
+}
+
+.form-body .mr {
+  margin-right: 14px !important;
 }

@@ -111,7 +111,7 @@ function compileTemplate() {
   //       .pipe(
   //         replace('var String = this.String;', 'var String = window.String;')
   //       )
-  //       .pipe(replace('D:/qf/javascript/exe/mi-mall/src/template/', ''))
+  //       .pipe(replace('D:/qf/javascript/exe/mi-mall/src/template/', '')) // 会生成绝对路径
   //       .pipe(dest('src/js/template'))
   //   )
   // })

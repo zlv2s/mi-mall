@@ -101,7 +101,7 @@ define({
    * @param { Number } t 防抖时间 单位ms
    * @return { Function }
    */
-  debounce(fn, t = 1000) {
+  debounce(fn, t = 1000, context = null) {
     if (typeof fn !== 'function') {
       console.log('in debounce,first argument must be Function')
       return
@@ -117,7 +117,7 @@ define({
         return
       }
       time = setTimeout(() => {
-        fn.apply(this, arg)
+        fn.apply(context, arg)
         time = null
       }, t)
     }

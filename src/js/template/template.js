@@ -175,6 +175,27 @@
     if (typeof define === 'function') {define(function() {return template;});} else if (typeof exports !== 'undefined') {module.exports = template;} else {this.template = template;}
     
     /*v:1*/
+template('addressItem',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,addressList=$data.addressList,item=$data.item,$index=$data.$index,$escape=$utils.$escape,$out='';$out+='<ul> ';
+$each(addressList,function(item,$index){
+$out+=' <li data-adcode="';
+$out+=$escape(item.adcode);
+$out+='" data-location="';
+$out+=$escape(item.location);
+$out+='"> <div class="item-info"> <div class="address-name">';
+$out+=$escape(item.name);
+$out+='</div> <div class="address-desc">';
+$out+=$escape(item.pname);
+$out+=' ';
+$out+=$escape(item.cityname);
+$out+=' ';
+$out+=$escape(item.adname);
+$out+='</div> </div> <a class="btn btn-primary btn-small">选择</a> </li> ';
+});
+$out+=' </ul>';
+return new String($out);
+});/*v:1*/
 template('cartItem',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,cartItems=$data.cartItems,item=$data.item,$index=$data.$index,$escape=$utils.$escape,$out='';$each(cartItems,function(item,$index){
@@ -232,6 +253,40 @@ $out+='> ';
 $out+=$escape($value.value);
 $out+=' </a> </li> ';
 });
+return new String($out);
+});/*v:1*/
+template('checkoutItem',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,checkoutList=$data.checkoutList,checkoutItem=$data.checkoutItem,$index=$data.$index,$escape=$utils.$escape,$out='';$each(checkoutList,function(checkoutItem,$index){
+$out+=' <li class="clearfix"> <div class="goods-img"><img src="';
+$out+=$escape(checkoutItem.img_url);
+$out+='" alt=""></div> <div class="goods-name"><a href="#">';
+$out+=$escape(checkoutItem.name);
+$out+='</a></div> <div class="goods-price">';
+$out+=$escape(checkoutItem.price);
+$out+='元 x ';
+$out+=$escape(checkoutItem.num);
+$out+='</div> <div class="goods-total">';
+$out+=$escape(checkoutItem.totalPrice);
+$out+='元</div> </li> ';
+});
+return new String($out);
+});/*v:1*/
+template('countBox',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,countData=$data.countData,$out='';$out+='<div class="count-box"> <ul> <li> <label>商品件数：</label> <span><span class="total-quantity">';
+$out+=$escape(countData.totalCount);
+$out+='</span>件</span> </li> <li> <label>商品总价：</label> <span class="total-price"><span class="price">';
+$out+=$escape(countData.goodsTotal);
+$out+='</span>元</span> </li> <li> <label>活动优惠：</label> <span>-';
+$out+=$escape(countData.discount);
+$out+='元</span> </li> <li> <label>优惠券抵扣：</label> <span>-';
+$out+=$escape(countData.coupon);
+$out+='元</span> </li> <li> <label>运费：</label> <span>';
+$out+=$escape(countData.shipFee);
+$out+='元</span> </li> <li class="total-price"> <label>应付总额：</label> <span><em class="price">';
+$out+=$escape(countData.grandTotalPrice);
+$out+='</em>元</span> </li> </ul> </div>';
 return new String($out);
 });/*v:1*/
 template('detail',function($data,$filename
@@ -369,6 +424,7 @@ $out+=' ';
 });
 return new String($out);
 });/*v:1*/
+template('formBody','<div class="form-body"> <div class="item"> <div class="col mr mi-input"> <label class="input-label" for="name">姓名</label> <input name="name" type="text" class="input-text"> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> <div class="col mi-input"> <label for="telephone" class="input-label">手机号</label> <input name="telephone" type="text" class="input-text"> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> </div> <div class="item address-info-box"> <div class="col mi-input"> <label class="input-label" for="address"></label> <input type="text" name="address" placeholder="选择省 / 市 / 区 / 街道" readonly="readonly" maxlength="" autocomplete="off" class="input-text show-placeholder"> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> <i class="iconfont iconfont-arrow-down-small"></i> <div class="address-select-box"> <div class="con"> <i class="iconfont iconfont-close-small"></i> <div class="search-address"> <i class="iconfont iconfont-search"></i> <div class="col search-input mi-input "> <label for="search" class="input-label"></label> <input type="text" name="search" placeholder="输入街道、乡镇、小区或商圈名称" maxlength="" autocomplete="off" class="input-text show-placeholder" style="height: 44px; padding-left: 45px;"> <i class="iconfont iconfont-circle-close clear"></i> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> <div class="search-example">例如：北京 华润五彩城</div> <div class="result-box"> <div class="result-list">  </div> </div> </div>  </div> </div> </div> <div class="item"> <div class="col mi-input"> <label class="input-label" for="addressInfo">详细地址</label> <textarea name="addressInfo" placeholder="详细地址，路名或街道名称，门牌号" maxlength="" autocomplete="off" class="input-text"></textarea> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> </div> <div class="item"> <div class="col mi-input"> <label class="input-label" for="addresstag">地址标签</label> <input type="text" name="addresstag" placeholder="如&quot;家&quot;、&quot;公司&quot;。限5个字内" maxlength="" autocomplete="off" class="input-text "> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> </div> </div>');/*v:1*/
 template('mi-popup',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,title=$data.title,$string=$utils.$string,body=$data.body,$out='';$out+='<div class="mi-popup__mask"> </div> <div class="mi-popup__box"> <div class="mi-popup__header"> <span class="title">';
@@ -412,7 +468,7 @@ template('subHeader',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,title=$data.title,$out='';$out+='<div class="sub-header"> <div class="container"> <div class="header-logo"> <a href="/" class="logo ir">小米官网</a> </div> <div class="header-title"> <h2>';
 $out+=$escape(title);
-$out+='</h2> <p>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</p> </div> <div class="header-info"> <span class="c-user"> <span class="user"> <a class="user-name" href=""> <span class="name"></span> <i class="iconfont-arrow-down-mini"></i> </a> <div class="user-menu-wrapper"> <ul class="user-menu"> <li><a href="#">个人中心</a></li> <li><a href="#">评价晒单</a></li> <li><a href="#">我的喜欢</a></li> <li><a href="#">小米账户</a></li> <li><a id="signOut" href="#">退出登录</a></li> </ul> </div> </span> <span class="sep">|</span> <a href="#" class="link link-order">我的订单</a> </span> <span class="c-login"><a class="link" href="/login.html">登录</a> <span class="sep">|</span> <a class="link" href="/login.html#register">注册</a></span> </div> </div> </div>';
+$out+='</h2> <p>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</p> </div> <div class="header-info"> <span class="c-user"> <span class="user"> <a class="user-name" href=""> <span class="name"></span> <i class="iconfont-arrow-down-mini"></i> </a> <div class="user-menu-wrapper"> <ul class="user-menu"> <li><a href="#">个人中心</a></li> <li><a href="#">评价晒单</a></li> <li><a href="#">我的喜欢</a></li> <li><a href="#">小米账户</a></li> <li><a id="signOut" href="javascript:void(0);">退出登录</a></li> </ul> </div> </span> <span class="sep">|</span> <a href="#" class="link link-order">我的订单</a> </span> <span class="c-login"><a class="link" href="/login.html">登录</a> <span class="sep">|</span> <a class="link" href="/login.html#register">注册</a></span> </div> </div> </div>';
 return new String($out);
 });/*v:1*/
 template('swiper2Item',function($data,$filename

@@ -1,0 +1,28 @@
+<div class="count-box">
+  <ul>
+    <li>
+      <label>商品件数：</label>
+      <span><span class="total-quantity">{{countData.totalCount}}</span>件</span>
+    </li>
+    <li>
+      <label>商品总价：</label>
+      <span class="total-price"><span class="price">{{countData.goodsTotal}}</span>元</span>
+    </li>
+    <li>
+      <label>活动优惠：</label>
+      <span>-{{countData.discount}}元</span>
+    </li>
+    <li>
+      <label>优惠券抵扣：</label>
+      <span>-{{countData.coupon}}元</span>
+    </li>
+    <li>
+      <label>运费：</label>
+      <span>{{countData.shipFee}}元</span>
+    </li>
+    <li class="total-price">
+      <label>应付总额：</label>
+      <span><em class="price">{{countData.grandTotalPrice}}</em>元</span>
+    </li>
+  </ul>
+</div>

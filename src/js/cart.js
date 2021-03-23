@@ -5,18 +5,11 @@ require(['./config'], function () {
     './js/template/template',
     'utils',
     'common'
-  ], function (
-    $,
-    api,
-    template,
-    utils,
-    { checkLogin, handleLogin, modal, go }
-  ) {
-    $.subscribe('login', handleLogin())
-
+  ], function ($, api, template, utils, { checkLogin, onLogin, modal, go }) {
     $('body').prepend(template('subHeader', { title: '我的购物车' }))
 
     if (checkLogin()) {
+      onLogin()
       selectAll()
       init()
     }
@@ -123,13 +116,6 @@ require(['./config'], function () {
             console.log(res)
             init()
           })
-      })
-
-      // 点击退出
-      $('#signOut').click(function () {
-        api.user.signOut().then(() => {
-          location.reload()
-        })
       })
     }
 

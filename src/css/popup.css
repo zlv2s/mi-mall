@@ -22,7 +22,6 @@
 .mi-popup__box {
   z-index: 9999;
   width: 660px;
-  height: 200px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -31,7 +30,6 @@
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .mi-popup__box .mi-popup__header {
@@ -81,4 +79,8 @@
   border-top: 1px solid #e0e0e0;
   text-align: center;
   background-color: #f5f5f5;
+}
+
+.mi-popup__box .mi-popup__footer button {
+  margin: 0 7px;
 }

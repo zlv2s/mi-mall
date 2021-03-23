@@ -2,7 +2,7 @@ define(['jquery', 'api', 'utils', 'common'], function (
   $,
   api,
   utils,
-  { checkLogin, handleLogin }
+  { checkLogin, onLogin, onLogout }
 ) {
   const header = `
 <div class="site-topbar">
@@ -151,13 +151,17 @@ define(['jquery', 'api', 'utils', 'common'], function (
 </div>
 `
 
-  $.subscribe('login', handleLogin())
+  // $.subscribe('login', handleLogin())
 
   // 获取全部分类数据
   api.product.getCatList().then(res => {
     renderHeader(res.data)
+    console.log(checkLogin())
     if (checkLogin()) {
+      onLogin()
       renderCartCount()
+    } else {
+      onLogout()
     }
 
     // 用户名悬停下拉显示
@@ -169,13 +173,6 @@ define(['jquery', 'api', 'utils', 'common'], function (
         $(this).removeClass('user-active')
       }
     )
-
-    // 点击退出
-    $('#signOut').click(function () {
-      api.user.signOut().then(() => {
-        location.reload()
-      })
-    })
   })
 
   // 更新购物车数量显示
@@ -225,40 +222,4 @@ define(['jquery', 'api', 'utils', 'common'], function (
     $('body').prepend($(header))
     $('.category-list').append(renderCategory(categoryList))
   }
-
-  // function checkLogin() {
-  //   const user = utils.storage.get('user')
-  //   if (user) {
-  //     $.publish('login', user)
-  //   } else {
-  //     $('.user').hide()
-  //     $('.topbar-info .link:last').hide()
-  //   }
-
-  // if (user) {
-  //   $('span.user')
-  //     .find('.name')
-  //     .text(user.userInfo.username)
-  //     .parents('.user')
-  //     .show()
-  //   $('.topbar-info .link:not(:last)').hide()
-  //   $('.topbar-info .sep:first').hide()
-  // } else {
-  //   $('.user').hide()
-  //   $('.topbar-info .link:last').hide()
-  // }
-  // }
-
-  // function handleLogin() {
-  //   return function (_, user) {
-  //     console.log(user)
-  //     $('span.user')
-  //       .find('.name')
-  //       .text(user.userInfo.username)
-  //       .parents('.user')
-  //       .show()
-  //     $('.topbar-info .link:not(:last)').hide()
-  //     $('.topbar-info .sep:first').hide()
-  //   }
-  // }
 })
