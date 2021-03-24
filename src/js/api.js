@@ -93,9 +93,9 @@ define(['axios', 'utils'], function (axios, utils) {
         })
       },
 
-      checkout() {
+      getCheckout(pOid) {
         return request({
-          url: '/cart/checkout'
+          url: `/cart/getCheckout/${pOid}`
         })
       },
 
@@ -179,19 +179,25 @@ define(['axios', 'utils'], function (axios, utils) {
         })
       },
 
-      setAddress(addressId) {
+      setAddress({ pOid, addressId }) {
         return request({
           url: '/order/setAddress',
           method: 'post',
-          data: { addressId }
+          data: { pOid, addressId }
         })
       },
 
-      confirmOrder() {
+      confirmOrder(pOid) {
         return request({
           url: '/order/confirm',
           method: 'post',
-          data: { action: 'confirm' }
+          data: { action: 'confirm', pOid }
+        })
+      },
+
+      getOrderInfo(cOid) {
+        return request({
+          url: `/order/${cOid}`
         })
       }
     }

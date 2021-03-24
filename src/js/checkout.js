@@ -13,6 +13,7 @@ require(['./config'], function () {
       _searchValue: '',
       _userAddressList: [], // 用户收货地址列表
       currentAddress: null,
+      pOid: utils.getUrlKey(location.href)['pOid'],
 
       get userAddressList() {
         return this._userAddressList
@@ -50,8 +51,8 @@ require(['./config'], function () {
       },
 
       // 获取数据
-      goCheckout() {
-        return api.cart.checkout()
+      getCheckout(pOid) {
+        return api.cart.getCheckout(pOid)
       },
 
       // 渲染页面
@@ -164,9 +165,11 @@ require(['./config'], function () {
           const item = this
           $(this).addClass('active').siblings().removeClass('active')
 
-          ck.setAddress($(this).data().aid).then(res => {
-            console.log('setAddress', res)
-          })
+          ck.setAddress({ pOid: ck.pOid, addressId: $(this).data().aid }).then(
+            res => {
+              console.log('setAddress', res)
+            }
+          )
 
           // 删除按钮
           if (e.target.id === 'del') {
@@ -241,9 +244,18 @@ require(['./config'], function () {
             body: '<div class="alert-message">有钱吗？你就敢结账？？</div>',
             onConfirm() {
               console.log('继续结账')
-              ck.confirmOrder().then(res => {
+              ck.confirmOrder(ck.checkoutData.pOid).then(res => {
                 console.log('confirmOrder', res)
-                go('/order.html')
+                if (res.status === 0) {
+                  go(`/order.html?cOid=${res.data.cOid}`)
+                } else {
+                  setTimeout(() => {
+                    modal({
+                      title: '提示',
+                      body: `<div class="alert-message">${res.message}</div>`
+                    })
+                  }, 1000)
+                }
               })
             }
           })
@@ -265,12 +277,12 @@ require(['./config'], function () {
         return api.user.updateAddress({ addressId, update })
       },
 
-      setAddress(addressId) {
-        return api.order.setAddress(addressId)
+      setAddress({ pOid, addressId }) {
+        return api.order.setAddress({ pOid, addressId })
       },
 
-      confirmOrder() {
-        return api.order.confirmOrder()
+      confirmOrder(pOid) {
+        return api.order.confirmOrder(pOid)
       },
 
       getFormData() {
@@ -330,10 +342,13 @@ require(['./config'], function () {
       init() {
         // 渲染公共头部
         $('body').prepend(template('subHeader', { title: '确认订单' }))
+        // const { pOid } = utils.getUrlKey(location.href)
+        console.log(utils.getUrlKey(location.href))
         if (checkLogin()) {
           onLogin()
-          this.goCheckout().then(res => {
-            this.checkoutData = res.data
+          this.getCheckout(this.pOid).then(res => {
+            console.log('getCheckoutData', res)
+            this.checkoutData = res.data.pOrderList[0]
             this.render()
             this.bind()
           })

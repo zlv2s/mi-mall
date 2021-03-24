@@ -448,6 +448,40 @@ $out+=$string(body);
 $out+='</div> <div class="mi-popup__footer"> <button class="btn btn-primary">确定</button> <button class="btn btn-gray">取消</button> </div> </div>';
 return new String($out);
 });/*v:1*/
+template('orderDetail',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,orderInfo=$data.orderInfo,$each=$utils.$each,goodsItem=$data.goodsItem,$index=$data.$index,$out='';$out+='<li class="clearfix"> <div class="label"> 订单号：</div> <div class="content"><span class="order-num">';
+$out+=$escape(orderInfo.orderId);
+$out+='</span></div> </li> <li class="clearfix"> <div class="label"> 收货信息：</div> <div class="content">';
+$out+=$escape(orderInfo.address.consignee);
+$out+=' ';
+$out+=$escape(orderInfo.address.telephone);
+$out+=' ';
+$out+=$escape(orderInfo.address.province_name);
+$out+=' ';
+$out+=$escape(orderInfo.address.city_name);
+$out+=' ';
+$out+=$escape(orderInfo.address.district_name);
+$out+=' ';
+$out+=$escape(orderInfo.address.area_name);
+$out+=' ';
+$out+=$escape(orderInfo.address.address);
+$out+='</div> </li> <li class="clearfix"> <div class="label"> 商品名称：</div> <div class="content">  ';
+$each(orderInfo.goodsList,function(goodsItem,$index){
+$out+=' <span>';
+$out+=$escape(goodsItem.name);
+$out+='</span> ';
+});
+$out+=' </div> </li> <li class="clearfix"> <div class="label"> 配送时间：</div> <div class="content">不限送货时间</div> </li> <li class="clearfix"> <div class="label"> 发票信息：</div> <div class="content">电子普通发票 个人</div> </li>';
+return new String($out);
+});/*v:1*/
+template('orderFee',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,fee=$data.fee,$out='';$out+='<em>';
+$out+=$escape(fee);
+$out+='</em><span>元</span>';
+return new String($out);
+});/*v:1*/
 template('productItem',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,productList=$data.productList,product=$data.product,$index=$data.$index,$escape=$utils.$escape,$out='';$each(productList,function(product,$index){

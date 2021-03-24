@@ -1,0 +1,30 @@
+<li class="clearfix">
+  <div class="label"> 订单号：</div>
+  <div class="content"><span class="order-num">{{orderInfo.orderId}}</span></div>
+</li>
+<li class="clearfix">
+  <div class="label"> 收货信息：</div>
+  <div class="content">{{orderInfo.address.consignee}} {{orderInfo.address.telephone}}
+    {{orderInfo.address.province_name}} {{orderInfo.address.city_name}} {{orderInfo.address.district_name}}
+    {{orderInfo.address.area_name}} {{orderInfo.address.address}}</div>
+</li>
+<li class="clearfix">
+  <div class="label"> 商品名称：</div>
+  <div class="content">
+    <!-- <span>米兔冰格 薄荷绿</span>
+    <span>米兔冰格 薄荷绿</span>
+    <span>米兔冰格 薄荷绿</span>
+    <span>米兔冰格 薄荷绿</span> -->
+    {{each orderInfo.goodsList as goodsItem}}
+    <span>{{goodsItem.name}}</span>
+    {{/each}}
+  </div>
+</li>
+<li class="clearfix">
+  <div class="label"> 配送时间：</div>
+  <div class="content">不限送货时间</div>
+</li>
+<li class="clearfix">
+  <div class="label"> 发票信息：</div>
+  <div class="content">电子普通发票 个人</div>
+</li>

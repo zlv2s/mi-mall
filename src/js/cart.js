@@ -123,7 +123,7 @@ require(['./config'], function () {
     $('#checkout').click(function () {
       api.order.checkout().then(res => {
         console.log(res)
-        go('/checkout.html')
+        go(`/checkout.html?pOid=${res.data.pOid}`)
       })
     })
 
