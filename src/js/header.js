@@ -64,7 +64,7 @@ define(['jquery', 'api', 'utils', 'common'], function (
     </span>
     <a href="/login.html" class="link">登录</a>
     <span class="sep">|</span>
-    <a href="#" class="link">注册</a>
+    <a href="/login.html#register" class="link">注册</a>
     <span class="sep">|</span>
     <a href="#" class="message">消息通知</a>
     <span class="sep">|</span>
@@ -150,8 +150,6 @@ define(['jquery', 'api', 'utils', 'common'], function (
 </div>
 </div>
 `
-
-  // $.subscribe('login', handleLogin())
 
   // 获取全部分类数据
   api.product.getCatList().then(res => {

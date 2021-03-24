@@ -56,6 +56,7 @@ require(['./config'], function () {
         )
       },
 
+      // 根据商品内容，动态计算高度
       calcDetailHeight() {
         const od = this
         od.detailHeight = 0

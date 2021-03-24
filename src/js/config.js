@@ -2,6 +2,7 @@ require.config({
   baseUrl: '/',
   paths: {
     jquery: 'lib/jquery',
+    validate: 'lib/jquery.validate.min',
     pubsub: 'lib/ba-tiny-pubsub.min',
     axios: 'lib/axios.min',
     swiper: 'lib/swiper.min',
@@ -14,4 +15,5 @@ require.config({
     detail: 'js/detail',
     api: 'js/api'
   }
+  // shim: { validate: ['jquery'] }
 })

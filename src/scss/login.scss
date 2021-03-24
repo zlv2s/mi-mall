@@ -66,27 +66,35 @@
 
 
       .input-area {
-        label {
-          margin-bottom: 14px;
-          border: 1px solid #e0e0e0;
-          outline: 0 none;
-          display: block;
 
-          &[for="re-password"] {
-            display: none;
+
+        em {
+          position: relative;
+          top: -10px;
+          font-size: 12px;
+          margin-left: 12px;
+          color: #ff6700;
+        }
+
+
+        input {
+          width: 348px;
+          height: 52px;
+          box-sizing: border-box;
+          line-height: 22px;
+          margin-bottom: 14px;
+          padding: 13px 16px 13px 14px;
+          border: 1px solid #e0e0e0;
+          display: block;
+          outline: 0;
+          color: #333;
+
+          &.error {
+            border: 1px solid #ff6700;
           }
         }
 
-        input {
-          width: 306px;
-          height: 22px;
-          line-height: 22px;
-          padding: 13px 16px 13px 14px;
-          display: block;
-          outline: 0;
-          border: 0 none;
-          color: #333;
-        }
+
       }
 
       .err-tip {

@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/iconfont.css">
   <link rel="stylesheet" href="css/login.css">
-  <title>登录 / 注册</title>
+  <link rel="stylesheet" href="css/popup.css">
+  <title>登录 - 注册</title>
 </head>
 
 <body>
@@ -29,28 +30,31 @@
         </div>
         <div class="tab-con">
           <div class="login-box">
-            <div class="input-area">
-              <label for="username">
-                <input type="text" id="username" placeholder="邮箱/手机号码/小米ID">
-              </label>
-              <label for="password">
-                <input type="password" id="password" placeholder="密码">
-              </label>
-              <label for="re-password">
-                <input type="password" id="re-password" placeholder="再次输入密码">
-              </label>
-            </div>
-            <div class="err-tip">
-              <div>
-                <i class="icon-err"></i>
-                <span class="err-con">
-                </span>
+            <form id="loginForm" action="#">
+              <div class="input-area">
+
+                <input type="text" id="username" name="username" placeholder="用户名">
+
+
+                <input type="password" id="password" name="password" placeholder="密码">
+
+                <input type="password" id="rePassword" name="rePassword" placeholder="再次输入密码">
+
               </div>
-            </div>
-            <div class="btn-login">
-              <input type="button" value="登录" id="login">
-              <input type="button" value="注册" id="register">
-            </div>
+
+
+              <div class="err-tip">
+                <div>
+                  <i class="icon-err"></i>
+                  <span class="err-con">
+                  </span>
+                </div>
+              </div>
+              <div class="btn-login">
+                <input type="submit" value="登录" id="login">
+                <input type="submit" value="注册" id="register">
+              </div>
+            </form>
           </div>
         </div>
         <div class="bottom-box">
@@ -81,6 +85,8 @@
       </div>
     </div>
   </div>
+
+  <div class="mi-popup"></div>
 
   <script data-main="js/login" src="lib/require.js"></script>
 </body>
