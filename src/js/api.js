@@ -1,4 +1,9 @@
-define(['axios', 'utils', 'common'], function (axios, utils, { go, modal }) {
+define(['axios', 'jquery', 'utils', 'common', 'notify'], function (
+  axios,
+  $,
+  utils,
+  { go, modal }
+) {
   const request = axios.create({
     baseURL: 'http://localhost:3030/api/mi-mall',
     timeout: 20000
@@ -20,8 +25,10 @@ define(['axios', 'utils', 'common'], function (axios, utils, { go, modal }) {
 
   request.interceptors.response.use(
     response => {
-      console.log(response.data)
-      if (response.data.status === 1) {
+      if (
+        response.data.status === 1 &&
+        response.config.url.includes('addressList')
+      ) {
         modal({
           body: `<div class="alert-message">${response.data.message}</div>`
         })
@@ -29,7 +36,10 @@ define(['axios', 'utils', 'common'], function (axios, utils, { go, modal }) {
       return Promise.resolve(response.data)
     },
     err => {
-      console.log(err)
+      if (err.message === 'Network Error') {
+        $.notify('网络连接错误，请检查本地连接！', { type: 'danger' })
+      }
+
       if (err.response.status === 401) {
         utils.storage.clear()
         return go('/')

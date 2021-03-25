@@ -198,7 +198,8 @@ return new String($out);
 });/*v:1*/
 template('cartItem',function($data,$filename
 ) {
-'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,cartItems=$data.cartItems,item=$data.item,$index=$data.$index,$escape=$utils.$escape,$out='';$each(cartItems,function(item,$index){
+'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,cartItems=$data.cartItems,item=$data.item,$index=$data.$index,$escape=$utils.$escape,$out='';$out+='<div class="list-head clearfix"> <div class="col col-check"><i class="iconfont icon-checkbox iconfont-check"></i> 全选</div> <div class="col col-img">&nbsp;</div> <div class="col col-name">商品名称</div> <div class="col col-price">单价</div> <div class="col col-num">数量</div> <div class="col col-total">小计</div> <div class="col col-action">操作</div> </div> <div class="list-body"> ';
+$each(cartItems,function(item,$index){
 $out+=' <div class="item-box clearfix" data-gid="';
 $out+=$escape(item.goods_id);
 $out+='"> <div class="col col-check"><i class="iconfont icon-checkbox iconfont-check ';
@@ -217,6 +218,7 @@ $out+='"> <a data-change="1" href="javascript:void(0)"><i class="iconfont">&#xe6
 $out+=$escape(item.totalPrice);
 $out+='</span>元</div> <div class="col col-action"><a href="javascript:void(0)"><i class="iconfont">&#xe602;</i></a> </div> </div> ';
 });
+$out+=' </div>';
 return new String($out);
 });/*v:1*/
 template('cartRecItem',function($data,$filename

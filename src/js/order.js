@@ -5,7 +5,8 @@ require(['./config'], function () {
     './js/template/template',
     'utils',
     'common',
-    'footer'
+    'footer',
+    'notify'
   ], function ($, api, template, utils, { checkLogin, onLogin, go, modal }) {
     const order = {
       cOid: utils.getUrlKey(location.href).cOid,
@@ -31,6 +32,7 @@ require(['./config'], function () {
             .then(res => {
               console.log('getOrderInfo', res)
               if (res.status === 1) {
+                $.notify(`${res.message}`, { type: 'danger' })
                 $('.confirm-box').html(template('loading'))
               } else {
                 this.orderInfo = res.data.orderInfo

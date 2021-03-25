@@ -66,7 +66,7 @@ require(['./config'], function () {
           template('countBox', { countData: this.checkoutData })
         )
       },
-
+      // 渲染地址列表
       renderAddressList() {
         console.log('render address item')
         $('.result-list')
@@ -243,7 +243,6 @@ require(['./config'], function () {
           modal({
             body: '<div class="alert-message">有钱吗？你就敢结账？？</div>',
             onConfirm() {
-              console.log('继续结账')
               ck.confirmOrder(ck.checkoutData.pOid).then(res => {
                 console.log('confirmOrder', res)
                 if (res.status === 0) {

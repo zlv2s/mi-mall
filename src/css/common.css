@@ -677,12 +677,16 @@ input.btn-biglarge {
   white-space: nowrap;
 }
 
+/* modal */
+
 .alert-message {
   margin: 50px 10px;
   font-size: 26px;
   text-align: center;
 }
 
+
+/* loading */
 .loading {
   padding: 20px 0
 }
@@ -766,4 +770,11 @@ input.btn-biglarge {
     transform: scale(1);
     opacity: 1
   }
+}
+
+/* notify */
+
+.notify-danger {
+  color: #fff !important;
+  background-color: #ff6700 !important;
 }

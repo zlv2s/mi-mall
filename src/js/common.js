@@ -75,19 +75,17 @@ define(['jquery', 'api', 'utils', './js/template/template'], function (
 
     // 确认
     $('.mi-popup__footer .btn-primary').click(function () {
+      m.fadeOut()
       if (onConfirm) {
         onConfirm()
       }
-
-      m.fadeOut()
     })
     // 取消
     $('.mi-popup__footer .btn-gray').click(function () {
+      m.fadeOut()
       if (onCancel) {
         onCancel()
       }
-
-      m.fadeOut()
     })
 
     m.fadeIn()
