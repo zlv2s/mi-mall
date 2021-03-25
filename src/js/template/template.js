@@ -439,6 +439,7 @@ $out+=$escape(address ? address.tag_name : '');
 $out+='"> <p class="msg msg-error" style="display: none;"></p> <span class="iconfont-circle-close icon-error" style="display: none;"></span> </div> </div> </div>';
 return new String($out);
 });/*v:1*/
+template('loading','<div class="loading"> <div class="loader"></div> </div>');/*v:1*/
 template('mi-popup',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,title=$data.title,$string=$utils.$string,body=$data.body,$out='';$out+='<div class="mi-popup__mask"> </div> <div class="mi-popup__box"> <div class="mi-popup__header"> <span class="title">';

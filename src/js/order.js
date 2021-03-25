@@ -27,10 +27,16 @@ require(['./config'], function () {
         $('body').prepend(template('subHeader', { title: '支付订单' }))
         if (checkLogin()) {
           onLogin()
-          this.getOderInfo(this.cOid).then(res => {
-            console.log('getOrderInfo', res)
-            this.orderInfo = res.data.orderInfo
-          })
+          this.getOderInfo(this.cOid)
+            .then(res => {
+              console.log('getOrderInfo', res)
+              if (res.status === 1) {
+                $('.confirm-box').html(template('loading'))
+              } else {
+                this.orderInfo = res.data.orderInfo
+              }
+            })
+            .catch(err => {})
         } else {
           console.log('未登录')
           go('/')

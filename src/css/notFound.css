@@ -1,0 +1,24 @@
+html {
+  font-size: 100px;
+}
+
+body {
+  text-align: center;
+  width: 100%;
+}
+
+img {
+  display: block;
+  height: 4rem;
+  margin: 0 auto .5rem;
+}
+
+.sorry {
+  font-size: .45rem;
+  line-height: .68rem;
+}
+
+.goto {
+  font-size: .3rem;
+  line-height: .68rem;
+}

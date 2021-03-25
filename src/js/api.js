@@ -1,4 +1,4 @@
-define(['axios', 'utils'], function (axios, utils) {
+define(['axios', 'utils', 'common'], function (axios, utils, { go, modal }) {
   const request = axios.create({
     baseURL: 'http://localhost:3030/api/mi-mall',
     timeout: 20000
@@ -20,12 +20,23 @@ define(['axios', 'utils'], function (axios, utils) {
 
   request.interceptors.response.use(
     response => {
+      console.log(response.data)
+      if (response.data.status === 1) {
+        modal({
+          body: `<div class="alert-message">${response.data.message}</div>`
+        })
+      }
       return Promise.resolve(response.data)
     },
     err => {
       console.log(err)
       if (err.response.status === 401) {
         utils.storage.clear()
+        return go('/')
+      }
+
+      if (err.response.status === 404) {
+        return go('/notFound.html')
       }
       return Promise.reject(err)
     }
@@ -45,7 +56,7 @@ define(['axios', 'utils'], function (axios, utils) {
         })
       },
 
-      getDetail(id) {
+      getDetail(id = '') {
         return request({
           url: `/product/${id}`
         })
@@ -74,26 +85,26 @@ define(['axios', 'utils'], function (axios, utils) {
         })
       },
 
-      deleteGoods(gid) {
+      deleteGoods(gid = '') {
         return request({
           url: `/cart/delete/${gid}`,
           method: 'delete'
         })
       },
 
-      getCartRec(cid) {
+      getCartRec(cid = '') {
         return request({
           url: `/cart/recom/${cid}`
         })
       },
 
-      getItem(gid) {
+      getItem(gid = '') {
         return request({
           url: `/cart/getItem/${gid}`
         })
       },
 
-      getCheckout(pOid) {
+      getCheckout(pOid = '') {
         return request({
           url: `/cart/getCheckout/${pOid}`
         })
@@ -154,7 +165,7 @@ define(['axios', 'utils'], function (axios, utils) {
         })
       },
 
-      updateAddress({ addressId, update }) {
+      updateAddress({ addressId = '', update }) {
         return request({
           url: `/user/address/${addressId}`,
           method: 'post',
@@ -162,7 +173,7 @@ define(['axios', 'utils'], function (axios, utils) {
         })
       },
 
-      delAddress(addressId) {
+      delAddress(addressId = '') {
         return request({
           url: `/user/address/${addressId}`,
           method: 'delete'
@@ -195,7 +206,7 @@ define(['axios', 'utils'], function (axios, utils) {
         })
       },
 
-      getOrderInfo(cOid) {
+      getOrderInfo(cOid = '') {
         return request({
           url: `/order/${cOid}`
         })
