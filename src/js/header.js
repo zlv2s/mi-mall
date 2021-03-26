@@ -171,6 +171,14 @@ define(['jquery', 'api', 'utils', 'common'], function (
         $(this).removeClass('user-active')
       }
     )
+
+    // // 点击退出
+    // $('#signOut').click(function () {
+    //   console.log(api)
+    //   api.user.signOut().then(() => {
+    //     location.reload()
+    //   })
+    // })
   })
 
   // 更新购物车数量显示

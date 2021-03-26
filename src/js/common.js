@@ -27,9 +27,12 @@ define(['jquery', 'api', 'utils', './js/template/template'], function (
 
     // 点击退出
     $('#signOut').click(function () {
-      api.user.signOut().then(() => {
-        location.reload()
-      })
+      console.log(api)
+      // api.user.signOut().then(() => {
+      //   location.reload()
+      // })
+      utils.storage.clear()
+      location.reload()
     })
   }
 
