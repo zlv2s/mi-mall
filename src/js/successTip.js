@@ -26,19 +26,21 @@ require(['./config'], function () {
           })
         })
       },
-
+      // 获取商品详情
       getItemDetail(gid) {
         return api.cart.getItem(gid).then(res => {
           return res.data[0]
         })
       },
-
+      // 获取推荐列表
       getCartRec(cid) {
+        $('.loading-wrapper').html(template('loading'))
         return api.cart.getCartRec(cid).then(res => {
+          $('.loading-wrapper').remove()
           this.recomList = res.data.map(x => x.info)
         })
       },
-
+      // 渲染推荐商品
       renderRecItem() {
         $('.recommend-list').html(
           template('cartRecItem', { recomList: this.recomList })
@@ -68,7 +70,7 @@ require(['./config'], function () {
           })
         })
       },
-
+      // 添加到购物车
       addToCart({ goodsId, productId }) {
         return api.cart.addToCart({ goodsId, productId })
       }
@@ -79,9 +81,9 @@ require(['./config'], function () {
         go('/cart.html')
       })
 
-      $('.actions .btn-gray').click(function () {
-        // to do
-        //  返回上一级
+      $('.actions .btn-line-gray').click(function () {
+        go(utils.storage.get('prev') || '/')
+        utils.storage.remove('prev')
       })
       successTip.init()
     })

@@ -32,6 +32,7 @@ require(['config'], function () {
         if (!this.product_id) {
           go('/')
         }
+        utils.storage.set('prev', location.href)
       },
 
       // 轮播图初始化
@@ -99,8 +100,11 @@ require(['config'], function () {
         }
       },
 
+      // 获取商品详情
       getProductDetail() {
+        $('.loading-wrapper').html(template('loading'))
         return api.product.getDetail(this.product_id).then(res => {
+          $('.loading-wrapper').remove()
           this.product = res.data
         })
       },
@@ -128,6 +132,24 @@ require(['config'], function () {
           d.updateGoodsInfo()
           // 颜色如果更改，轮播图重新渲染
           if (d.goodsItem.isChangeColor) d.initSwiper()
+        })
+
+        let isFixed = false
+
+        $(window).on('scroll', function () {
+          if ($(window).scrollTop() >= 205) {
+            if (!isFixed) {
+              console.log('fixed')
+              isFixed = true
+              $('.nav-bar-hidden').addClass('fixed')
+            }
+          } else {
+            if (isFixed) {
+              console.log('unfixed')
+              isFixed = false
+              $('.nav-bar-hidden').removeClass('fixed')
+            }
+          }
         })
 
         // 添加到购物车

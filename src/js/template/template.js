@@ -196,6 +196,15 @@ $out+='</div> </div> <a class="btn btn-primary btn-small">选择</a> </li> ';
 $out+=' </ul>';
 return new String($out);
 });/*v:1*/
+template('cartEmpty',function($data,$filename
+) {
+'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,isLogin=$data.isLogin,$out='';$out+='<h2>您的购物车还是空的！</h2> <p class="';
+$out+=$escape(isLogin ? 'hide' : '');
+$out+='">登录后将显示您之前加入的商品</p> <a class="btn btn-primary ';
+$out+=$escape(isLogin ? 'hide' : '');
+$out+='" href="/login.html#login">立即登录</a> <a class="btn btn-line-primary" href="/">马上去购物</a>';
+return new String($out);
+});/*v:1*/
 template('cartItem',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$each=$utils.$each,cartItems=$data.cartItems,item=$data.item,$index=$data.$index,$escape=$utils.$escape,$out='';$out+='<div class="list-head clearfix"> <div class="col col-check"><i class="iconfont icon-checkbox iconfont-check"></i> 全选</div> <div class="col col-img">&nbsp;</div> <div class="col col-name">商品名称</div> <div class="col col-price">单价</div> <div class="col col-num">数量</div> <div class="col col-total">小计</div> <div class="col col-action">操作</div> </div> <div class="list-body"> ';
@@ -294,6 +303,24 @@ return new String($out);
 template('detail',function($data,$filename
 ) {
 'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,product=$data.product,$each=$utils.$each,l=$data.l,$index=$data.$index,r=$data.r,include=function(filename,data){data=data||$data;var text=$utils.$include(filename,data,$filename);$out+=text;return $out;},imgList=$data.imgList,$string=$utils.$string,option=$data.option,item=$data.item,i=$data.i,$out='';$out+='<div class="nav-bar"> <div class="container"> <h2>';
+$out+=$escape(product.detailItem.product_info.name);
+$out+='</h2> <div class="con clearfix"> <div class="left"> ';
+$each(product.left,function(l,$index){
+$out+=' <span class="separator">|</span> <a href="';
+$out+=$escape(l.url);
+$out+='">';
+$out+=$escape(l.title);
+$out+='</a> ';
+});
+$out+=' </div> <div class="right"> ';
+$each(product.right,function(r,$index){
+$out+=' <a href="';
+$out+=$escape(r.url);
+$out+='">';
+$out+=$escape(r.title);
+$out+='</a> <span class="separator">|</span> ';
+});
+$out+=' <a href="https://www.mi.com/comment/12511.html">用户评价</a> </div> </div> </div> </div> <div class="nav-bar nav-bar-hidden"> <div class="container"> <h2>';
 $out+=$escape(product.detailItem.product_info.name);
 $out+='</h2> <div class="con clearfix"> <div class="left"> ';
 $each(product.left,function(l,$index){

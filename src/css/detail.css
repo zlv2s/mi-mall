@@ -12,6 +12,20 @@
   background: #fff;
 }
 
+
+.fixed {
+  top: 0 !important;
+  height: 63px !important;
+}
+
+.detail .nav-bar.nav-bar-hidden {
+  position: fixed;
+  top: -65px;
+  z-index: 999;
+  height: 0;
+  transition: .5s;
+}
+
 .detail .nav-bar {
   position: relative;
   height: 63px;

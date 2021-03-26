@@ -21,6 +21,29 @@
   </div>
 </div>
 
+<div class="nav-bar nav-bar-hidden">
+  <div class="container">
+    <h2>{{product.detailItem.product_info.name}}</h2>
+    <div class="con clearfix">
+      <div class="left">
+        {{each product.left as l}}
+        <span class="separator">|</span>
+        <a href="{{l.url}}">{{l.title}}</a>
+        {{/each}}
+
+      </div>
+      <div class="right">
+        {{each product.right as r}}
+        <a href="{{r.url}}">{{r.title}}</a>
+        <span class="separator">|</span>
+        {{/each}}
+        <a href="https://www.mi.com/comment/12511.html">用户评价</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="mi-detail">
   <div class="page-box">
     <div class="product-box container">

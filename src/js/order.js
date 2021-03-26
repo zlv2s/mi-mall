@@ -28,13 +28,15 @@ require(['./config'], function () {
         $('body').prepend(template('subHeader', { title: '支付订单' }))
         if (checkLogin()) {
           onLogin()
+          $('.loading-wrapper').html(template('loading'))
           this.getOderInfo(this.cOid)
             .then(res => {
               console.log('getOrderInfo', res)
               if (res.status === 1) {
                 $.notify(`${res.message}`, { type: 'danger' })
-                $('.confirm-box').html(template('loading'))
               } else {
+                $('.confirm-context').show()
+                $('.loading-wrapper').remove()
                 this.orderInfo = res.data.orderInfo
               }
             })

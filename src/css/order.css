@@ -3,6 +3,10 @@
   padding: 38px 0;
 }
 
+.confirm-context {
+  display: none;
+}
+
 .page-main .money {
   color: #ff6700;
   font-size: 14px;

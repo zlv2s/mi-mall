@@ -15,6 +15,7 @@ require.config({
     footer: 'js/footer',
     detail: 'js/detail',
     api: 'js/api'
-  }
+  },
   // shim: { validate: ['jquery'] }
+  shim: { notify: ['jquery'] }
 })
